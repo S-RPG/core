@@ -1,3 +1,3 @@
 # core
 
-Este é o repositório principal do RPG
+Este é o repositório principal do RPG.
