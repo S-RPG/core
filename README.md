@@ -27,3 +27,56 @@ Vamos utilizar um protocolo a ser seguido pelos desenvolvedores com o objetivo d
 
 4. **Estar atento as notificações do github para revisões de códigos.**
    - _Para que o projeto não fique parado, é importante sempre estar atento a requisições de revisão de código, dessa forma quanto mais rápido um PR (pull request) é revisado, mais rápido o código principal é incrementado e mais rápido se dá o desenvolvimento do projeto._`
+
+# Comandos úteis
+
+Segue alguns comandos úteis que serão frequentemente utilizados ao longo de todo o desenvolvimento do projeto.
+
+- Atualizar a branch local com o código da branch no github:
+
+  ```bash
+  git pull origin <nome/da-branch>
+  ```
+
+- Atualizar a branch local com o código da branch `main` no github:
+
+  ```bash
+  git pull origin main
+  ```
+
+- Criar uma branch nova local:
+
+  ```bash
+  git checkout -b <nome/da-branch>
+  ```
+
+- Alterar a branch local:
+  ```bash
+  git checkout <nome/da-branch>
+  ```
+- Deletar uma branch local:
+  ```bash
+  git branch -D <nome/da-branch>
+  ```
+- Adicionar arquivos para commit:
+
+  ```bash
+  git add <path/do/arquivo> <path/do/arquivo>
+  ```
+
+- Adicionar todos os arquivos modificados para commit:
+  ```bash
+  git add .
+  ```
+- Commitar modificações:
+  ```bash
+  git commit -m "<feat/fix>: <descrição>"
+  ```
+- Shorthand, adicionar e commitar modificações:
+  ```bash
+  git add . && git commit -m "<feat/fix>: <descrição>"
+  ```
+- Subir modificações para o github:
+  ```bash
+  git push
+  ```
