@@ -79,7 +79,7 @@ Segue alguns comandos úteis que serão frequentemente utilizados ao longo de to
 - Subir modificações para o github:
   ```bash
   git push origin <nome/da-branch>
-  ``
+ 
 - Shorthand, sempre dar push para branch atual:
   ```bash
   git config --global --add --bool push.autoSetupRemote true
