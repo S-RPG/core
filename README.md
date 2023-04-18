@@ -2,7 +2,7 @@
 
 Este é o repositório principal do RPG
 
-# Regras de desenvolvimento
+## Regras de desenvolvimento
 
 Vamos utilizar um protocolo a ser seguido pelos desenvolvedores com o objetivo de proteger o código principal de códigos não revisados e facilitar manutenções futuras.
 
@@ -28,7 +28,7 @@ Vamos utilizar um protocolo a ser seguido pelos desenvolvedores com o objetivo d
 4. **Estar atento as notificações do github para revisões de códigos.**
    - _Para que o projeto não fique parado, é importante sempre estar atento a requisições de revisão de código, dessa forma quanto mais rápido um PR (pull request) é revisado, mais rápido o código principal é incrementado e mais rápido se dá o desenvolvimento do projeto._`
 
-# Comandos úteis
+## Comandos úteis
 
 Segue alguns comandos úteis que serão frequentemente utilizados ao longo de todo o desenvolvimento do projeto.
 
@@ -79,7 +79,7 @@ Segue alguns comandos úteis que serão frequentemente utilizados ao longo de to
 - Subir modificações para o github:
   ```bash
   git push origin <nome/da-branch>
-  ``
+ 
 - Shorthand, sempre dar push para branch atual:
   ```bash
   git config --global --add --bool push.autoSetupRemote true
