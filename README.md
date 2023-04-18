@@ -81,5 +81,6 @@ Segue alguns comandos úteis que serão frequentemente utilizados ao longo de to
   git push origin <nome/da-branch>
   ``
 - Shorthand, sempre dar push para branch atual:
-  bash
+  ```bash
   git config --global --add --bool push.autoSetupRemote true
+  ```
