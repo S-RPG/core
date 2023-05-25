@@ -5,23 +5,26 @@ classe Situacao {
     map<int, array<double>> impactoEspecifico;
     map<int, string> decisaoEspecifica;
     map<int, &map> decisaoImpacto;
-    map<int, double> atributoImpacto;
+    map<int, int> atributoImpacto;
   
   public:
+    # Construtor
     Situacao Situacao(string _titulo, string _contexto) : titulo(_titulo), contexto(_contexto);
     
-    void atribuirImpacto(int atributoId, double ganhoMaximo, double perdaMaxima){
-      impactoEspecifico.incluir(atributoId, [ganhoMaximo, perdaMaxima]);
-      return true;
+    # Cria tabela de impactos para o evento 
+    void atribuirImpacto(int impactoId, double impactoVitalidade, double impactoSanidade){
+      impactoEspecifico.incluir(impactoId, [impactoVitalidade || 0, impactoSanidade || 0]);
     }
   
+    # Cria uma decisao possivel para o jogador
     void atribuirDecisao(int decisaoId, string decisaoContexto){
       decisaoEspecifica.incluir(decisaoId, decisaoContexto);
       return true;
     }
 
-    &map<int, double> atribuirAtributoImpacto(int atributoId, double impacto){
-      atributoImpacto.incluir(atributoId, impacto);
+    # 
+    &map<int, double> atribuirImpactoPersonagem(int atributoId, int impactoId){
+      atributoImpacto.incluir(atributoId, impactoId);
       return &atributoImpacto.indexCujaKeyEh(atributoId);
     }
 
