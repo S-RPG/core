@@ -37,6 +37,6 @@ classe Personagem {
     }
 
     int getSanidade() {
-       mesma coisa de fome, talvez return sanidade;
+       mesma coisa de fome, talvez return sanidad;
     }
 }
