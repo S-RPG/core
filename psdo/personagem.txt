@@ -19,7 +19,24 @@ classe Personagem {
       _nome = nome;
     }
 
-    void ...(){
 
+    adicionarItem(pega da classe item) {
+        cout << "item coletado: << endl;
+    }
+
+    setFome(valor da fome, começando em 100 talvez?) {
+        fome = valor da fome;
+    }
+
+    getFome() {
+        nao sei o getFome, talvez retunr fome;
+    }
+
+    setSanidade(valor da sanidade, começando em 100 talvez?) {
+        sanidade = valor da sanidade;
+    }
+
+    int getSanidade() {
+       mesma coisa de fome, talvez return sanidade;
     }
 }
