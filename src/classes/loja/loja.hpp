@@ -8,7 +8,7 @@
 template<typename T>
 class Loja{
 public:
-    void pedido(T e);
+    void pedido(T e);               //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
     _pedido = pedido(_itens);
     void compra();
     void entrega();
