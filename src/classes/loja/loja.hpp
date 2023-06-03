@@ -14,11 +14,11 @@ public:
     void entrega();
 
 private:
-    double _dinheiro;
+    double _dinheiro;                                       //vai receber o valor do inventário
     std::vector<std::pair<double,std::string>>_pedido;      //O vetor de pedido vai salvar o nome do edido e seu preço
     std::map<unsigned,std::pair<double,std::string>>_itens; //Cada item da lista vai ter um número referente a ele (unsigned), 
                                                             //um preço (double) e um nome (string)
-    double _politica;                                       //alinhação política do personagem
+    double _politica;                                       //alinhação política do personagem recebida pela classe Personagem
 
 };
 
