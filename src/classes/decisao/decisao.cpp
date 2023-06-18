@@ -4,6 +4,8 @@
 Decisao::Decisao(char alternativa, double impactoSanidade, double impactoVitalidade, std::string texto)
     : _texto(texto), _alternativa(alternativa), _impactoSanidade(impactoSanidade), _impactoVitalidade(impactoVitalidade) {}
 
+Decisao::Decisao(){};
+
 void Decisao::setAlternativa(char alternativa)
 {
   _alternativa = alternativa;

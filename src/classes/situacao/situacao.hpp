@@ -22,11 +22,11 @@ public:
 
   void setTitulo(std::string titulo);
 
-  void getContexto();
+  std::string getContexto();
 
-  void getDecisoes();
+  std::map<char, Decisao> getDecisoes();
 
-  void getTitulo();
+  std::string getTitulo();
 };
 
 #endif
