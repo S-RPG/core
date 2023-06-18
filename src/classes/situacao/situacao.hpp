@@ -21,6 +21,12 @@ public:
   void setDecisoes(char alternativa, Decisao decisao);
 
   void setTitulo(std::string titulo);
+
+  void getContexto();
+
+  void getDecisoes();
+
+  void getTitulo();
 };
 
 #endif
