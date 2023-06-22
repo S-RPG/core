@@ -1,5 +1,5 @@
-#include <situacao.hpp>
-#include <decisao/decisao.hpp>>
+#include "situacao.hpp"
+#include "../decisao/decisao.hpp"
 
 Situacao::Situacao(std::string contexto, std::map<char, Decisao> decisoes, std::string titulo)
     : _contexto(contexto), _decisoes(decisoes), _titulo(titulo){};

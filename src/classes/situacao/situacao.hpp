@@ -1,7 +1,7 @@
-#ifndef SITUCAO_H
+#ifndef SITUACAO_H
 #define SITUACAO_H
 
-#include <decisao/decisao.hpp>
+#include "../decisao/decisao.hpp"
 
 #include <string>
 #include <map>
