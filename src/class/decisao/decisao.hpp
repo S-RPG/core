@@ -12,6 +12,8 @@ private:
   std::string _texto;
 
 public:
+  Decisao();
+
   Decisao(char alternativa, double impactoSanidade, double impactoVitalidade, std::string texto);
 
   void setAlternativa(char alternativa);
