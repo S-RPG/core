@@ -1,15 +1,15 @@
 #include "loja.hpp"
 #include <iostream>
 
-template <typename T>
-void Loja<T>::compra(){
+//template <typename T>
+void Loja::compra(){
     if(_carrinho.empty()){
         //retorno de erro carrinho vazio
     }
-    auto it = _carrinho.begin();
-
-    for( ; it!=_carrinho.end(); it++){
-        total= total + ((it->first->second.first)*(it->second)); //retorna o nome do item e a quantidade
+    auto ite = _carrinho.begin();
+    double total;
+    for( ; ite!=_carrinho.end(); ite++){
+        total= total + ((ite->first.second.first)*(ite->second)); //retorna o nome do item e a quantidade
     }
 
     std::cout<<"Total: @"<<total<<std::endl;
@@ -17,42 +17,42 @@ void Loja<T>::compra(){
     _dinheiro= _dinheiro - total;
 }
 
-template <typename T>
-void Loja<T>::entrega(){
+//template <typename T>
+void Loja::entrega(){
     //classe a ser pensada melhor por causa do funcionamento do programa
 }
 
-template <typename T>
-void Loja<T>::interface(){
-    Loja<T>::mostrarItens();
+//template <typename T>
+void Loja::interface(){
+    Loja::mostrarItens();
 
     std::string opc;                            //opção
     unsigned cod=0;                             //código
     unsigned qnt=0;                             //quantidade
     while(opc!="esc"){
-        cin>>opc;
-        if(opc==add){                           //adiciona
+        std::cin>>opc;
+        if(opc=="add"){                           //adiciona
             std::cin>>cod>>qnt;
-            Loja<T>::pedido(cod,qnt);
-        } else if(opc==rmv){                    //remove
+            Loja::pedido(cod,qnt);
+        } else if(opc=="rmv"){                    //remove
             std::cin>>cod>>qnt;
-            Loja<T>::removePedido(cod,qnt);
-        }else if(opc==esc){                     //sai da interface
+            Loja::removePedido(cod,qnt);
+        }else if(opc=="esc"){                     //sai da interface
             break;
         }else {
             //erro de opção inválida
         }
-        Loja<T>::mostrarCarrinho();
+        Loja::mostrarCarrinho();
     }
     std::cout<<"Carrinho:"<<std::endl;
-    std::cout<<Loja<T>::mostrarCarrinho();
+    std::cout<<Loja::mostrarCarrinho();
 
     char alt;                                   //alternativa
     std::cout<<"Deseja finalizar a compra?"<<"  "<<"S/N"<<std::endl;
     std::cin>>alt;
 
     if(alt=='S'){
-        Loja<T>::compra();
+        Loja::compra();
     }else if(alt=='N'){
         //voltar para a escolha
     }else{
@@ -60,8 +60,8 @@ void Loja<T>::interface(){
     }
 }
 
-template <typename T>
-void Loja<T>::pedido(unsigned cod, unsigned qnt){  
+//template <typename T>
+void Loja::pedido(unsigned cod, unsigned qnt){  
     auto it = _itens.begin();
 
     for( ; it!=_itens.end(); it++){
@@ -75,8 +75,8 @@ void Loja<T>::pedido(unsigned cod, unsigned qnt){
     _carrinho.insert(it,qnt);
 }
 
-template <typename T>
-void Loja<T>::mostrarCarrinho(){
+//template <typename T>
+void Loja::mostrarCarrinho(){
     if(_carrinho.empty()){
         //retorno de erro carrinho vazio
     }
@@ -87,8 +87,8 @@ void Loja<T>::mostrarCarrinho(){
     }
 }
 
-template <typename T>
-void Loja<T>::mostrarItens(){
+//template <typename T>
+void Loja::mostrarItens(){
     auto it = _itens.begin();
 
     for( ; it!=_itens.end(); it++){
@@ -96,8 +96,8 @@ void Loja<T>::mostrarItens(){
     }
 }
 
-template <typename T>
-void Loja<T>::removePedido(unsigned cod, unsigned qnt){
+//template <typename T>
+void Loja::removePedido(unsigned cod, unsigned qnt){
     if(_carrinho.empty()){
         //retorno de erro carrinho vazio
     }

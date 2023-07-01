@@ -7,7 +7,7 @@
 #include <utility>
 #include <string>
 
-template<typename T>
+//template<typename T>
 class Loja{
 private:
     double _dinheiro;                                                                 //vai receber o valor do inventário
