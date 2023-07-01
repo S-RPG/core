@@ -1,15 +1,18 @@
 #include "loja.hpp"
 #include <iostream>
 
-//template <typename T>
+
 void Loja::compra(){
     if(_carrinho.empty()){
         //retorno de erro carrinho vazio
     }
-    auto ite = _carrinho.begin();
-    double total;
-    for( ; ite!=_carrinho.end(); ite++){
-        total= total + ((ite->first.second.first)*(ite->second)); //retorna o nome do item e a quantidade
+    
+    auto it = _carrinho.begin();
+    double total = 0.0;
+
+    for (; it != _carrinho.end(); it++) {
+        const auto& mapIn = it->first;
+        total += (mapIn.begin()->second.first) * (it->second);
     }
 
     std::cout<<"Total: @"<<total<<std::endl;
@@ -17,12 +20,12 @@ void Loja::compra(){
     _dinheiro= _dinheiro - total;
 }
 
-//template <typename T>
+
 void Loja::entrega(){
     //classe a ser pensada melhor por causa do funcionamento do programa
 }
 
-//template <typename T>
+
 void Loja::interface(){
     Loja::mostrarItens();
 
@@ -37,15 +40,16 @@ void Loja::interface(){
         } else if(opc=="rmv"){                    //remove
             std::cin>>cod>>qnt;
             Loja::removePedido(cod,qnt);
+        }else if(opc=="show"){
+            Loja::mostrarCarrinho();
         }else if(opc=="esc"){                     //sai da interface
             break;
         }else {
             //erro de opção inválida
         }
-        Loja::mostrarCarrinho();
     }
     std::cout<<"Carrinho:"<<std::endl;
-    std::cout<<Loja::mostrarCarrinho();
+    Loja::mostrarCarrinho();
 
     char alt;                                   //alternativa
     std::cout<<"Deseja finalizar a compra?"<<"  "<<"S/N"<<std::endl;
@@ -60,22 +64,22 @@ void Loja::interface(){
     }
 }
 
-//template <typename T>
-void Loja::pedido(unsigned cod, unsigned qnt){  
-    auto it = _itens.begin();
 
-    for( ; it!=_itens.end(); it++){
-        if((it->first==cod)){
-            break;
-        }
+void Loja::pedido(unsigned cod, unsigned qnt) {
+    //std::map<unsigned, std::pair<double, std::string>> chaveItem = _itens; // Copia o mapa de itens
+
+    auto it = _itens.find(cod); // Procura o item pelo código
+
+    if (it != _itens.end()) {
+        // Insere o item no carrinho junto com a quantidade
+        _carrinho.emplace(it, qnt);
+    } else {
+        // Implemente a ação para o caso de código de item inválido
+        // return; // ou outro tratamento de erro
     }
-
-    //implementar a opção de se nenhuma opção apareceu, retornar erro
-
-    _carrinho.insert(it,qnt);
 }
 
-//template <typename T>
+
 void Loja::mostrarCarrinho(){
     if(_carrinho.empty()){
         //retorno de erro carrinho vazio
@@ -83,11 +87,12 @@ void Loja::mostrarCarrinho(){
     auto it = _carrinho.begin();
 
     for( ; it!=_carrinho.end(); it++){
-        std::cout<<(it->first->second.second)<<" - "<<(it->second)<<std::endl; //retorna o nome do item e a quantidade
+        const auto& mapIn = it->first;
+        std::cout<<(mapIn.begin()->second.second)<<" - "<<(it->second)<<std::endl; //retorna o nome do item e a quantidade
     }
 }
 
-//template <typename T>
+
 void Loja::mostrarItens(){
     auto it = _itens.begin();
 
@@ -96,7 +101,7 @@ void Loja::mostrarItens(){
     }
 }
 
-//template <typename T>
+
 void Loja::removePedido(unsigned cod, unsigned qnt){
     if(_carrinho.empty()){
         //retorno de erro carrinho vazio
@@ -105,7 +110,8 @@ void Loja::removePedido(unsigned cod, unsigned qnt){
     auto it = _carrinho.begin();
 
     for( ; it!=_carrinho.end(); it++){
-        if(((it->first.first)==cod)){
+        const auto& mapIn = it->first;
+        if(((mapIn.begin()->first)==cod)){
             break;
         }
     }
