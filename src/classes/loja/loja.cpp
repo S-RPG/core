@@ -17,12 +17,13 @@ void Loja::compra(){
 
     std::cout<<"Total: @"<<total<<std::endl;
 
-    _dinheiro= _dinheiro - total;
+    _dinheiro -= total;           //como o dinheiro vai ser incluido? depois da classe inventário ser incluida isso vai ser feito
 }
 
 
 void Loja::entrega(){
     //classe a ser pensada melhor por causa do funcionamento do programa
+    //a ideia mais sensata é fazer essa função incluir os itens diretamente no inventário, mas para isso é preciso esperar a classe ser feita
 }
 
 
