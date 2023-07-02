@@ -1,10 +1,39 @@
 #include "loja.hpp"
 #include <iostream>
 
+const char *InvalidOptionException::what() const noexcept {
+  return "Opção inválida!!";
+}
 
-void Loja::compra(){
+InvalidCodException::InvalidCodException(const std::string &message)
+  : _message("Código inválido: " + message + "!") {}
+
+const char *InvalidCodException::what() const noexcept {
+  return _message.c_str();
+}
+
+InvalidQntException::InvalidQntException(const std::string &message)
+  : _message("Quantidade inválida: " + message + "!") {}
+
+const char *InvalidQntException::what() const noexcept {
+  return _message.c_str();
+}
+
+InvalidCarException::InvalidCarException(const std::string &message)
+  : _message(message + " carrinho está vazio!") {}
+
+const char *InvalidCarException::what() const noexcept {
+  return _message.c_str();
+}
+
+const char *InvalidMoneyException::what() const noexcept {
+  return "Valor da compra é maior que o dinheiro que você possui!";
+}
+
+bool Loja::compra(){
     if(_carrinho.empty()){
-        //retorno de erro carrinho vazio
+        throw InvalidCarException("O");    //retorno de erro carrinho vazio
+        return false;
     }
     
     auto it = _carrinho.begin();
@@ -15,13 +44,15 @@ void Loja::compra(){
         total += (mapIn.begin()->second.first) * (it->second);
     }
 
-    //PRECISA SER ADICIONADO OPERAÇÃO QUE VERIFICA SE O DINHEIRO DO INVENTÁRIO É SUFICIENTE PARA O PEDIDO
-    //Caso contrário, ele tem que voltar para a opção de alterar o carrinho
-    //Pode ser que esssa função de remover seja feita nessa função mesmo
+    Loja::mostrarCarrinho();
 
-    std::cout<<"Total: @"<<total<<std::endl;
+    if(total>_dinheiro){
+        throw InvalidMoneyException();
+        return false;
+    }
 
     _dinheiro -= total;           //como o dinheiro vai ser incluido? depois da classe inventário ser incluida isso vai ser feito
+    return true;
 }
 
 
@@ -48,11 +79,18 @@ void Loja::interfaceLoja(){
         std::cin>>opc;
         if(opc=="add"){                           //adiciona
             std::cin>>cod>>qnt;
-            //verificar se a quantidade é válida
-            Loja::pedido(cod,qnt);
+            if(qnt>0){    //verificar se a quantidade é válida
+                Loja::pedido(cod,qnt);
+            }else{
+                throw InvalidQntException("A quantidade de itens deve ser maior que 0");
+            }
         } else if(opc=="rmv"){                    //remove
             std::cin>>cod>>qnt;
-            Loja::removePedido(cod,qnt);
+            if(qnt>0){    //verificar se a quantidade é válida
+                Loja::removePedido(cod,qnt);
+            }else{
+                throw InvalidQntException("A quantidade de itens deve ser maior que 0");
+            }
         }else if(opc=="show"){
             Loja::mostrarCarrinho();
             std::cout<<""<<std::endl;
@@ -63,33 +101,45 @@ void Loja::interfaceLoja(){
         }else if(opc=="out"){                     //sai da interface
             break;
         }else {
-            //erro de opção inválida
+            throw InvalidOptionException();    //erro de opção inválida
         }
     }
     std::cout<<"Carrinho:"<<std::endl;
     Loja::mostrarCarrinho();
 
-    char alt;                                 //alternativa
-    std::cout<<"Deseja finalizar a compra?"<<"  "<<"S/N"<<std::endl;
-    std::cin>>alt;
+    bool erro = true;
 
-    if(alt=='S'){                             //vai para a seção de compra finalizar o pedido
-        Loja::compra();
-    }else if(alt=='N'){                       //encontra uma situação antes da operação ser finalizada
-        std::cout<<"Alterar o carrinho (alt)"<<"   "<<"Cancelar a compra (dlt)"<<"  "<<"Finalizar (end)"<<std::endl;
-        std::cin>>opc;
-        if(opc=="alt"){                       //retorna ao while de edição do carrinho
-            goto compra;
-        } else if(opc=="dlt"){                //informa que o carrinho foi deletado para ele ser destruido direto no final do escopo da função
-            //destrutor do map
-        }else if(opc=="end"){                //vai para a seção de compra finalizar o pedido
-            Loja::compra();
+    while(erro){
+        char alt;                                 //alternativa
+        std::cout<<"Deseja finalizar a compra?"<<"  "<<"S/N"<<std::endl;
+        std::cin>>alt;
+
+        if(alt=='S' || alt=='s'){                             //vai para a seção de compra finalizar o pedido
+            erro = !(Loja::compra());
+            Loja::entrega();                                  //função que adiciona o pedido no inventário
+        }else if(alt=='N' || alt=='n'){                       //encontra uma situação antes da operação ser finalizada
+            bool erro2 = true;
+            while(erro2){
+                std::cout<<"Alterar o carrinho (alt)"<<"   "<<"Cancelar a compra (dlt)"<<"  "<<"Finalizar (end)"<<std::endl;
+                std::cin>>opc;
+                if(opc=="alt"){                       //retorna ao while de edição do carrinho
+                    erro2 = false;
+                    goto compra;
+                }else if(opc=="dlt"){                //informa que o carrinho foi deletado para ele ser destruido direto no final do escopo da função
+                    erro2 = false;
+                }else if(opc=="end"){                //vai para a seção de compra finalizar o pedido
+                    erro2 = !(Loja::compra());
+                    Loja::entrega();                //função que adiciona o pedido no inventário
+                }else{
+                    throw InvalidOptionException();
+                }
+            }
+        }else{
+            throw InvalidOptionException();     //erro de opção inválida
         }
-    }else{
-        //erro de opção inválida
     }
 
-    //destrutor do map
+    _carrinho.clear();    //destrutor do map
 }
 
 
@@ -106,26 +156,30 @@ void Loja::pedido(unsigned cod, unsigned qnt) {
                 std::cout << qnt << " " << par.second << " adicionados com sucesso!" << std::endl;
                 return; // Saia da função após a inserção no carrinho bem-sucedida
             } else if ((innerIt->first == cod)&&(situaItem == "INDISPONÍVEL")){
-                std::cout << "Item indisponível" << std::endl;
+                throw InvalidCodException("Código de item indisponível");
                 return; // Saia da função, pois o item está indisponível
             }
         }
     }
 
-    std::cout << "Código inválido" << std::endl;
+    throw InvalidCodException("Código inválido/não encontrado");
 }
 
 
 void Loja::mostrarCarrinho(){
     if(_carrinho.empty()){
-        //retorno de erro carrinho vazio
+        throw InvalidCarException("Nada para mostrar, o");    //retorno de erro carrinho vazio
+        return;
     }
     auto it = _carrinho.begin();
-
+    double total = 0.0;
     for( ; it!=_carrinho.end(); it++){
         const auto& mapIn = it->first;
-        std::cout<<(mapIn.begin()->second.second)<<" - "<<(it->second)<<std::endl; //retorna o nome do item e a quantidade
+        double valor = (mapIn.begin()->second.first)*(it->second);
+        std::cout<<(mapIn.begin()->second.second)<<" - "<<(it->second)<<" - @"<<valor<<std::endl; //retorna o nome do item e a quantidade
+        total += valor;
     }
+    std::cout<<"Total: @"<<total<<std::endl;
 }
 
 
@@ -143,29 +197,28 @@ void Loja::mostrarItens(){
 
 void Loja::removePedido(unsigned cod, unsigned qnt){
     if(_carrinho.empty()){
-        //retorno de erro carrinho vazio
+        throw InvalidCarException("O");    //retorno de erro carrinho vazio
+        return;
     }
 
     auto it = _carrinho.begin();
     const auto& mapIn = it->first;
     for( ; it!=_carrinho.end(); it++){
         if(((mapIn.begin()->first)==cod)){
+            if((it->second)==qnt){
+            auto &name = mapIn.begin()->second;
+            std::cout<<"-"<<&name<<"totalmente removido!"<<std::endl;
+            _carrinho.erase(it);
+            } else if((it->second)>qnt){
+                auto &name = mapIn.begin()->second;
+                (it->second)=(it->second)-qnt;
+                std::cout<<qnt<<"  "<<&name<<"removidos com sucesso!"<<std::endl;
+            } else if((it->second)<qnt){
+                throw InvalidQntException("A quantidade de itens para ser removida é maior que a quantidade que está no carrinho");    //mensagem de erro, já que a quantidade a ser removida foi inválida
+            }
             break;
+        }else{
+            throw InvalidCodException("Código inválido/não encontrado");
         }
     }
-
-    //implementar a opção de se nenhuma opção apareceu, retornar erro
-
-    if((it->second)==qnt){
-        auto &name = mapIn.begin()->second;
-        std::cout<<"-"<<&name<<"totalmente removido!"<<std::endl;
-        _carrinho.erase(it);
-    } else if((it->second)>qnt){
-        auto &name = mapIn.begin()->second;
-        (it->second)=(it->second)-qnt;
-        std::cout<<qnt<<"  "<<&name<<"removidos com sucesso!"<<std::endl;
-    } else if((it->second)<qnt){
-        //mensagem de erro, já que a quantidade a ser removida foi inválida
-    }
-   
 }

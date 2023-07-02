@@ -6,8 +6,45 @@
 #include <unordered_map>
 #include <utility>
 #include <string>
+#include <exception>
 
-//template<typename T>
+class InvalidOptionException : public std::exception {
+public:
+  const char *what() const noexcept override;
+};
+
+class InvalidCodException : public std::exception {
+public:
+  InvalidCodException(const std::string &message);
+  const char *what() const noexcept override;
+  
+private:
+  std::string _message;
+};
+
+class InvalidQntException : public std::exception {
+public:
+  InvalidQntException(const std::string &message);
+  const char *what() const noexcept override;
+  
+private:
+  std::string _message;
+};
+
+class InvalidCarException : public std::exception {
+public:
+  InvalidCarException(const std::string &message);
+  const char *what() const noexcept override;
+  
+private:
+  std::string _message;
+};
+
+class InvalidMoneyException : public std::exception {
+public:
+  const char *what() const noexcept override;
+};
+
 class Loja{
 private:
     double _dinheiro;                                                                           //vai receber o valor do inventário
@@ -17,7 +54,7 @@ private:
     double _politica;                                                                           //alinhação política do personagem recebida pela classe Personagem (remover??)
 
 public:
-    void compra();
+    bool compra();
     void entrega();
     void interfaceLoja();
     void pedido(unsigned cod, unsigned qnt);               //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
