@@ -118,5 +118,6 @@ public:
     void restAndRecover() {
         cout << "You decide to rest and recover..." << endl;
         // Lógica do descanso teste
+    }
 
-}
+};

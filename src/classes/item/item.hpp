@@ -7,6 +7,7 @@
 struct Item{
     std::string nome;
     double price;
+    unsigned usos;
     float vitalidade;
     float sanidade;
 };
