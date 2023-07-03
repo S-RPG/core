@@ -1,12 +1,8 @@
-// item.hpp
 #ifndef ITEM_H
 #define ITEM_H
 
 #include <string>
 #include <iostream>
-
-//class Personagem; // Declara��o antecipada da classe Personagem
-//class Loja; //Declara��o antecipada da classe Loja
 
 enum class TipoItem {
     ALIMENTO,
@@ -25,9 +21,8 @@ public:
     int getPreco() const;
     int getNumUtilizacoes() const;
     void incrementarUtilizacao();
-    //void utilizarItem(Personagem& personagem);
-    //void utilizarItem(Personagem& personagem, int valorVitalidade, int valorSanidade);
-    void exibirInfo() const;
+    void exibirInfo() const; 
+    //exibir as informações do item, incluindo o percentual de vitalidade e o valor de sanidade no formato (V: ; S:)
 
 private:
     std::string nome;
