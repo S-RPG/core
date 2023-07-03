@@ -54,7 +54,6 @@ private:
     //Inventario _inventario;         //Esperando a classe Inventário
     std::map<std::map<unsigned,std::pair<double,std::string>>,std::string>_itens;               //Cada item da lista vai ter um número referente a ele (unsigned), 
                                                                                                 //um preço (double) e um nome (string)
-    //double _politica;                                                                           //alinhação política do personagem recebida pela classe Personagem (remover??)
 
 public:
     bool compra();
