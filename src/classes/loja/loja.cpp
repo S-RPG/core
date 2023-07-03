@@ -30,6 +30,10 @@ const char *InvalidMoneyException::what() const noexcept {
   return "Valor da compra é maior que o dinheiro que você possui!";
 }
 
+// void Loja::definirDinheiro(){
+//     _dinheiro = _inventário.obterDinheiro();
+// }
+
 bool Loja::compra(){
     if(_carrinho.empty()){
         throw InvalidCarException("O");    //retorno de erro carrinho vazio
