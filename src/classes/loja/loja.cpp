@@ -31,7 +31,7 @@ const char *InvalidMoneyException::what() const noexcept {
 }
 
 // void Loja::definirDinheiro(){
-//     _dinheiro = _inventário.obterDinheiro();
+//     _dinheiro = _inventario.obterDinheiro();
 // }
 
 bool Loja::compra(){
