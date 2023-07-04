@@ -1,0 +1,36 @@
+classe Situacao {
+  private:
+    string titulo;
+    string contexto;
+    map<int, array<double>> impactoEspecifico;
+    map<int, string> decisaoEspecifica;
+    map<int, &map> decisaoImpacto;
+    map<int, int> atributoImpacto;
+  
+  public:
+    # Construtor
+    Situacao Situacao(string _titulo, string _contexto) : titulo(_titulo), contexto(_contexto);
+    
+    # Cria tabela de impactos para o evento 
+    void atribuirImpacto(int impactoId, double impactoVitalidade, double impactoSanidade){
+      impactoEspecifico.incluir(impactoId, [impactoVitalidade || 0, impactoSanidade || 0]);
+    }
+  
+    # Cria uma decisao possivel para o jogador
+    void atribuirDecisao(int decisaoId, string decisaoContexto){
+      decisaoEspecifica.incluir(decisaoId, decisaoContexto);
+      return true;
+    }
+
+    # 
+    &map<int, double> atribuirImpactoPersonagem(int atributoId, int impactoId){
+      atributoImpacto.incluir(atributoId, impactoId);
+      return &atributoImpacto.indexCujaKeyEh(atributoId);
+    }
+
+    void vincularDecisaoImpacto(int decisaoId, int atributoId, double impacto){
+      p_atributoImpacto = atribuirAtributoImpacto(atributoId, impacto); 
+      decisaoImpacto.incluir(decisaoId, *p_atributoImpacto);
+    }
+
+}
