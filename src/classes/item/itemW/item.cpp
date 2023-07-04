@@ -1,29 +1,27 @@
-#include "item.hpp"
+#ifndef ITEM_H
+#define ITEM_H
 
-Item::Item(const std::string& nome, TipoItem tipo, bool consumivel, bool utilitario, int preco, int numUtilizacoes)
-    : nome(nome), tipo(tipo), consumivel(consumivel), utilitario(utilitario), preco(preco), numUtilizacoes(numUtilizacoes) {}
+#include <string>
+#include <iostream>
 
-TipoItem Item::getTipo() const {
-    return tipo;
-}
+enum class TipoItem {
+    ALIMENTO,
+    ARMA,
+    ENTRETENIMENTO,
+    FERRAMENTA,
+    HIGIENE,
+    PRIMEIROS_SOCORROS
+};
 
-bool Item::isConsumivel() const {
-    return consumivel;
-}
+struct Item {
 
-bool Item::isUtilitario() const {
-    return utilitario;
-}
+    std::string nome;
+    TipoItem tipo;
+    bool consumivel;
+    float vitalidade;
+    unsigned sanidade;
+    float preco;
+    int numUtilizacoes;
+};
 
-int Item::getPreco() const {
-    return preco;
-}
-
-int Item::getNumUtilizacoes() const {
-    return numUtilizacoes;
-}
-
-void Item::incrementarUtilizacao() {
-    numUtilizacoes++;
-}
-
+#endif
