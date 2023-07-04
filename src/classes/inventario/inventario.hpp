@@ -1,12 +1,12 @@
-#ifndef inventario.hpp
-#define inventario.hpp
+#ifndef INVENTARIO_H
+#define INVENTARIO_H
 #include <iostream>
 #include <utility>
 #include <vector>
-#include "item.hpp"
+//#include "item.hpp"
 
 
-class inventario {
+class Inventario {
    
     public:
         int get.money();
@@ -20,9 +20,9 @@ class inventario {
         
         int set.money();
         
-}
+};
 
-       get.money(int money){
+       int Inventario::get.money(int money){
             return money;
       }
 
@@ -38,3 +38,6 @@ class inventario {
 
 
      void consumir (string);
+    }
+
+#endif
