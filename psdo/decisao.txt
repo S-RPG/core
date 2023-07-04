@@ -1,0 +1,10 @@
+classe Decisao{
+  private:
+    string _contexto;
+    string _alternativa;
+    double _impactoVitalidade;
+    double _impactoSanidade;
+
+  public:
+    Decisao Decisao(string contexto, string alternativa, double impactoVitalidade, double impactoSanidade) : _contexto(contexto), _alternativa(alternativa), _impactoSanidade(impactoSanidade), _impactoVitalidade(impactoVitalidade)
+}
