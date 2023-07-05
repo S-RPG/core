@@ -48,6 +48,7 @@ bool Loja::compra(){
         const auto& mapIn = it->first;
         produtos.push_back(mapIn.begin()->first);
         //(mapIn.begin()->first).qnt = (it->second);        //o unsigned do código passa a ser um tipo Item que armazenará o nome e uma quantidade
+                                                            //se bem que na hora das verificações, essa ideia quebraria o código
         total += (mapIn.begin()->second.first) * (it->second);
     }
     //Saindo desse 'for', haverá um vector com todos os ID dos itens do pedido que aramazenarão a quantidade de itens a serem adicionados
