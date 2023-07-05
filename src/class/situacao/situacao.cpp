@@ -1,17 +1,57 @@
 #include "situacao.hpp"
-#include "../decisao/decisao.hpp"
 
-Situacao::Situacao(std::string contexto, std::map<char, Decisao> decisoes, std::string titulo)
-    : _contexto(contexto), _decisoes(decisoes), _titulo(titulo){};
+#include <string>
 
-void Situacao::setContexto(std::string contexto) { _contexto = contexto; };
+Situacao::Situacao(std::string contexto, std::string titulo, unsigned decisoesId, unsigned dia, unsigned id, unsigned situacaoConectadaId)
+    : _contexto(contexto), _titulo(titulo), _decisoesId(decisoesId), _dia(dia), _id(id), _situacaoConectadaId(situacaoConectadaId){};
 
-void Situacao::setDecisoes(char alternativa, Decisao decisao) { _decisoes[alternativa] = decisao; };
+std::string Situacao::getTitulo(std::size_t charMax)
+{
+  std::string title;
 
-void Situacao::setTitulo(std::string titulo) { _titulo = titulo; };
+  std::size_t titleLen = _titulo.length();
+  std::size_t tab = charMax / 2 - titleLen / 2;
 
-std::string Situacao::getContexto() { return _contexto; };
+  title.append(tab, ' ');
+  title.append(_titulo);
+  title.append(tab, ' ');
 
-std::map<char, Decisao> Situacao::getDecisoes() { return _decisoes; };
+  return title;
+};
 
-std::string Situacao::getTitulo() { return _titulo; };
+std::string Situacao::getDecisoes(std::map<char, Decisao> *decisoes)
+{
+  std::string decisoesStr;
+  std::size_t decisaoTextLenMax = 0;
+
+  for (std::map<char, Decisao>::iterator it = decisoes->begin(); it != decisoes->end(); ++it)
+  {
+    std::size_t decisaoTextLen = it->second.texto.size();
+    if (decisaoTextLenMax < decisaoTextLen)
+    {
+      decisaoTextLenMax = decisaoTextLen;
+    }
+  };
+
+  std::size_t tab = decisaoTextLenMax / 2;
+
+  for (std::map<char, Decisao>::iterator it = decisoes->begin(); it != decisoes->end(); ++it)
+  {
+    std::string decisaoAlternativa(1, it->first);
+    std::size_t decisaoTextLen = it->second.texto.size();
+
+    if (decisaoAlternativa == "c")
+    {
+      decisoesStr.append("|\n|");
+    };
+    decisoesStr.append(decisaoAlternativa);
+    decisoesStr.append(") ");
+
+    decisoesStr.append(tab - decisaoTextLen / 2, ' ');
+    decisoesStr.append(it->second.texto);
+    decisoesStr.append(tab - decisaoTextLen / 2, ' ');
+    decisoesStr.append("|");
+  };
+
+  return decisoesStr;
+};

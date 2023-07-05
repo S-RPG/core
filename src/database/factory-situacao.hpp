@@ -12,7 +12,7 @@
 class FactorySituacao : public Factory<Situacao>
 {
 public:
-  Situacao *create(std::vector<std::string>) override;
+  Situacao *create(std::vector<std::string> *instanceValues, std::vector<std::string> *instanceHeader) override;
 
   std::vector<std::string> getLine(FILE *file) override;
 
