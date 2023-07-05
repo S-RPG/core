@@ -41,12 +41,10 @@ bool Loja::compra(){
     }
     
     auto it = _carrinho.begin();
-    std::vector<unsigned>produtos;          //vetor que mapeia os códigos dos produtos para enviar apenas eles para a classe Inventário
     double total = 0.0;
 
     for (; it != _carrinho.end(); it++) {
         const auto& mapIn = it->first;
-        produtos.push_back(mapIn.begin()->first);
         //(mapIn.begin()->first).qnt = (it->second);        //o unsigned do código passa a ser um tipo Item que armazenará o nome e uma quantidade
                                                             //se bem que na hora das verificações, essa ideia quebraria o código
         total += (mapIn.begin()->second.first) * (it->second);
@@ -56,18 +54,16 @@ bool Loja::compra(){
 
     if(total>_dinheiro){
         throw InvalidMoneyException();
-        produtos.erase();
         return false;
     }
 
     _dinheiro -= total;           //como o dinheiro vai ser incluido? depois da classe inventário ser incluida isso vai ser feito
-    Loja::entrega(produtos);
-    produtos.erase();
+    Loja::entrega();
     return true;
 }
 
 
-void Loja::entrega(std::vector</*Item*/unsigned>produtos){
+void Loja::entrega(){
     //classe a ser pensada melhor por causa do funcionamento do programa
     //a ideia mais sensata é fazer essa função incluir os itens diretamente no inventário, mas para isso é preciso esperar a classe ser feita
 }
