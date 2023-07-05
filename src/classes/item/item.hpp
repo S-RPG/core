@@ -19,7 +19,7 @@ struct Item {
     bool consumivel;
     float preco;
     double vitalidade;
-    unsigned sanidade;
+    double sanidade;
     unsigned quantidade;
     unsigned id;
     
