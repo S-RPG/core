@@ -56,6 +56,7 @@ bool Loja::compra(){
     }
 
     _dinheiro -= total;           //como o dinheiro vai ser incluido? depois da classe inventário ser incluida isso vai ser feito
+    Loja::entrega();
     return true;
 }
 
