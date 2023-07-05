@@ -43,13 +43,10 @@ bool Loja::compra(){
     auto it = _carrinho.begin();
     double total = 0.0;
 
-    for (; it != _carrinho.end(); it++) {
-        const auto& mapIn = it->first;
-        //(mapIn.begin()->first).qnt = (it->second);        //o unsigned do código passa a ser um tipo Item que armazenará o nome e uma quantidade
-                                                            //se bem que na hora das verificações, essa ideia quebraria o código
-        total += (mapIn.begin()->second.first) * (it->second);
+    for (; it!=_carrinho.end(); it++) {
+        total += (it->second.preco) * (it->second.quantidade);
     }
-    //Saindo desse 'for', haverá um vector com todos os ID dos itens do pedido que aramazenarão a quantidade de itens a serem adicionados
+    
     Loja::mostrarCarrinho();
 
     if(total>_dinheiro){
@@ -66,7 +63,9 @@ bool Loja::compra(){
 void Loja::entrega(){
     //classe a ser pensada melhor por causa do funcionamento do programa
     //a ideia mais sensata é fazer essa função incluir os itens diretamente no inventário, mas para isso é preciso esperar a classe ser feita
-    std::map<unsigned,std::pair<unsigned,/*Item*/std::string>>pedido;
+    
+    //código antigo:
+    /*std::map<unsigned,std::pair<unsigned,Item>>pedido;
     auto it = _carrinho.begin();
     for(;it!=_carrinho.end();it++){
         const auto& mapIn = it->first;
@@ -76,8 +75,10 @@ void Loja::entrega(){
         std::string item = parIn.second;
         auto produto = std::make_pair(qnt,item);
         pedido.emplace(cod, produto);
-    }
-    //_inventario.putItem(pedido);          //Chamada de função do inventário
+    }*/
+
+
+    //_inventario.putItem(_carrinho->second);          //Chamada de função do inventário (a espera da classe inventário)
 }
 
 
@@ -164,21 +165,45 @@ void Loja::interfaceLoja(){
 
 void Loja::pedido(unsigned cod, unsigned qnt) {
     for (auto it = _itens.begin(); it != _itens.end(); ++it) {
-        const auto& mapIn = it->first;
-        const auto& situaItem = it->second;
-        auto innerIt = mapIn.find(cod);
+        auto& parIn = it->second;
+        if((it->first == cod)&&(parIn.second==true)&&(parIn.first.quantidade>=qnt)){
+            Item produto;
+            produto.nome = parIn.first.nome;
+            produto.tipo = parIn.first.tipo;
+            produto.consumivel = parIn.first.consumivel;
+            produto.preco = parIn.first.preco;
+            produto.vitalidade = parIn.first.vitalidade;
+            produto.sanidade = parIn.first.sanidade;
+            produto.quantidade = qnt;
+            produto.id = parIn.first.id;
 
-        if (innerIt != mapIn.end()) {
-            if ((innerIt->first == cod)&&(situaItem == "DISPONÍVEL")) {
-                const auto& par = innerIt->second;
-                _carrinho.emplace(innerIt, qnt);
-                std::cout << qnt << " " << par.second << " adicionados com sucesso!" << std::endl;
-                return; // Saia da função após a inserção no carrinho bem-sucedida
-            } else if ((innerIt->first == cod)&&(situaItem == "INDISPONÍVEL")){
-                throw InvalidCodException("Código de item indisponível");
-                return; // Saia da função, pois o item está indisponível
-            }
+            parIn.first.quantidade -= qnt;
+
+            _carrinho.emplace(it->first,produto);
+
+            return;
+        } else if((it->first == cod)&&(parIn.second==true)&&(parIn.first.quantidade<qnt)){
+            throw InvalidQntException("A quantidade de itens para ser adicionado ao carrinho é maior que a quantidade disponível no estoque");
+            return;
+        } else if((it->first == cod)&&(parIn.second==false)&&((parIn.first.quantidade>=qnt)||(parIn.first.quantidade<qnt))){
+            throw InvalidCodException("Código de item indisponível");
+            return;
         }
+        // const auto& mapIn = it->first;
+        // const auto& parIn = it->second;
+        // auto innerIt = mapIn.find(cod);
+
+        // if (innerIt != mapIn.end()) {
+        //     if ((innerIt->first == cod)&&(situaItem == "DISPONÍVEL")) {
+        //         const auto& par = innerIt->second;
+        //         _carrinho.emplace(innerIt, qnt);
+        //         std::cout << qnt << " " << par.second << " adicionados com sucesso!" << std::endl;
+        //         return; // Saia da função após a inserção no carrinho bem-sucedida
+        //     } else if ((innerIt->first == cod)&&(situaItem == "INDISPONÍVEL")){
+        //         throw InvalidCodException("Código de item indisponível");
+        //         return; // Saia da função, pois o item está indisponível
+        //     }
+        // }
     }
 
     throw InvalidCodException("Código inválido/não encontrado");
@@ -190,26 +215,37 @@ void Loja::mostrarCarrinho(){
         throw InvalidCarException("Nada para mostrar, o");    //retorno de erro carrinho vazio
         return;
     }
+
     auto it = _carrinho.begin();
     double total = 0.0;
     for( ; it!=_carrinho.end(); it++){
-        const auto& mapIn = it->first;
-        double valor = (mapIn.begin()->second.first)*(it->second);
-        std::cout<<(mapIn.begin()->second.second)<<" - "<<(it->second)<<" - @"<<valor<<std::endl; //retorna o nome do item e a quantidade
+        double valor = (it->second.preco)*(it->second.quantidade);
+        std::cout<<(it->first)<<" - "<<(it->second.nome)<<" - @"<<valor<<std::endl;
         total += valor;
     }
+
+    // auto it = _carrinho.begin();
+    // double total = 0.0;
+    // for( ; it!=_carrinho.end(); it++){
+    //     const auto& mapIn = it->first;
+    //     double valor = (mapIn.begin()->second.first)*(it->second);
+    //     std::cout<<(mapIn.begin()->second.second)<<" - "<<(it->second)<<" - @"<<valor<<std::endl; //retorna o nome do item e a quantidade
+    //     total += valor;
+    // }
     std::cout<<"Total: @"<<total<<std::endl;
 }
 
 
 void Loja::mostrarItens(){
     auto it = _itens.begin();                       //copia o map de itens 
-    const auto& mapIn = _itens.begin()->first;      //separa a primeira parte do map de itens, já que é outro map
-    const auto& par = mapIn.begin()->second;        //separa o pair do map separado
+    //const auto& mapIn = _itens.begin()->first;      //separa a primeira parte do map de itens, já que é outro map
+    const auto& par = it->second;        //separa o pair do map
 
     for( ; it!=_itens.end(); it++){
-        std::cout<<(mapIn.begin()->first)<<" - "<<(par.second)
-        <<" - @"<<(par.first)<<"  "<<"("<<(it->second)<<")"<<std::endl;
+        if(par.second==true){
+            std::cout<<(it->first)<<" - "<<(par.first.nome)
+                <<" - @"<<(par.first.preco)<<"  "<<"(Disponíveis: )"<<(par.first.quantidade)<<std::endl;
+        }        
     }
 }
 
@@ -221,18 +257,15 @@ void Loja::removePedido(unsigned cod, unsigned qnt){
     }
 
     auto it = _carrinho.begin();
-    const auto& mapIn = it->first;
     for( ; it!=_carrinho.end(); it++){
-        if(((mapIn.begin()->first)==cod)){
-            if((it->second)==qnt){
-            auto &name = mapIn.begin()->second;
-            std::cout<<"-"<<&name<<"totalmente removido!"<<std::endl;
+        if((it->first)==cod){
+            if((it->second.quantidade)==qnt){
+            std::cout<<"-"<<it->second.nome<<"totalmente removido!"<<std::endl;
             _carrinho.erase(it);
-            } else if((it->second)>qnt){
-                auto &name = mapIn.begin()->second;
-                (it->second)=(it->second)-qnt;
-                std::cout<<qnt<<"  "<<&name<<"removidos com sucesso!"<<std::endl;
-            } else if((it->second)<qnt){
+            } else if((it->second.quantidade)>qnt){
+                (it->second.quantidade) -= qnt;
+                std::cout<<qnt<<"  "<<(it->second.nome)<<" removidos com sucesso!"<<std::endl;
+            } else if((it->second.quantidade)<qnt){
                 throw InvalidQntException("A quantidade de itens para ser removida é maior que a quantidade que está no carrinho");    //mensagem de erro, já que a quantidade a ser removida foi inválida
             }
             break;
