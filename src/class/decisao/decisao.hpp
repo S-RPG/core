@@ -1,10 +1,16 @@
-#ifndef DECISAO
-#define DECISAO
+#ifndef DECISAO_H
+#define DECISAO_H
 
 #include <string>
 
-class Decisao
+struct Decisao
 {
+<<<<<<< HEAD
+  char alternativa;
+  double impactoSanidade;
+  double impactoVitalidade;
+  std::string texto;
+=======
 private:
   char _alternativa;
   double _impactoSanidade;
@@ -31,6 +37,7 @@ public:
   double getImpactoVitalidade();
 
   std::string getTexto();
+>>>>>>> 2b08b1dec2ab14d157fca7afc1c160546620c5e1
 };
 
 #endif
