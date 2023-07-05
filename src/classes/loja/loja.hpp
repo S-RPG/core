@@ -51,7 +51,7 @@ public:
 class Loja{
 private:
     double _dinheiro;                                                                           //vai receber o valor do inventário
-    std::unordered_map<std::map</*Item*/unsigned,std::pair<double,std::string>>,unsigned>_carrinho;     //O vetor de pedido vai salvar o nome do pedido e seu preço
+    std::unordered_map<std::map<unsigned,std::pair<double,std::string>>,unsigned>_carrinho;     //O vetor de pedido vai salvar o nome do pedido e seu preço
     //Inventario _inventario;         //Esperando a classe Inventário
     std::map<std::map</*Item*/unsigned,std::pair<double,std::string>>,std::string>_itens;               //Cada item da lista vai ter um número referente a ele (unsigned), 
                                                                                                 //um preço (double) e um nome (string)
