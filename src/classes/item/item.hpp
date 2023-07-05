@@ -17,10 +17,12 @@ struct Item {
     std::string nome;
     TipoItem tipo;
     bool consumivel;
-    float vitalidade;
-    unsigned sanidade;
     float preco;
-    int numUtilizacoes;
+    double vitalidade;
+    unsigned sanidade;
+    unsigned quantidade;
+    unsigned id;
+    
 };
 
 #endif
