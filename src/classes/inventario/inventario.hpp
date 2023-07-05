@@ -1,43 +1,59 @@
-#ifndef INVENTARIO_H
-#define INVENTARIO_H
+#ifndef inventario.hpp
+#define inventario.hpp
 #include <iostream>
 #include <utility>
 #include <vector>
-//#include "item.hpp"
+#include "item.hpp"
 
 
-class Inventario {
+class inventario {
    
     public:
-        int get.money();
+
+        double getMoney();
 
     private:
-        int tam;
-        int money;
-        std::pair<<pair<string nome, int quantidade>, pair<int sanidade, int vitalidade>> par[tam];
-        
-        // map<int quantidade,Item> inventario;  <quantidade,(nome, sanidade e vitalidade)>
-        
-        int set.money();
-        
-};
 
-       int Inventario::get.money(int money){
+        double _money;
+        double _setMoney();
+        
+
+   
+x = inventario->first()
+x.first()
+x.second()          
+
+        //map <id,item item> inventario;  <quantidade,(nome, sanidade e vitalidade)> // mapa de <quantidade, variavel do tipo item>
+
+       
+        
+
+        
+        
+        
+}
+
+      double getMoney(){
             return money;
       }
 
-       set.money(int money){
+      double _setMoney(){
             this->money;
        }
 
-    for(auto it:inventario){
-   *string exibir(string ação);
+      
+
+    void armazenar(map item); // armazena itens comprados ou ganhos em eventos aleatórios
+
+
+    string exibir(string ação); // exibe itens do inventário
     
 
-    void remover (string item);
+    void remover(map item); // remove itens do inventário 
 
 
-     void consumir (string);
-    }
+    void consumir(map item); // consome uma quantidade x de um item e ganha/perde atributos
 
-#endif
+
+
+     #endif
