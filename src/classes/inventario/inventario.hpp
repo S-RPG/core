@@ -9,21 +9,27 @@
 class inventario {
    
     public:
-
+        
         double getMoney();
+        void exibir(char);
 
     private:
-
+        
+        map <unsigned,Item> inventario; // <id,(nome, quantidade, sanidade e vitalidade)>  mapa de <id do item, variavel do tipo item>
+        
         double _money;
         double _setMoney();
         
 
    
-x = inventario->first()
-x.first()
-x.second()          
 
-        //map <id,item item> inventario;  <quantidade,(nome, sanidade e vitalidade)> // mapa de <quantidade, variavel do tipo item>
+inventario->first()
+inventario->second().nome
+inventario->second().vitalidade       
+
+    
+    
+       
 
        
         
@@ -44,10 +50,11 @@ x.second()
       
 
     void armazenar(map item); // armazena itens comprados ou ganhos em eventos aleatórios
+            
 
-
-    string exibir(string ação); // exibe itens do inventário
-    
+    void exibir(char I); // exibe itens do inventário
+       
+        cout << inventario->first() "(ID)" << inventario->second().nome "(NOME)" << inventario->second().quantidade "(QTD)" << inventario->second().sanidade"(SAN)" << inventario->second().vitalidade"(VIT)" << endl;
 
     void remover(map item); // remove itens do inventário 
 
