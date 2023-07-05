@@ -1,7 +1,8 @@
 #ifndef LOJA_H
 #define LOJA_H
 
-//#include "Inventario.hpp"
+//#include "item.hpp"
+//#include "inventario.hpp"
 #include <iostream>
 #include <vector>
 #include <map>
@@ -50,15 +51,15 @@ public:
 class Loja{
 private:
     double _dinheiro;                                                                           //vai receber o valor do inventário
-    std::unordered_map<std::map<unsigned,std::pair<double,std::string>>,unsigned>_carrinho;     //O vetor de pedido vai salvar o nome do pedido e seu preço
+    std::unordered_map<std::map</*Item*/unsigned,std::pair<double,std::string>>,unsigned>_carrinho;     //O vetor de pedido vai salvar o nome do pedido e seu preço
     //Inventario _inventario;         //Esperando a classe Inventário
-    std::map<std::map<unsigned,std::pair<double,std::string>>,std::string>_itens;               //Cada item da lista vai ter um número referente a ele (unsigned), 
+    std::map<std::map</*Item*/unsigned,std::pair<double,std::string>>,std::string>_itens;               //Cada item da lista vai ter um número referente a ele (unsigned), 
                                                                                                 //um preço (double) e um nome (string)
 
 public:
     bool compra();
     //void definirDinheiro();         //Esperando a classe Inventário
-    void entrega();
+    void entrega(std::vector</*Item*/unsigned>produtos);
     void interfaceLoja();
     void pedido(unsigned cod, unsigned qnt);               //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
     void mostrarCarrinho();
