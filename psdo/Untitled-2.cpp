@@ -41,7 +41,6 @@ public:
 };
 
 int main() {
-    // Exemplo de uso da classe Personagem
     Personagem personagem("Nome", 100, 100);
     personagem.adicionarItem(item);
     personagem.setFome(100);
