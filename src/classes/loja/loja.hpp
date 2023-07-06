@@ -62,6 +62,8 @@ public:
     bool compra();
     //void definirDinheiro();         //Esperando a classe Inventário
     void entrega();
+    auto getCarrinho();
+    auto getItens();
     void interfaceLoja();
     void pedido(unsigned cod, unsigned qnt);               //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
     void mostrarCarrinho();

@@ -81,6 +81,13 @@ void Loja::entrega(){
     //_inventario.putItem(_carrinho->second);          //Chamada de função do inventário (a espera da classe inventário)
 }
 
+auto Loja::getCarrinho(){
+    return _carrinho;
+}
+
+auto Loja::getItens(){
+    return _itens;
+}
 
 void Loja::interfaceLoja(){
     Loja::mostrarItens();
