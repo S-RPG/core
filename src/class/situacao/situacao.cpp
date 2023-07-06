@@ -2,7 +2,7 @@
 
 #include <string>
 
-Situacao::Situacao(std::string contexto, std::string titulo, unsigned decisoesId, unsigned dia, unsigned id, unsigned situacaoConectadaId)
+Situacao::Situacao(unsigned id, std::string titulo, std::string contexto, unsigned decisoesId, unsigned dia, unsigned situacaoConectadaId)
     : _contexto(contexto), _titulo(titulo), _decisoesId(decisoesId), _dia(dia), _id(id), _situacaoConectadaId(situacaoConectadaId){};
 
 std::string Situacao::getTitulo(std::size_t charMax)

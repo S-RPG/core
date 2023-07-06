@@ -4,19 +4,17 @@
 #include "factory.hpp"
 #include "../class/situacao/situacao.hpp"
 
-#include <iostream>
 #include <map>
 #include <string>
 #include <vector>
 
-class FactorySituacao : public Factory<Situacao>
+class FactorySituacao : public Factory<Situacao>, public Situacao
 {
 public:
-  Situacao *create(std::vector<std::string> *instanceValues, std::vector<std::string> *instanceHeader) override;
+  Situacao *create(std::vector<std::string> *instanceValues) override;
+  std::map<unsigned, std::vector<Situacao>> Factory(std::string &filename);
 
-  std::vector<std::string> getLine(FILE *file) override;
-
-  std::vector<std::string> getHeader(FILE *file) override;
+  void *populateDia(std::vector<Situacao> *situacoes_dia, const Situacao &situacao);
 
 private:
   std::vector<Situacao> situacoes_dia;

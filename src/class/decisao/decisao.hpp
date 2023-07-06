@@ -3,14 +3,17 @@
 
 #include <string>
 
-struct Decisao
+typedef struct Decisao
 {
   double impactoSanidade;
   double impactoVitalidade;
   std::string texto;
-  unsigned char alternativa;
+  char alternativa;
   unsigned id;
   unsigned situacaoId;
-};
+
+  Decisao(unsigned id, unsigned situacaoId, char alternativa, std::string texto, double impactoSanidade, double impactoVitalidade)
+      : id(id), situacaoId(situacaoId), alternativa(alternativa), texto(texto), impactoSanidade(impactoSanidade), impactoVitalidade(impactoVitalidade){};
+} Decisao;
 
 #endif

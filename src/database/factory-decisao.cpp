@@ -1,6 +1,6 @@
 #include "factory.hpp"
-#include "../class/situacao/situacao.hpp"
-#include "factory-situacao.hpp"
+#include "../class/decisao/decisao.hpp"
+#include "factory-decisao.hpp"
 
 #include <fstream>
 #include <algorithm>
@@ -9,7 +9,7 @@
 #include <string>
 #include <vector>
 
-Situacao *FactorySituacao::create(std::vector<std::string> *instanceValues)
+Decisao *FactorySituacao::create(std::vector<std::string> *instanceValues)
 {
   std::vector<std::string>::iterator it = instanceValues->begin();
   unsigned id = std::stoul(*it++, nullptr, 10);
@@ -25,7 +25,7 @@ Situacao *FactorySituacao::create(std::vector<std::string> *instanceValues)
     situacaoConectadaId = 0;
 
   std::cout << "Situacao " << id << " - " << titulo << " criada com sucesso!" << std::endl;
-  return new Situacao(id, titulo, contexto, decisoesId, dia, situacaoConectadaId);
+  return new Decisao(id, titulo, contexto, decisoesId, dia, situacaoConectadaId);
 };
 
 void *FactorySituacao::populateDia(std::vector<Situacao> *situacoes_dia, const Situacao &situacao)
