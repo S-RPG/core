@@ -1,3 +1,19 @@
+/**
+ * @file situacao.h
+ * @brief Definição da classe Situacao
+ * Este arquivo contém a definição da classe Situacao, responsável pelo gerenciamento da situação do jogo.
+ *
+ * @version 1.0
+ * @date 07/07/2023
+ *
+ * @authors
+ * - Alan Mota Calegari
+ * - Davi de Carvalho Clark
+ * - Gustavo Santiago de Magalhães
+ * - Ricardo Augusto Costa Brito Moraes
+ * - Washington Aparecido de Jesus Morais}@
+ */
+
 #ifndef SITUACAO_H
 #define SITUACAO_H
 
