@@ -11,7 +11,7 @@
  * - Davi de Carvalho Clark
  * - Gustavo Santiago de Magalhães
  * - Ricardo Augusto Costa Brito Moraes
- * - Washington Aparecido de Jesus Morais}@
+ * - Washington Aparecido de Jesus Morais
  */
 
 #ifndef SITUACAO_H
