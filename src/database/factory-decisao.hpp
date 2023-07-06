@@ -7,14 +7,15 @@
 #include <map>
 #include <string>
 #include <vector>
+#include <memory>
 
 class FactoryDecisao : public Factory<Decisao>
 {
 public:
-  Decisao *create(std::vector<std::string> *instanceValues) override;
+  std::unique_ptr<Decisao> create(const std::vector<std::string> &instanceValues) override;
 
   std::map<unsigned, std::map<char, Decisao &>> Factory(std::string &filename);
-  void *populateDecisoes(const Decisao &decisao);
+  void populateDecisoes(const Decisao &decisao);
 
 private:
   std::map<char, Decisao &> decisoes_dia;
