@@ -2,16 +2,36 @@
 #include "../doctest.h"
 #include "../../src/classes/loja/loja.hpp"
 
-TEST_CASE("Teste de compra com carrinho vazio lança exceção") {
+TEST_CASE("Teste de compra com carrinho vazio") {
     Loja loja;
     CHECK_THROWS_AS(loja.compra(), InvalidCarException);
 }
 
-TEST_CASE("Teste de compra com dinheiro insuficiente lança exceção") {
+TEST_CASE("Teste de compra com dinheiro insuficiente") {
     Loja loja;
-    loja.pedido(1, 2); // Adiciona um item com código 1 e quantidade 2
+    loja.pedido(1, 2); // Adicione um item ao carrinho
     CHECK_THROWS_AS(loja.compra(), InvalidMoneyException);
 }
+
+TEST_CASE("Teste de pedido com item inválido") {
+    Loja loja;
+    CHECK_THROWS_AS(loja.pedido(10, 2), InvalidCodException);
+}
+
+TEST_CASE("Teste de pedido com quantidade insuficiente") {
+    Loja loja;
+    loja.pedido(1, 5); // Adicione um item ao carrinho
+    CHECK_THROWS_AS(loja.pedido(1, 10), InvalidQntException);
+}
+
+TEST_CASE("Teste de pedido com item válido") {
+    Loja loja;
+    loja.pedido(1, 2); // Adicione um item ao carrinho
+    auto carrinho = loja.getCarrinho();
+    CHECK(carrinho.size() == 1); // Verifique se o item foi adicionado ao carrinho corretamente
+    CHECK(carrinho[1].quantidade == 2); // Verifique se a quantidade do item está correta
+}
+
 
 TEST_CASE("Teste de adição de item ao carrinho") {
     Loja loja;
