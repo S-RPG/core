@@ -28,7 +28,6 @@ public:
 
   /**
    * @brief Define o contexto da situação.
-   *
    * @param contexto O contexto da situação.
    */
   void setContexto(std::string contexto);
@@ -43,28 +42,24 @@ public:
 
   /**
    * @brief Define o título da situação.
-   *
    * @param titulo O título da situação.
    */
   void setTitulo(std::string titulo);
 
   /**
    * @brief Obtém o contexto da situação.
-   *
    * @return O contexto da situação.
    */
   std::string getContexto();
 
   /**
    * @brief Obtém as decisões disponíveis na situação.
-   *
    * @return Um mapa com as decisões disponíveis, onde a chave é a alternativa da decisão e o valor é a própria decisão.
    */
   std::map<char, Decisao> getDecisoes();
 
   /**
    * @brief Obtém o título da situação.
-   *
    * @return O título da situação.
    */
   std::string getTitulo();
