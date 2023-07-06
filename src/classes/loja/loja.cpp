@@ -276,6 +276,7 @@ void Loja::showLoja(){
     Loja::mostrarCarrinho();
 
     bool erro = true;
+    bool erro2 = true;
 
     while(erro){
         char alt;                                 //alternativa
@@ -290,7 +291,7 @@ void Loja::showLoja(){
 
             case 'N':
             case 'n':
-                bool erro2 = true;
+                
                 while(erro2){
                     std::cout<<"Alterar o carrinho (alt)"<<"   "<<"Cancelar a compra (dlt)"<<"  "<<"Finalizar (end)"<<std::endl;
                     std::cin>>opc;
@@ -311,6 +312,7 @@ void Loja::showLoja(){
 
             default:
                 throw InvalidOptionException();     //erro de opção inválida
+                break;
         }   
     }
 
