@@ -160,7 +160,7 @@ void Loja::pedido(unsigned cod, unsigned qnt) {
 
                 _itens[cod].first.quantidade -= qnt;                 //reduz do estoque a quantidade adicionada no carrinho
 
-                _carrinho.emplace(Iit->first,produto);           //adiciona o produto no carrinho
+                _carrinho.emplace(cod,produto);           //adiciona o produto no carrinho
 
                 return;
 
