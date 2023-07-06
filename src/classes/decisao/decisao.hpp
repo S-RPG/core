@@ -1,4 +1,4 @@
-/// @file decisao.hpp
+/// @file decisao.h
 /// @brief Definição da estrutura Decisao 
 /// Este arquivo contém a definição da estrutura Decisao, responsável pelo gerenciamento das decisões do jogo.
 ///
