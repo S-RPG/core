@@ -9,8 +9,6 @@ template <typename T>
 class Factory
 {
 public:
-  virtual T Factory(const std::string &filename) noexcept = 0;
-
   virtual T *create(std::vector<std::string> *instanceValues) = 0;
 
   std::vector<std::string> factory(const std::string &filename);
