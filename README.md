@@ -2,7 +2,7 @@
 
 ## core
 
-Este é o repositório principal do RPG
+Este é o repositório principal do projeto
 
 ## Apresentação do problema
 
@@ -27,6 +27,9 @@ A classe Situacao, definida neste arquivo, é responsável por gerenciar as dife
 **Arquivo "decisao.hpp"**
 
 A estrutura Decisao representa uma decisão no jogo. Cada decisão possui uma alternativa, impacto na sanidade, impacto na vitalidade e um texto.
+
+
+*incluir demais arquivos*
 
 
 Para desenvolvimento do programa foram adotadas as seugintes regras de desenvolvimento:
@@ -115,12 +118,11 @@ Segue alguns comandos úteis que serão frequentemente utilizados ao longo de to
   git config --global --add --bool push.autoSetupRemote true
   ```
 
-
-## Funcionamento do Programa
+## Funcionamento
 
 O programa permite que o jogador interaja com o jogo, tomando decisões em diferentes situações e gerenciando os recursos disponíveis. O jogador pode escolher diferentes alternativas e lidar com as consequências das decisões.
 
-## PRINCIPAIS DIFICULDADES ENCONTRADAS
+## Principais dificuldades encontradas
 
 Durante o desenvolvimento do programa, algumas das principais dificuldades encontradas foram:
 
@@ -130,7 +132,7 @@ Durante o desenvolvimento do programa, algumas das principais dificuldades encon
 
 # Conclusão
 
-O programa "60 Seconds" é um jogo emocionante que desafia os jogadores a tomarem decisões rápidas em situações de sobrevivência. Com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora.
+O programa "NOME DO PROJETO" é um jogo emocionante que desafia os jogadores a tomarem decisões rápidas em situações de sobrevivência. Com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora.
 
 Para mais informações sobre o funcionamento detalhado do programa, consulte a documentação completa disponível no diretório "docs".
 
