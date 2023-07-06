@@ -1,12 +1,12 @@
 # NOME DO PROJETO
 
-## core
+## Apresentação
 
-Este é o repositório principal do projeto
+Este projeto simula um jogo de estratégia e sobrevivência em que o jogador assume o papel de [....] durante uma iminente ameaça de [.....], provocada por [...]. Estamos no ano de [...] e o cenário é [...].O objetivo principal do jogo é coletar suprimentos e tomar decisões para garantir a sobrevivência do personagem em um abrigo durante o maior número de dias possível, em meio ao caos provocado pelo ataque [...]. Em suma, o jogo consiste em tomar decisões rápidas em situações de sobrevivência, onde o jogador tem que gerenciar recursos, lidar com eventos aleatórios e sobreviver.
 
-## Apresentação do problema
+O jogo se divide em dois modos principais: o modo de coleta de suprimentos e o modo de sobrevivência. No modo de coleta de suprimentos, o jogador tem [tempo???] para explorar sua casa, pegar itens úteis, como comida, água, arma e remédios, e buscar um abrigo mais próximo, uma vez que sua residência encontra-se numa situação de risco [ou algo do tipo]. Durante esse tempo, o jogador também precisa tomar decisões sobre quais itens são mais importantes e [...].
 
-Este é um programa que simula um jogo baseado no jogo "60 Seconds". O jogo consiste em tomar decisões rápidas em situações de sobrevivência, onde o jogador tem que gerenciar recursos, lidar com eventos aleatórios e garantir a sobrevivência do personagem principal.
+No modo de sobrevivência, o jogador assume [o controle da família, do grupo de sobreviventes, outro] dentro do abrigo e precisa administrar os recursos escassos, como suprimentos médicos, alimentos, infraestrutura e comunicação, precisa tomar decisões difíceis e lidar com eventos aleatórios. Soma-se a isto a necessidade de manter sua sanidade e vitalidade em niveis adequados, pois estes serão os principais atributos para lhe garantir a possibilidade de seguir adiante. O jogo apresenta um sistema [de tempo???] em que o jogador precisa planejar suas ações de forma estratégica, garantindo suprimentos suficientes, mantendo a saúde física e mental e tomando decisões éticas em situações desafiadoras.
 
 ## Visão geral da solução (foco na estrutura e desenvolvimento)
 
@@ -29,14 +29,14 @@ A classe Situacao, definida neste arquivo, é responsável por gerenciar as dife
 A estrutura Decisao representa uma decisão no jogo. Cada decisão possui uma alternativa, impacto na sanidade, impacto na vitalidade e um texto.
 
 
-*incluir demais arquivos*
+
+**[incluir demais arquivos]**
 
 
-Para desenvolvimento do programa foram adotadas as seugintes regras de desenvolvimento:
 
 ## Regras de desenvolvimento
 
-Vamos utilizar um protocolo a ser seguido pelos desenvolvedores com o objetivo de proteger o código principal de códigos não revisados e facilitar manutenções futuras.
+Para auxiliar no desenvolvimento do projeto foi elaborado o protocolo reproduzido a seguir. Fez-se importante que os desenvolvedores o seguissem com o objetivo de proteger o código principal de códigos não revisados e facilitar manutenções futuras.
 
 1. **Não realizar "push" direto para a _branch_ principal (`main`) do projeto.**
 
@@ -120,7 +120,7 @@ Segue alguns comandos úteis que serão frequentemente utilizados ao longo de to
 
 ## Funcionamento
 
-O programa permite que o jogador interaja com o jogo, tomando decisões em diferentes situações e gerenciando os recursos disponíveis. O jogador pode escolher diferentes alternativas e lidar com as consequências das decisões.
+O programa permite que o jogador interaja com o jogo, tomando decisões em diferentes situações e gerenciando os recursos disponíveis. O jogador pode escolher diferentes alternativas em situações aleatórias e lidar com as consequências das decisões. A jogabilidade é marcada por um ambiente tenso e imprevisível, onde cada decisão pode ter consequências significativas para a sobrevivência do personagem. O jogo apresenta finais incertos, dependendo das escolhas feitas pelo jogador ao longo da partida.
 
 ## Principais dificuldades encontradas
 
@@ -132,9 +132,9 @@ Durante o desenvolvimento do programa, algumas das principais dificuldades encon
 
 # Conclusão
 
-O programa "NOME DO PROJETO" é um jogo emocionante que desafia os jogadores a tomarem decisões rápidas em situações de sobrevivência. Com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora.
+[NOME DO PROJETO] é um jogo desafiador que instiga os jogadores a tomarem decisões rápidas em situações de sobrevivência. A estratégia e o planejamento são fundamentais, pois cada decisão afeta o curso da história do personagem e o seu bem-estar. O jogador precisa avaliar o impacto de suas escolhas a curto e longo prazo, considerando fatores como a dificuldade para obtenção de recursos, precariedade na infraestrutura médica e a incerteza quanto a duração do caos instaurado. Ademais, com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora, tanto para os jogadores quanto para os desenvolvedores. 
 
-Para mais informações sobre o funcionamento detalhado do programa, consulte a documentação completa disponível no diretório "docs".
+Para mais informações sobre o funcionamento detalhado do programa, consulte a documentação completa disponível no diretório "core".
 
 ## Autores
 
