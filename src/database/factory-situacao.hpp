@@ -14,7 +14,7 @@ public:
   Situacao *create(std::vector<std::string> *instanceValues) override;
   std::map<unsigned, std::vector<Situacao>> Factory(std::string &filename);
 
-  void *populateDia(std::vector<Situacao> *situacoes_dia, const Situacao &situacao);
+  void *populateDia(const Situacao &situacao);
 
 private:
   std::vector<Situacao> situacoes_dia;

@@ -28,9 +28,9 @@ Situacao *FactorySituacao::create(std::vector<std::string> *instanceValues)
   return new Situacao(id, titulo, contexto, decisoesId, dia, situacaoConectadaId);
 };
 
-void *FactorySituacao::populateDia(std::vector<Situacao> *situacoes_dia, const Situacao &situacao)
+void *FactorySituacao::populateDia(const Situacao &situacao)
 {
-  situacoes_dia->push_back(situacao);
+  situacoes_dia.push_back(situacao);
 }
 
 std::map<unsigned, std::vector<Situacao>> FactorySituacao::Factory(std::string &filename)
@@ -41,7 +41,7 @@ std::map<unsigned, std::vector<Situacao>> FactorySituacao::Factory(std::string &
   this->removeLine(filename);
 
   unsigned diaAtual = 1;
-  for (unsigned i = 1; i < lineCount; ++i)
+  for (unsigned i = 0; i < lineCount; ++i)
   {
 
     std::vector<std::string> instanceValues = Factory::factory(filename);

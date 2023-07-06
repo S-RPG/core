@@ -14,6 +14,6 @@ typedef struct Decisao
 
   Decisao(unsigned id, unsigned situacaoId, char alternativa, std::string texto, double impactoSanidade, double impactoVitalidade)
       : id(id), situacaoId(situacaoId), alternativa(alternativa), texto(texto), impactoSanidade(impactoSanidade), impactoVitalidade(impactoVitalidade){};
-} Decisao;
+};
 
 #endif

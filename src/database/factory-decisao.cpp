@@ -9,56 +9,54 @@
 #include <string>
 #include <vector>
 
-Decisao *FactorySituacao::create(std::vector<std::string> *instanceValues)
+Decisao *FactoryDecisao::create(std::vector<std::string> *instanceValues)
 {
+
   std::vector<std::string>::iterator it = instanceValues->begin();
   unsigned id = std::stoul(*it++, nullptr, 10);
-  std::string titulo = *it++;
-  std::string contexto = *it++;
-  unsigned decisoesId = std::stoul(*it++, nullptr, 10);
-  unsigned dia = std::stoul(*it++, nullptr, 10);
-  unsigned situacaoConectadaId;
-  std::string _situacaoConectadaId = *it++;
-  if (!_situacaoConectadaId.empty())
-    situacaoConectadaId = std::stoul(*it++, nullptr, 10);
-  else
-    situacaoConectadaId = 0;
+  unsigned situacaoId = std::stoul(*it++, nullptr, 10);
+  std::string s = *it++;
+  char alternativa = s.at(0);
+  std::string texto = *it++;
+  double impactoSanidade = std::stod(*it++, nullptr);
+  double impactoVitalidade = std::stod(*it++, nullptr);
 
-  std::cout << "Situacao " << id << " - " << titulo << " criada com sucesso!" << std::endl;
-  return new Decisao(id, titulo, contexto, decisoesId, dia, situacaoConectadaId);
+  std::cout << "Decisao " << id << " - " << alternativa << ") " << texto << " criada com sucesso!" << std::endl;
+
+  return new Decisao(id, situacaoId, alternativa, texto, impactoSanidade, impactoVitalidade);
 };
 
-void *FactorySituacao::populateDia(std::vector<Situacao> *situacoes_dia, const Situacao &situacao)
+void *FactoryDecisao::populateDecisoes(const Decisao &decisao)
 {
-  situacoes_dia->push_back(situacao);
+  decisoes_dia.insert_or_assign(decisao.alternativa, decisao);
 }
 
-std::map<unsigned, std::vector<Situacao>> FactorySituacao::Factory(std::string &filename)
+std::map<unsigned, std::map<char, Decisao &>> FactoryDecisao::Factory(std::string &filename)
 {
   std::ifstream file(filename);
 
   unsigned lineCount = std::count(std::istreambuf_iterator<char>(file), std::istreambuf_iterator<char>(), '\n');
   this->removeLine(filename);
 
-  unsigned diaAtual = 1;
-  for (unsigned i = 1; i < lineCount; ++i)
+  unsigned situacaoAtual = 1;
+  for (unsigned i = 0; i < lineCount; ++i)
   {
 
     std::vector<std::string> instanceValues = Factory::factory(filename);
-    Situacao *situacao = this->create(&instanceValues);
-    if (situacao->_dia == diaAtual)
+    Decisao *decisao = this->create(&instanceValues);
+    if (decisao->id == situacaoAtual)
     {
-      this->populateDia(&situacoes_dia, *situacao);
-      situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
-      std::cout << "[!] Situacao " << situacao->_id << " - " << situacao->_titulo << " atribuida ao dia " << situacao->_dia << " com sucesso!" << std::endl;
+      this->populateDecisoes(*decisao);
+      decisoes.insert_or_assign(situacaoAtual, decisoes_dia);
+      std::cout << "[!] Decisao atribuida a situacao " << decisao->situacaoId << " com sucesso!" << std::endl;
     }
 
-    diaAtual = situacao->_dia;
-    situacoes_dia.clear();
-    this->populateDia(&situacoes_dia, *situacao);
-    situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
-    std::cout << "[+] Dia " << diaAtual << "criado e situacao " << situacao->_id << " - " << situacao->_titulo << " atribuida ao dia " << situacao->_dia << " com sucesso !" << std::endl;
+    situacaoAtual = decisao->id;
+    decisoes_dia.clear();
+    this->populateDecisoes(*decisao);
+    decisoes.insert_or_assign(situacaoAtual, decisoes_dia);
+    std::cout << "[+] Decisao criada para a situacao " << decisao->situacaoId << " com sucesso!" << std::endl;
   }
 
-  return situacoes_dias;
+  return decisoes;
 };
