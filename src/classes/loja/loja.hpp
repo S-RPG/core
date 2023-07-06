@@ -66,8 +66,8 @@ public:
     bool compra();
     //void definirDinheiro();         //Esperando a classe Inventário
     void entrega();
-    auto getCarrinho();
-    auto getItens();
+    std::map<unsigned,Item> getCarrinho() const;
+    std::map<unsigned,std::pair<Item,bool>> getItens() const;
     void mostrarCarrinho();
     void mostrarItens();
     void pedido(unsigned cod, unsigned qnt);               //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados

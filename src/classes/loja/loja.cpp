@@ -84,11 +84,11 @@ void Loja::entrega(){
     //_inventario.putItem(_carrinho->second);          //Chamada de função do inventário (a espera da classe inventário)
 }
 
-auto Loja::getCarrinho(){
+std::map<unsigned,Item> Loja::getCarrinho() const{
     return _carrinho;
 }
 
-auto Loja::getItens(){
+std::map<unsigned,std::pair<Item,bool>> Loja::getItens() const{
     return _itens;
 }
 
