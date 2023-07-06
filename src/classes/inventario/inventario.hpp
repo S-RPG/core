@@ -3,16 +3,16 @@
 #include <iostream>
 #include <utility>
 #include <vector>
-#include "item.hpp"
+#include "../item/item.hpp"
 
 
-class inventario {
+class Inventario {
    
     public:
         
         double getDinheiro();
         
-        void exibir(char I); // exibe itens do inventário
+        void exibir(map item); // exibe itens do inventário
         
         void armazenar(map item); // armazena itens comprados ou ganhos em eventos aleatórios
 
@@ -25,10 +25,10 @@ class inventario {
 
     private:
         
-        map <unsigned,Item> inventario; // <id,(nome, quantidade, sanidade e vitalidade)>  mapa de <id do item, variavel do tipo item>
+        map <unsigned,Item> _inventario; // <id,(nome, quantidade, sanidade e vitalidade)>  mapa de <id do item, variavel do tipo item>
         
         double _dinheiro;
-        
+
         double _setDinheiro();
         
         
