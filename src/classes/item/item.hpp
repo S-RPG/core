@@ -3,6 +3,7 @@
 
 #include <string>
 
+<<<<<<< HEAD
 /**
  * @brief Enumeração dos tipos de item.
  */
@@ -27,6 +28,28 @@ struct Item {
     double sanidade;        ///< Valor de sanidade do item.
     unsigned quantidade;    ///< Quantidade do item disponível.
     unsigned id;            ///< ID único do item.
+=======
+enum class TipoItem {
+    ALIMENTO,
+    ARMA,
+    ENTRETENIMENTO,
+    FERRAMENTA,
+    HIGIENE,
+    PRIMEIROS_SOCORROS
+};
+
+struct Item {
+
+    std::string nome;
+    TipoItem tipo;
+    bool consumivel;
+    float preco;
+    double vitalidade;
+    double sanidade;
+    unsigned quantidade;
+    unsigned id;
+    
+>>>>>>> 4d8dcea7650152a8f382b765db2e6749de6fa13e
 };
 
 #endif
