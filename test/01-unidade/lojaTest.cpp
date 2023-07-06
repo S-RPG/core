@@ -42,7 +42,7 @@ TEST_CASE("Teste de entrega adiciona itens ao inventário") {
     loja.pedido(2, 2);
     loja.entrega();
 
-    const auto& inventario = loja.getInventario();
+    const auto& inventario = loja.getItens();
     CHECK(inventario.size() == 2);
     CHECK(inventario[1].quantidade == 3);
     CHECK(inventario[2].quantidade == 2);
