@@ -48,14 +48,14 @@ std::map<unsigned, std::vector<Situacao>> FactorySituacao::Factory(std::string &
     Situacao *situacao = this->create(&instanceValues);
     if (situacao->_dia == diaAtual)
     {
-      this->populateDia(&situacoes_dia, *situacao);
+      this->populateDia(*situacao);
       situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
       std::cout << "[!] Situacao " << situacao->_id << " - " << situacao->_titulo << " atribuida ao dia " << situacao->_dia << " com sucesso!" << std::endl;
     }
 
     diaAtual = situacao->_dia;
     situacoes_dia.clear();
-    this->populateDia(&situacoes_dia, *situacao);
+    this->populateDia(*situacao);
     situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
     std::cout << "[+] Dia " << diaAtual << "criado e situacao " << situacao->_id << " - " << situacao->_titulo << " atribuida ao dia " << situacao->_dia << " com sucesso !" << std::endl;
   }
