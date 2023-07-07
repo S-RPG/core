@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "../doctest.h"
-#include "../../src/classes/loja/loja.hpp"
+#include "../../src/class/loja/loja.hpp"
 
 TEST_CASE("Teste de compra com carrinho vazio") {
     Loja loja;
