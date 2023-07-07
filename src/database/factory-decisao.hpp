@@ -12,7 +12,7 @@
 /// - Gustavo Santiago de Magalhães
 /// - Ricardo Augusto Costa Brito Moraes
 /// - Washington Aparecido de Jesus Morais
-
+///
 #ifndef FACTORY_SITUACAO_H
 #define FACTORY_SITUACAO_H
 

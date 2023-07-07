@@ -13,7 +13,7 @@
 /// - Gustavo Santiago de Magalhães
 /// - Ricardo Augusto Costa Brito Moraes
 /// - Washington Aparecido de Jesus Morais
-
+///
 #ifndef FACTORY_H
 #define FACTORY_H
 

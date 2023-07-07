@@ -1,4 +1,4 @@
-/// @file factory_situacao.h
+/// @file factory_situacao.hpp
 /// @brief Definição da classe FactorySituacao
 /// 
 /// Este arquivo contém a definição da classe FactorySituacao, responsável por criar instâncias da classe Situacao.
