@@ -2,7 +2,7 @@
 #include "personagem.hpp"
 
 Personagem::Personagem(const std::string nome, int sanidad, int vitalidad, int mone, int fom)
-    : sanidade(sanidad), vitalidade(vitalidad), dinheiro(mone), fome(fom) {}
+    : sanidade(sanidad), vitalidade(vitalidad), dinheiro(dinheir), fome(fom) {}
 
 void Personagem::interagirItem(const Item& item) {
     _sanidade += item.sanidade;
