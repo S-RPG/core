@@ -41,7 +41,7 @@ void printTable(const std::map<unsigned, std::pair<Item, bool>>& itens) {
         const auto& disponivel = it->second.second;
 
         if (disponivel) {
-            std::size_t nomeTextLen = nomeTextLenMax;
+            
             std::cout << std::left << std::setw(5) << id
                       << " | " << std::setw(tab) << item.nome
                       << " | @" << std::setw(6) << std::fixed << std::setprecision(2) << item.preco
@@ -56,11 +56,11 @@ void printTable(const std::map<unsigned, std::pair<Item, bool>>& itens) {
 int main() {
     std::map<unsigned, std::pair<Item, bool>> itens = {
         {1, {{ "Item 1", 10.0, 5 }, true}},
-        {2, {{ "Itenzao fodinha", 15.0, 3 }, false}},
+        {2, {{ "Itenzao fodinha", 15.0, 3 }, true}},
         {3, {{ "Item 3", 20.0, 7 }, true}},
         {4, {{ "Item 4", 12.0, 2 }, true}},
         {5,{{"PUTA QUE PARIU A", 23.0, 1},false}},
-        {6,{{"CARAIO A QUATRO DE ASA", 666.0, 1},false}}
+        {6,{{"CARAIO A QUATRO DE ASA", 666.0, 1},true}}
     };
 
     printTable(itens);
