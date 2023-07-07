@@ -1,11 +1,12 @@
 #ifndef INVENTARIO_H
 #define INVENTARIO_H
+#include "../item/item.hpp"
+//#include "../personagem/personagem.hpp"
 #include <iostream>
 #include <utility>
 #include <vector>
-#include "../item/item.hpp"
 #include <map>
-//#include "../personagem/personagem.hpp"
+#include <exception>
 
 class Inventario {
    
@@ -15,7 +16,7 @@ class Inventario {
         
         void exibir(); // exibe itens do inventário
         
-        void armazenar(int QNT, int ID); // armazena itens comprados ou ganhos em eventos aleatórios
+        void armazenar(unsigned QNT, unsigned ID); // armazena itens comprados ou ganhos em eventos aleatórios
 
         void remover(); // remove itens do inventário 
 

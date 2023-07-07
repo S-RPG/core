@@ -3,7 +3,7 @@
 #include <vector>
 #include <utility>
 #include <map>
-
+#include <exception>
  
 
     double Inventario::getDinheiro(){   //retorna dinheiro
@@ -19,7 +19,7 @@
 
 
 
-    void Inventario::armazenar(int ID, int QNT) { // armazena itens comprados ou ganhos em eventos aleatórios 
+    void Inventario::armazenar(unsigned ID, unsigned QNT) { // armazena itens comprados ou ganhos em eventos aleatórios 
 
          for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
                  
@@ -30,6 +30,7 @@
                  } else if (ID != it->first) {
 
                     //_inventario.insert(make_pair<unsigned,Item>(ID, item));
+                    //_inventario[Item]=ID;
 
                     it->first = ID;
                     it->second.nome = item.nome;
@@ -51,17 +52,17 @@
 
          std::cout << "Escreva o ID do item que você quer consumir:";
             
-            std::cin >> int ID;
+            std::cin >> unsigned ID;
 
                 for(auto it = inventario.begin(); it != inventario.end(); it++) {
                     
-                    if(it->first == ID) {
+                    if(it->first == ID && it->second.consumivel=true) {
 
                        std::cout << "Escreva a quantidade a consumir:"    
                        
-                       std::cin >> int QNT;
+                       std::cin >> unsigned QNT;
 
-                    if(QTD < it->second.quantidade) {
+                    if(QNT < it->second.quantidade) {
 
                         it->second.quantidade = it->second.quantidade - QNT;
 
@@ -69,7 +70,7 @@
                                 
                                 personagem.getSanidade()+=it->second.sanidade*QNT;
 
-                    } else if (QTD == it->second.quantidade) {
+                    } else if (QNT == it->second.quantidade) {
                         
                             _inventario.erase(ID); //deleta o map do item com ID que foi passado
                                 
@@ -93,7 +94,7 @@
     
             std::cout << "Escreva o ID do item que você quer remover:";
             
-            std::cin >> int ID;
+            std::cin >> unsigned ID;
 
                 for(auto it = inventario.begin(); it != inventario.end(); it++) {
                     
@@ -101,7 +102,7 @@
 
                        std::cout << "Escreva a quantidade a remover:"    
                        
-                       std::cin >> int QNT;
+                       std::cin >> unsigned QNT;
 
                     if(QNT < it->second.quantidade) {
 
@@ -127,9 +128,10 @@
      void Inventario::exibir() { // exibe itens do inventário 
             
              for (auto it = _inventario.begin(); it != _inventario.end(); it++) {
-                    
+                    if(it->second.consumivel == true){
                     std::cout << it->first<<"(ID)"<< it->second.nome <<"(NOME)" << it->second.quantidade << "(QUANTIDADE)" << it->second.vitalidade <<"(VITALIDADE)" << it->second.sanidade << "(SANIDADE)" << std::endl;
-    
+                    } else 
+                    std::cout <<it->first<<"(ID)"<< it->second.nome<<"(NOME)"
             }
 
      std::cout<<"Escolha o número de uma opção:";
