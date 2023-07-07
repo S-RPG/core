@@ -29,7 +29,7 @@
 
                  } else if (ID != it->first) {
 
-                   _inventario.insert(pair<unsigned,Item>(ID, item));
+                    //_inventario.insert(make_pair<unsigned,Item>(ID, item));
 
                     it->first = ID;
                     it->second.nome = item.nome;
