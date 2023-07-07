@@ -26,7 +26,7 @@
 #include <exception>
 
 
-/// @brief Classe de exceção para opção inválida.
+/// @brief Classe para tratamento de exceção para opção inválida.
 class InvalidOptionException : public std::exception {
 public:
 
@@ -39,7 +39,7 @@ public:
   const char *what() const noexcept override;
 };
 
-/// @brief Classe de exceção para código inválido.
+/// @brief Classe para tratamento de exceção para código inválido.
 class InvalidCodException : public std::exception {
 public:
 
@@ -54,7 +54,7 @@ private:
   std::string _message; ///< Mensagem de erro da exceção.
 };
 
-/// @brief Classe de exceção para quantidade inválida.
+/// @brief Classe para tratamento de exceção para quantidade inválida.
 class InvalidQntException : public std::exception {
 public:
 
@@ -69,7 +69,7 @@ private:
   std::string _message; ///< Mensagem de erro da exceção.
 };
 
-/// @brief Classe de exceção para carrinho inválido.
+/// @brief Classe para tratamento de exceção para carrinho inválido.
 class InvalidCarException : public std::exception {
 public:
 
@@ -84,7 +84,7 @@ private:
   std::string _message; ///< Mensagem de erro da exceção.
 };
 
-/// @brief Classe de exceção para valor monetário inválido.
+/// @brief Classe para tratamento de exceção para valor monetário inválido.
 class InvalidMoneyException : public std::exception {
 public:
 
@@ -138,7 +138,7 @@ public:
     ///
     /// @param cod Código do item a ser pedido.
     /// @param qnt Quantidade do item a ser pedido.
-    void pedido(unsigned cod, unsigned qnt);        //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
+    void pedido(unsigned cod, unsigned qnt);        
 
     /// @brief Remove um pedido do carrinho.
     ///
