@@ -26,6 +26,39 @@
 #include <string>
 #include <exception>
 
+class Loja
+{
+private:
+  float _dinheiro; // vai receber o valor do inventário
+  // std::unordered_map<std::map<unsigned,std::pair<float,std::string>>,unsigned>_carrinho; //(remover) //O vetor de pedido vai salvar o nome do pedido e seu preço
+  std::map<unsigned, Item> _carrinho; // map com o código do produto e o item
+  // Inventario _inventario;         //Esperando a classe Inventário
+  // std::map<std::map</*Item*/unsigned,std::pair<float,std::string>>,std::string>_itens;    //(remover)           //Cada item da lista vai ter um número referente a ele (unsigned),
+  // um preço (float) e um nome (string)
+  std::map<unsigned, std::pair<Item, bool>> _itens; // map com o código do produto e um par do item e sua disponibilidade
+
+public:
+  /// @brief Realiza a compra dos itens no carrinho.
+  /// @return True se a compra foi realizada com sucesso, False caso contrário.
+  bool compra();
+
+  // void definirDinheiro();         //Esperando a classe Inventário
+
+  /// @brief Realiza a entrega dos itens comprados.
+  void entrega();
+  std::map<unsigned, Item> getCarrinho() const;
+  std::map<unsigned, std::pair<Item, bool>> getItens() const;
+  void mostrarCarrinho();
+
+  /// @brief Exibe os itens disponíveis na loja.
+  void mostrarItens();
+  void pedido(unsigned cod, unsigned qnt); // nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
+  void removePedido(unsigned cod, unsigned qnt);
+  void showLoja();
+};
+
+#endif
+
 // tratamento de exceções da encontrados na Loja
 class InvalidOptionException : public std::exception
 {
@@ -78,36 +111,3 @@ class InvalidMoneyException : public std::exception
 public:
   const char *what() const noexcept override;
 };
-
-class Loja
-{
-private:
-  float _dinheiro; // vai receber o valor do inventário
-  // std::unordered_map<std::map<unsigned,std::pair<float,std::string>>,unsigned>_carrinho; //(remover) //O vetor de pedido vai salvar o nome do pedido e seu preço
-  std::map<unsigned, Item> _carrinho; // map com o código do produto e o item
-  // Inventario _inventario;         //Esperando a classe Inventário
-  // std::map<std::map</*Item*/unsigned,std::pair<float,std::string>>,std::string>_itens;    //(remover)           //Cada item da lista vai ter um número referente a ele (unsigned),
-  // um preço (float) e um nome (string)
-  std::map<unsigned, std::pair<Item, bool>> _itens; // map com o código do produto e um par do item e sua disponibilidade
-
-public:
-  /// @brief Realiza a compra dos itens no carrinho.
-  /// @return True se a compra foi realizada com sucesso, False caso contrário.
-  bool compra();
-
-  // void definirDinheiro();         //Esperando a classe Inventário
-
-  /// @brief Realiza a entrega dos itens comprados.
-  void entrega();
-  std::map<unsigned, Item> getCarrinho() const;
-  std::map<unsigned, std::pair<Item, bool>> getItens() const;
-  void mostrarCarrinho();
-
-  /// @brief Exibe os itens disponíveis na loja.
-  void mostrarItens();
-  void pedido(unsigned cod, unsigned qnt); // nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
-  void removePedido(unsigned cod, unsigned qnt);
-  void showLoja();
-};
-
-#endif

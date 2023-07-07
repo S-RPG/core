@@ -58,7 +58,7 @@ void FactoryDecisao::populateDecisoes(const Decisao &decisao)
  * @param filename O nome do arquivo para ser lido
  * @return Um map de decisoes
  */
-std::map<unsigned, std::map<char, Decisao &>> FactoryDecisao::Factory(std::string &filename)
+std::map<unsigned, std::map<char, Decisao>> FactoryDecisao::Factory(std::string &filename)
 {
   std::ifstream file(filename);
 
