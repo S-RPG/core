@@ -16,9 +16,11 @@
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H
 
-#include <vector>
 #include "item.hpp"
 #include "inventario.hpp"
+
+#include <vector>
+#include <string>
 
 
 /// @brief Classe que representa um personagem do jogo
