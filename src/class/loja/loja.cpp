@@ -51,7 +51,7 @@ bool Loja::compra()
 
     // clacula o preço total do carrinho
     auto it = _carrinho.begin();
-    double total = 0.0;
+    float total = 0.0;
     for (; it != _carrinho.end(); it++)
     {
         total += (it->second.preco) * (it->second.quantidade);
@@ -111,19 +111,19 @@ void Loja::mostrarCarrinho()
     }
 
     auto it = _carrinho.begin();
-    double total = 0.0;
+    float total = 0.0;
     for (; it != _carrinho.end(); it++)
     {
-        double valor = (it->second.preco) * (it->second.quantidade); // calcula o valor total de cada item e sua quantidade
+        float valor = (it->second.preco) * (it->second.quantidade); // calcula o valor total de cada item e sua quantidade
         std::cout << (it->first) << " - " << (it->second.nome) << " - @" << valor << std::endl;
         total += valor; // calcula o total do carrinho
     }
 
     // auto it = _carrinho.begin();
-    // double total = 0.0;
+    // float total = 0.0;
     // for( ; it!=_carrinho.end(); it++){
     //     const auto& mapIn = it->first;
-    //     double valor = (mapIn.begin()->second.first)*(it->second);
+    //     float valor = (mapIn.begin()->second.first)*(it->second);
     //     std::cout<<(mapIn.begin()->second.second)<<" - "<<(it->second)<<" - @"<<valor<<std::endl; //retorna o nome do item e a quantidade
     //     total += valor;
     // }

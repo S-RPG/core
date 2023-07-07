@@ -19,7 +19,7 @@
  *
  * @throws std::invalid_argument Se os valores da instancia forem invalidos.
  */
-std::unique_ptr<Situacao> FactorySituacao::create(const std::vector<std::string> &instanceValues)
+std::shared_ptr<Situacao> FactorySituacao::create(const std::vector<std::string> &instanceValues)
 {
   std::vector<std::string>::const_iterator it = instanceValues.begin();
   unsigned id = std::stoul(*it++, nullptr, 10);
@@ -35,7 +35,7 @@ std::unique_ptr<Situacao> FactorySituacao::create(const std::vector<std::string>
   }
 
   std::cout << "Situacao " << id << " - " << titulo << " criada com sucesso!" << std::endl;
-  return std::make_unique<Situacao>(id, titulo, contexto, decisoesId, dia, situacaoConectadaId);
+  return std::make_shared<Situacao>(id, titulo, contexto, decisoesId, dia, situacaoConectadaId);
 };
 
 /**

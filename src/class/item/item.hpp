@@ -20,29 +20,72 @@
 #define ITEM_H
 
 #include <string>
+#include <map>
 
 ///@brief Enumeração dos tipos de item.
-enum class TipoItem
+enum TipoItem
 {
-    ALIMENTO,          /**< Item de alimento.                   */
-    ARMA,              /**< Item de arma.                       */
-    ENTRETENIMENTO,    /**< Item de entretenimento.             */
-    FERRAMENTA,        /**< Item de ferramenta.                 */
-    HIGIENE,           /**< Item de higiene.                    */
-    PRIMEIROS_SOCORROS /**< Item de primeiros socorros.         */
+    ALIMENTO,           /**< Item de alimento.                   */
+    ARMA,               /**< Item de arma.                       */
+    ENTRETENIMENTO,     /**< Item de entretenimento.             */
+    FERRAMENTA,         /**< Item de ferramenta.                 */
+    HIGIENE,            /**< Item de higiene.                    */
+    PRIMEIROS_SOCORROS, /**< Item de primeiros socorros.         */
+    NAO_IDENTIFICADO    /**< Item não identificado.              */
+};
+
+enum InteracaoItem
+{
+    USAR = 1,
+    REMOVER = 2,
+    REPARAR = 3,
+    ADICIONAR_CARRINHO = USAR,
+    REMOVER_CARRINHO = REMOVER,
+    BEBER = USAR,
+    COMER = USAR,
+    LER = USAR,
+    FUMAR = USAR,
+    JOGAR = USAR,
+    VESTIR = USAR,
+    TIRAR = REMOVER,
 };
 
 ///@brief Estrutura que representa um item.
-struct Item
+typedef struct Item
 {
-    std::string nome;    /**< Nome do item.                     */
-    TipoItem tipo;       /**< Tipo do item.                     */
-    bool consumivel;     /**< Indica se o item é consumível.    */
-    float preco;         /**< Preço do item.                    */
-    double vitalidade;   /**< Valor de vitalidade do item.      */
-    double sanidade;     /**< Valor de sanidade do item.        */
-    unsigned quantidade; /**< Quantidade do item disponível.    */
-    unsigned id;         /**< ID único do item.                 */
+    TipoItem tipo;                          /**< Tipo do item.                     */
+    bool consumivel;                        /**< Indica se o item é consumível.    */
+    float sanidade;                         /**< Valor de sanidade do item.        */
+    float vitalidade;                       /**< Valor de vitalidade do item.      */
+    float preco;                            /**< Preço do item.                    */
+    std::string nome;                       /**< Nome do item.                     */
+    unsigned id;                            /**< ID único do item.                 */
+    unsigned quantidade;                    /**< Quantidade do item disponível.    */
+    std::map<unsigned, std::string> opcoes; /**< Opções de interação com o item.   */
+
+    Item(unsigned id, std::string nome, TipoItem tipo,
+         float preco, float vitalidade, float sanidade,
+         bool consumivel, unsigned quantidade,
+         std::map<unsigned, std::string> opcoes)
+        : id(id), nome(nome), tipo(tipo), preco(preco),
+          vitalidade(vitalidade), sanidade(sanidade),
+          consumivel(consumivel), quantidade(quantidade),
+          opcoes(opcoes){};
+
+    Item(unsigned id, std::string nome, TipoItem tipo,
+         float preco, float vitalidade, float sanidade,
+         bool consumivel, std::map<unsigned, std::string> opcoes)
+        : id(id), nome(nome), tipo(tipo), preco(preco),
+          vitalidade(vitalidade), sanidade(sanidade),
+          consumivel(consumivel), opcoes(opcoes){};
+
+    Item(Item &other)
+        : id(other.id), nome(other.nome), tipo(other.tipo),
+          preco(other.preco), vitalidade(other.vitalidade),
+          sanidade(other.sanidade), consumivel(other.consumivel),
+          quantidade(other.quantidade), opcoes(other.opcoes){};
+
+    // Item &operator=(Item &other) = default;
 };
 
 #endif
