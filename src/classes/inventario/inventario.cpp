@@ -6,6 +6,54 @@
 #include <exception>
 #include <iomanip>
  
+    
+    const char *InvalidConsumivelException::what() const noexcept {
+        
+        return "O item não é consumível. Escolha um item do inventário que evidencie sua quantidade e seus efeitos (consumivel)";
+    }
+
+
+    const char *InvalidIdException::what() const noexcept {
+        
+        return "Id inválido. Digite o Id de um item que esteja no inventário";
+    }
+
+
+    const char *InvalidOptionException::what() const noexcept {
+        
+        return "Opção inválida. Escolha uma das disponíveis";
+    }
+
+
+
+
+    InvalidQntException::InvalidQntException(const std::string &message)
+            
+    : _message("Quantidade inválida: " + message) {}
+
+            const char *InvalidQntException::what() const noexcept {
+       
+                 return _message.c_str();
+             }
+
+
+
+
+    InvalidItemException::InvalidItemException(const std::string &message)
+  
+    : _message("Item inválido: " + message) {}
+
+             const char *InvalidItemException::what() const noexcept {
+        
+                return _message.c_str();
+    }
+
+
+
+
+
+
+
 
     double Inventario::getDinheiro(){   //retorna dinheiro
         return _dinheiro;
@@ -76,13 +124,15 @@
 
                 for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
                     
-                    if(it->second.id == ID && it->second.consumivel=true) {
+                    if(it->second.id == ID){
+                      
+                      if(it->second.consumivel=true) {
 
                        std::cout << "Escreva a quantidade a consumir:"    
                        
                        std::cin >> unsigned QNT;
-
-                    if(QNT < it->second.quantidade) {
+                    
+                    if(QNT < it->second.quantidade && QNT != 0) {
 
                         it->second.quantidade = it->second.quantidade - QNT;
 
@@ -90,18 +140,25 @@
                                 
                                 personagem.getSanidade()+=it->second.sanidade*QNT;
 
-                    } else if (QNT == it->second.quantidade) {
+                    
+                    } else if(QNT == 0) {throw InvalidQntException("Quantidade nula"); }
+
+                    
+                     else if (QNT == it->second.quantidade) {
                         
                             _inventario.erase(ID); //deleta o map do item com ID que foi passado
                                 
                                 personagem.getVitalidade()+=it->second.vitalidade*QNT;
                          
                                 personagem.getSanidade()+=it->second.sanidade*QNT;
-                    }
-                }
-            }  
+                    
+                    } else {throw InvalidQntException("Quantidade acima da pertencida ao inventário");}
+
+                }  else {throw InvalidConsumivelException(); }
+
+            }  else {throw InvalidIdException(); }
          }
-  
+     }
 
 
 
@@ -124,15 +181,21 @@
                        
                        std::cin >> unsigned QNT;
 
-                    if(QNT < it->second.quantidade) {
+                    if(QNT < it->second.quantidade && QNT !=0) {
 
                         it->second.quantidade = it->second.quantidade - QNT;
 
-                    } else if (QNT == it->second.quantidade) {
+                    }  else if (QNT == 0) {throw InvalidQntException("Quantidade nula"); }
+
+
+                    else if (QNT == it->second.quantidade) {
                         
                         _inventario.erase(ID);  //deleta o map do item com ID que foi passado
-                    }
-                }
+                   
+                   
+                   } else {throw InvalidQntException("Quantidade acima da pertencida ao inventário");}
+
+                } else {throw InvalidIdException(); }
             }  
          }
 
@@ -229,8 +292,8 @@
             
                 
                 while(sair != true){
-
-
+                    
+                  if(I==1 || I==2 || I==3 || I==4){
 
                     switch (I){
         
@@ -254,7 +317,10 @@
                         case 4:
                         sair = true; 
                         break;
-             }
+                    }
+                
+                } else {
+                    throw InvalidOptionException(); }
          }
      }
 

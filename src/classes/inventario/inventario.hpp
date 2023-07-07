@@ -9,6 +9,79 @@
 #include <exception>
 #include <iomanip>
 
+
+
+class InvalidConsumivelException : public std::exception{
+
+    public:
+
+         const char *what const noexcept override;
+}
+
+
+
+class InvalidIdException : public std::exception{
+
+    public:
+
+        const char *what const noexcept override;
+    
+};
+
+
+
+class InvalidOptionException : public std::exception{
+
+    public:
+
+         const char *what const noexcept override;
+}
+
+
+
+
+class InvalidQntException : public std::exception{
+
+    public:
+    
+        InvalidQntException(const std::string &message);
+
+        const char *what const noexcept override;
+
+    private:
+
+        std::string _message;
+};
+
+
+
+
+
+
+
+class InvalidItemException : public std::exception{
+
+    public:
+
+     InvalidItemException(const std::string &message);
+
+
+     const char *what const noexcept override;
+    
+    private:
+
+        std::string _message;
+};
+
+
+
+
+
+
+
+
+
+
 class Inventario {
    
     public:
