@@ -16,7 +16,7 @@
  * @param instanceValues - Um ponteiro para um vetor de strings contendo os valores de instância.
  * @return Um ponteiro para um objeto de Decisão criado.
  */
-std::unique_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &instanceValues)
+std::shared_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &instanceValues)
 {
   auto it = instanceValues.begin();
   unsigned id = std::stoul(*it++);
@@ -24,13 +24,13 @@ std::unique_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &
   std::string s = *it++;
   char alternativa = s.at(0);
   std::string texto = *it++;
-  double impactoSanidade = std::stod(*it++);
-  double impactoVitalidade = std::stod(*it++);
+  float impactoSanidade = std::stof(*it++);
+  float impactoVitalidade = std::stof(*it++);
 
   std::cout << "Decisao " << id << " - " << alternativa << ") " << texto << " criada com sucesso!"
             << std::endl;
 
-  return std::make_unique<Decisao>(id, situacaoId, alternativa, texto, impactoSanidade, impactoVitalidade);
+  return std::make_shared<Decisao>(id, situacaoId, alternativa, texto, impactoSanidade, impactoVitalidade);
 }
 
 /**
