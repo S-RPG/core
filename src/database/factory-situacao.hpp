@@ -2,6 +2,7 @@
 #define FACTORY_SITUACAO_H
 
 #include "factory.hpp"
+#include "factory-dia.hpp"
 #include "../class/situacao/situacao.hpp"
 
 #include <map>
@@ -17,9 +18,11 @@ public:
 
   void populateDia(const Situacao &situacao);
 
+  friend class FactoryDia;
+
 private:
   std::vector<Situacao> situacoes_dia;
-  std::map<unsigned, std::vector<Situacao>> situacoes_dias;
+  static std::map<unsigned, std::vector<Situacao>> situacoes_dias;
 };
 
 #endif

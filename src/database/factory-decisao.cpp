@@ -41,7 +41,7 @@ std::shared_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &
  */
 void FactoryDecisao::populateDecisoes(const Decisao &decisao)
 {
-  decisoes_dia[decisao.alternativa] = decisao;
+  this->decisoes_dia[decisao.alternativa] = decisao;
 }
 
 /**
@@ -82,14 +82,14 @@ std::map<unsigned, std::map<char, Decisao>> FactoryDecisao::Factory(std::string 
     if (decisao->id == situacaoAtual)
     {
       this->populateDecisoes(*decisao);
-      decisoes.insert_or_assign(situacaoAtual, decisoes_dia);
+      this->decisoes.insert_or_assign(situacaoAtual, this->decisoes_dia);
       std::cout << "[!] Decisao atribuida a situacao " << decisao->situacaoId << " com sucesso!" << std::endl;
     }
 
     situacaoAtual = decisao->id;
-    decisoes_dia.clear();
+    this->decisoes_dia.clear();
     this->populateDecisoes(*decisao);
-    decisoes.insert_or_assign(situacaoAtual, decisoes_dia);
+    this->decisoes.insert_or_assign(situacaoAtual, this->decisoes_dia);
     std::cout << "[+] Decisao criada para a situacao " << decisao->situacaoId << " com sucesso!" << std::endl;
   }
 

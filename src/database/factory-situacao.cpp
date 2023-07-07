@@ -54,7 +54,7 @@ void FactorySituacao::populateDia(const Situacao &situacao)
     throw std::invalid_argument("FactorySituacao instance is null");
   }
 
-  situacoes_dia.push_back(situacao);
+  this->situacoes_dia.push_back(situacao);
 }
 
 /**
@@ -82,7 +82,7 @@ std::map<unsigned, std::vector<Situacao>> FactorySituacao::Factory(std::string &
     if (situacao->_dia == diaAtual)
     {
       this->populateDia(*situacao);
-      situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
+      this->situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
       std::cout << "[!] Situacao " << situacao->_id << " - " << situacao->_titulo << " atribuida ao dia " << situacao->_dia << " com sucesso!" << std::endl;
     }
     else
@@ -90,7 +90,7 @@ std::map<unsigned, std::vector<Situacao>> FactorySituacao::Factory(std::string &
       diaAtual = situacao->_dia;
       situacoes_dia.clear();
       this->populateDia(*situacao);
-      situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
+      this->situacoes_dias.insert_or_assign(diaAtual, situacoes_dia);
       std::cout << "[+] Dia " << diaAtual << " criado e situacao " << situacao->_id << " - " << situacao->_titulo << " atribuida ao dia " << situacao->_dia << " com sucesso!" << std::endl;
     }
   }
