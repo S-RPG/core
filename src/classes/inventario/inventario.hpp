@@ -7,6 +7,7 @@
 #include <vector>
 #include <map>
 #include <exception>
+#include <iomanip>
 
 class Inventario {
    
@@ -16,7 +17,7 @@ class Inventario {
         
         void exibir(); // exibe itens do inventário
         
-        void armazenar(unsigned QNT, unsigned ID); // armazena itens comprados ou ganhos em eventos aleatórios
+        void armazenar(Item &item); // armazena itens comprados ou ganhos em eventos aleatórios
 
         void remover(); // remove itens do inventário 
 

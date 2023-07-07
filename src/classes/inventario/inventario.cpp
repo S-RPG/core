@@ -4,6 +4,7 @@
 #include <utility>
 #include <map>
 #include <exception>
+#include <iomanip>
  
 
     double Inventario::getDinheiro(){   //retorna dinheiro
@@ -19,26 +20,45 @@
 
 
 
-    void Inventario::armazenar(unsigned ID, unsigned QNT) { // armazena itens comprados ou ganhos em eventos aleatórios 
+    void Inventario::armazenar(Item &item) { // armazena itens comprados ou ganhos em eventos aleatórios 
 
          for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
                  
-                 if(it->first == ID ) {
+                 if(it->second.id == item.id ) {
                     
-                    it->second.quantidade = it->second.quantidade + QNT;
+                    it->second.quantidade = it->second.quantidade + item.quantidade;
 
-                 } else if (ID != it->first) {
+                 } else if (it->second.id != item.id) {
 
-                    //_inventario.insert(make_pair<unsigned,Item>(ID, item));
-                    //_inventario[Item]=ID;
-
-                    it->first = ID;
+                   _inventario.insert(make_pair<unsigned, Item>);
+                    
                     it->second.nome = item.nome;
-                    it->second.quantidade = QNT;
+                    it->second.id = item.id;
+                    it->second.quantidade = item.quantidade;
                     it->second.vitalidade = item.vitalidade;
                     it->second.sanidade = item.sanidade;
-             } 
-         }
+            } 
+        }
+    }
+         //unsigned itemInventarioId;
+         
+         //for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
+                 
+                 //if(it->second.id == item.id ) {
+                    
+                    //it->second.quantidade = it->second.quantidade + item.quantidade;
+                    //item.quantidade = 0;
+                    //itemInventarioId = it->first;
+                    //break;
+                 //}  
+            //}
+         
+         //if(!itemInventarioId = 0){
+            
+            //_inventario[_inventario.end()->first+1] = item;
+         
+         //}
+    //}    
 
 
 
@@ -54,9 +74,9 @@
             
             std::cin >> unsigned ID;
 
-                for(auto it = inventario.begin(); it != inventario.end(); it++) {
+                for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
                     
-                    if(it->first == ID && it->second.consumivel=true) {
+                    if(it->second.id == ID && it->second.consumivel=true) {
 
                        std::cout << "Escreva a quantidade a consumir:"    
                        
@@ -96,9 +116,9 @@
             
             std::cin >> unsigned ID;
 
-                for(auto it = inventario.begin(); it != inventario.end(); it++) {
+                for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
                     
-                    if(it->first == ID) {
+                    if(it->second.id == ID) {
 
                        std::cout << "Escreva a quantidade a remover:"    
                        
@@ -126,19 +146,79 @@
 
 
      void Inventario::exibir() { // exibe itens do inventário 
-            
-             for (auto it = _inventario.begin(); it != _inventario.end(); it++) {
-                    if(it->second.consumivel == true){
-                    std::cout << it->first<<"(ID)"<< it->second.nome <<"(NOME)" << it->second.quantidade << "(QUANTIDADE)" << it->second.vitalidade <<"(VITALIDADE)" << it->second.sanidade << "(SANIDADE)" << std::endl;
-                    } else 
-                    std::cout <<it->first<<"(ID)"<< it->second.nome<<"(NOME)"
-            }
+                        
+            void printTable(std::map<unsigned,Item> _inventario) {
+
+                 std::size_t nomeTextLenMax = 0;
+
+
+            for (auto it=_inventario.begin(); it!=_inventario.end(); it++){
+                    
+                    std::size_t nomeTextLen = it->second.nome.size();
+                        if (nomeTextLenMax < nomeTextLen){
+                         nomeTextLenMax = nomeTextLen;
+        }
+    }
+
+
+                     std::string cabeca = "Item";
+                     std::size_t cabecaTextLen = cabeca.size()/3;
+                     std::size_t tab = nomeTextLenMax + cabecaTextLen;
+   
+                        std::string linhaHoriz = "";
+
+
+            std::size_t totalSize = 5 + 11 + tab + 11 + 11 + 11;
+            linhaHoriz.append(totalSize, '-');
+
+
+    std::cout << linhaHoriz << std::endl;
+    std::cout << std::left << std::setw(5) << "ID"
+          << " | " << std::setw(tab) << cabeca
+          << " | " << std::setw(11) <<  "Quantidade"
+          << " | " << std::setw(11) << "Vitalidade"
+          << " | " << std::setw(11) << "Sanidade"<< std::endl;
+    std::cout << linhaHoriz << std::endl;
+
+
+   
+    for(auto it = _inventario.begin(); it!=_inventario.end(); it++){
+                               
+        const auto& id = it->first; //!!!!
+        const auto& item = it->second;
+   
+        if(item.use == true) {
+
+
+        std::cout << std::left << std::setw(5) << item.id
+                  << " | " << std::setw(tab) << item.nome
+                  << " | " << std::setw(11) << std::fixed << std::setprecision(2) << item.quantidade
+                  << " | " << std::setw(11) << item.vitalidade
+                  << " | " << std::setw(11) << item.sanidade << std::endl;
+       
+        } else if(item.use == false) {
+       
+        std::cout << std::left << std::setw(5) << item.id
+                  << " | " << std::setw(tab) << item.nome
+                  << " | " << std::setw(11) << std::fixed << std::setprecision(2) <<" "
+                  << " | " << std::setw(11) <<" "
+                  << " | " << std::setw(11) <<" "<< std::endl;
+
+
+        }
+         
+                                                                           
+    }
+    std::cout << linhaHoriz << std::endl;
+   
+ }
+
 
      std::cout<<"Escolha o número de uma opção:";
-        std::cout<< "(1) consumir item";
-        std::cout<< "(2) mostrar dinheiro";
-        std::cout<< "(3) remover item do inventário";
-        std::cout<< "(4) sair do inventário";
+        std::cout<<" (1) consumir item";
+        std::cout<<" (2) mostrar dinheiro";
+        std::cout<<" (3) remover item do inventário";
+        std::cout<<" (4) sair do inventário";
 
 
 
@@ -154,28 +234,28 @@
 
                     switch (I){
         
-                        case (1) {
+                        case 1: 
 
                          Inventario::consumir();
-                         } break;
+                          break;
 
-                        case (2) {
+                        case 2:
                 
                         std::cout<<"$ = "; getDinheiro();
-                         } break;
+                          break;
 
 
-                        case (3) {
+                        case 3:
 
                         Inventario::remover();
-                        } break;
+                        break;
 
 
-                        case (4) {
-                        
-                        sair = true} break;
+                        case 4:
+                        sair = true; 
+                        break;
              }
-        }
+         }
      }
 
 
