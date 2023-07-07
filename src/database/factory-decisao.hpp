@@ -1,5 +1,5 @@
-#ifndef FACTORY_SITUACAO_H
-#define FACTORY_SITUACAO_H
+#ifndef FACTORY_DECISAO_H
+#define FACTORY_DECISAO_H
 
 #include "factory.hpp"
 #include "../class/decisao/decisao.hpp"
