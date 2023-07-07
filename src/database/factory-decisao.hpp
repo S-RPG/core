@@ -1,3 +1,18 @@
+/// @file factory_decisao.h
+/// @brief Definição da classe FactoryDecisao
+/// 
+/// Este arquivo contém a definição da classe FactoryDecisao, responsável por criar instâncias da classe Decisao.
+///
+/// @version 1.0
+/// @date 07/07/2023
+/// 
+/// @authors
+/// - Alan Mota Calegari
+/// - Davi de Carvalho Clark
+/// - Gustavo Santiago de Magalhães
+/// - Ricardo Augusto Costa Brito Moraes
+/// - Washington Aparecido de Jesus Morais
+
 #ifndef FACTORY_SITUACAO_H
 #define FACTORY_SITUACAO_H
 
@@ -9,17 +24,27 @@
 #include <vector>
 #include <memory>
 
+/// @brief Classe responsável por criar instâncias da classe Decisao.
 class FactoryDecisao : public Factory<Decisao>
 {
 public:
-  std::unique_ptr<Decisao> create(const std::vector<std::string> &instanceValues) override;
+    /// @brief Cria uma instância da classe Decisao com base nos valores fornecidos.
+    /// @param instanceValues Os valores para criar a instância da classe Decisao.
+    /// @return Um ponteiro único para a instância da classe Decisao criada.
+    std::unique_ptr<Decisao> create(const std::vector<std::string> &instanceValues) override;
 
-  std::map<unsigned, std::map<char, Decisao &>> Factory(std::string &filename);
-  void populateDecisoes(const Decisao &decisao);
+    /// @brief Cria um mapa de decisões com base em um arquivo.
+    /// @param filename O nome do arquivo contendo as decisões.
+    /// @return Um mapa de decisões, onde a chave externa é o ID da situação e a chave interna é a alternativa da decisão.
+    std::map<unsigned, std::map<char, Decisao &>> Factory(std::string &filename);
+
+    /// @brief Preenche as decisões com base em uma instância de Decisao.
+    /// @param decisao A instância de Decisao a ser usada para preencher as decisões.
+    void populateDecisoes(const Decisao &decisao);
 
 private:
-  std::map<char, Decisao &> decisoes_dia;
-  std::map<unsigned, std::map<char, Decisao &>> decisoes;
+    std::map<char, Decisao &> decisoes_dia;                    ///< Mapa de decisões por dia.
+    std::map<unsigned, std::map<char, Decisao &>> decisoes;    ///< Mapa de todas as decisões.
 };
 
 #endif
