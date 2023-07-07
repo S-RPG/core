@@ -100,8 +100,8 @@ void Loja::mostrarCarrinho(){
 
     std::size_t nomeTextLenMax = 0;
 
-    for (auto it=_itens.begin(); it!=_itens.end(); it++){
-        std::size_t nomeTextLen = it->second.first.nome.size();
+    for (auto it=_carrinho.begin(); it!=_carrinho.end(); it++){
+        std::size_t nomeTextLen = it->second.nome.size();
         if (nomeTextLenMax < nomeTextLen){
             nomeTextLenMax = nomeTextLen;
         }
@@ -113,7 +113,7 @@ void Loja::mostrarCarrinho(){
     
     std::string linhaHoriz = "";
 
-    std::size_t totalSize = 5 + 6 + tab + 10 + 11;
+    std::size_t totalSize = 5 + 11 + tab + 8 + 11 + 7;
     linhaHoriz.append(totalSize, '-');
 
     std::cout << linhaHoriz << std::endl;
@@ -121,7 +121,7 @@ void Loja::mostrarCarrinho(){
           << " | " << std::setw(tab) << cabeca
           << " | " << std::setw(8) << "Preço"
           << " | " << std::setw(11) << "Quantidade" 
-          << " | " << std::setw(7) << "Quantidade"<< std::endl;
+          << " | " << std::setw(7) << "Total"<< std::endl;
     std::cout << linhaHoriz << std::endl;
 
     double total = 0.0;
@@ -141,7 +141,7 @@ void Loja::mostrarCarrinho(){
     }
     std::cout << linhaHoriz << std::endl;
     
-    std::cout<<"Total: @"<<total<<std::endl;
+    std::cout<<"Total do carrinho: @"<<total<<std::endl;
 }
 
 
