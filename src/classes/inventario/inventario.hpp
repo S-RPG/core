@@ -4,7 +4,8 @@
 #include <utility>
 #include <vector>
 #include "../item/item.hpp"
-
+#include <map>
+//#include "../personagem/personagem.hpp"
 
 class Inventario {
    
@@ -12,13 +13,13 @@ class Inventario {
         
         double getDinheiro();
         
-        void exibir(map item); // exibe itens do inventário
+        void exibir(); // exibe itens do inventário
         
-        void armazenar(map item); // armazena itens comprados ou ganhos em eventos aleatórios
+        void armazenar(int QNT, int ID); // armazena itens comprados ou ganhos em eventos aleatórios
 
-        void remover(map item); // remove itens do inventário 
+        void remover(); // remove itens do inventário 
 
-        void consumir(map item); // consome uma quantidade x de um item e ganha/perde atributos
+        void consumir(); // consome uma quantidade x de um item e ganha/perde atributos
 
 
             
@@ -36,4 +37,4 @@ class Inventario {
 
 
 
-     #endif
+ #endif

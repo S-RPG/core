@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <utility>
+#include <map>
 
  
 
@@ -16,7 +17,114 @@
 
 
 
-     void Inventario::exibir(map _inventario) { // exibe itens do inventário 
+
+
+    void Inventario::armazenar(int ID, int QNT) { // armazena itens comprados ou ganhos em eventos aleatórios 
+
+         for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
+                 
+                 if(it->first == ID ) {
+                    
+                    it->second.quantidade = it->second.quantidade + QNT;
+
+                 } else if (ID != it->first) {
+
+                   _inventario.insert(pair<unsigned,Item>(ID, item));
+
+                    it->first = ID;
+                    it->second.nome = item.nome;
+                    it->second.quantidade = QNT;
+                    it->second.vitalidade = item.vitalidade;
+                    it->second.sanidade = item.sanidade;
+             } 
+         }
+
+
+
+
+
+
+
+    void Inventario::consumir() { // consome uma quantidade x de um item e ganha/perde atributos
+
+        Personagem personagem;
+
+         std::cout << "Escreva o ID do item que você quer consumir:";
+            
+            std::cin >> int ID;
+
+                for(auto it = inventario.begin(); it != inventario.end(); it++) {
+                    
+                    if(it->first == ID) {
+
+                       std::cout << "Escreva a quantidade a consumir:"    
+                       
+                       std::cin >> int QNT;
+
+                    if(QTD < it->second.quantidade) {
+
+                        it->second.quantidade = it->second.quantidade - QNT;
+
+                                personagem.getVitalidade()+=it->second.vitalidade*QNT;
+                                
+                                personagem.getSanidade()+=it->second.sanidade*QNT;
+
+                    } else if (QTD == it->second.quantidade) {
+                        
+                            _inventario.erase(ID); //deleta o map do item com ID que foi passado
+                                
+                                personagem.getVitalidade()+=it->second.vitalidade*QNT;
+                         
+                                personagem.getSanidade()+=it->second.sanidade*QNT;
+                    }
+                }
+            }  
+         }
+  
+
+
+
+
+
+
+
+
+      void inventario::remover() { // remove itens do inventário 
+    
+            std::cout << "Escreva o ID do item que você quer remover:";
+            
+            std::cin >> int ID;
+
+                for(auto it = inventario.begin(); it != inventario.end(); it++) {
+                    
+                    if(it->first == ID) {
+
+                       std::cout << "Escreva a quantidade a remover:"    
+                       
+                       std::cin >> int QNT;
+
+                    if(QNT < it->second.quantidade) {
+
+                        it->second.quantidade = it->second.quantidade - QNT;
+
+                    } else if (QNT == it->second.quantidade) {
+                        
+                        _inventario.erase(ID);  //deleta o map do item com ID que foi passado
+                    }
+                }
+            }  
+         }
+
+
+
+
+
+
+
+
+
+
+     void Inventario::exibir() { // exibe itens do inventário 
             
              for (auto it = _inventario.begin(); it != _inventario.end(); it++) {
                     
@@ -31,114 +139,59 @@
         std::cout<< "(4) sair do inventário";
 
 
-    std::cin>> int I;
 
-      switch case(int I){
+        std::cin>> int I;
     
-        case ( I == 3) {
-
-             Inventario::remover(int ID, int QNT, map _inventario);
-        }
-
-
-        case (I == 2) {
+            
+            bool sair = false;
+            
                 
-             std::cout<<"$ = "; getDinheiro();
-        }
-
-
-        case(I == 1) {
-
-            Inventario::consumir(int ID, int QNT, map _inventario);
-        }
-
-
-        case (I == 4) break;
-    }
-}
+                while(sair != true){
 
 
 
-
-
-
-      void inventario::armazenar(std::vector<Item>novo) { // armazena itens comprados ou ganhos em eventos aleatórios 
-
+                    switch (I){
         
-    }  
+                        case (1) {
+
+                         Inventario::consumir();
+                         } break;
+
+                        case (2) {
+                
+                        std::cout<<"$ = "; getDinheiro();
+                         } break;
 
 
+                        case (3) {
+
+                        Inventario::remover();
+                        } break;
 
 
-
-
-
-
-    void inventario::remover(int ID, int QNT, map item) { // remove itens do inventário 
-    
-            std::cin >> "Escreva o ID do item que você quer remover:";
-            
-            std::cin >> int ID;
-
-                for(auto it = inventario.begin(); it != inventario.end(); it++) {
-                    
-                    if(ID == it->first) {
-
-                       std::cout << "Escreva a quantidade a remover:"    
-                       
-                       std::cin >> int QNT;
-
-                    if(QNT < it->second.quantidade) {
-
-                        it->second.quantidade = it->second.quantidade - QNT;
-
-                    } else if (QNT == it->second.quantidade) {
+                        case (4) {
                         
-                        //não sei como deletar item inteiro
-
-                    }
-                }
-            }  
-         }
+                        sair = true} break;
+             }
+        }
+     }
 
 
 
 
-
-    void inventario::consumir(int ID, int QNT, map _inventario) { // consome uma quantidade x de um item e ganha/perde atributos
-
-         std::cin >> "Escreva o ID do item que você quer consumir:";
-            
-            std::cin >> int ID;
-
-                for(auto it = inventario.begin(); it != inventario.end(); it++) {
-                    
-                    if(ID == it->first) {
-
-                       std::cout << "Escreva a quantidade a consumir:"    
-                       
-                       std::cin >> int QNT;
-
-                    if(QTD < it->second.quantidade) {
-
-                        it->second.quantidade = it->second.quantidade - QTD;
-
-                           // implementar classe personagem an classe inventario tbm -  personagem.sanidade = personagem.sanidade + it->second.sanidade*QNT;
-                           // implementar classe personagem an classe inventario tbm - personagem.vitalidade = personagem.vitalidade + it->second.vitalidade*QNT;
+     
 
 
 
-                    } else if (QTD == it->second.quantidade) {
-                        
-                         // implementar classe personagem an classe inventario tbm -  personagem.sanidade = personagem.sanidade + it->second.sanidade*QNT;
-                         // implementar classe personagem an classe inventario tbm - personagem.vitalidade = personagem.vitalidade + it->second.vitalidade*QNT;
-                         //não sei como deletar item inteiro
 
-                    }
-                }
-            }  
-         }
+
+
+
+
   
+
+
+    
   
 
      
