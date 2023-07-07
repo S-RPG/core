@@ -1,6 +1,6 @@
 /// @file loja.h
 /// @brief Definição da estrutura Loja
-/// Este arquivo contém a definição da estrutura Loja, responsável pelo gerenciamento do loja do jogo.
+/// Este arquivo contém a definição da estrutura Loja, responsável pelo gerenciamento da loja do jogo.
 ///
 /// @version 1.0
 /// @date 07/07/2023
@@ -31,6 +31,11 @@ class InvalidOptionException : public std::exception {
 public:
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
+  ///
+  /// Essa função é responsável por retornar uma mensagem de erro que descreve a exceção ocorrida.
+  /// A mensagem fornecida pelo método é uma representação em forma de string do motivo específico da exceção.
+  ///
+  /// @return Uma constante de caracteres (const char *) contendo a mensagem de erro da exceção.
   const char *what() const noexcept override;
 };
 
