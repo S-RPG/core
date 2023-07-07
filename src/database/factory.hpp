@@ -10,7 +10,7 @@ template <typename T>
 class Factory
 {
 public:
-  virtual std::unique_ptr<T> create(const std::vector<std::string> &instanceValues) = 0;
+  virtual std::shared_ptr<T> create(const std::vector<std::string> &instanceValues) = 0;
 
   std::vector<std::string> factory(const std::string &filename);
 
