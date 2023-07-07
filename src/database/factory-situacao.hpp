@@ -2,7 +2,6 @@
 #define FACTORY_SITUACAO_H
 
 #include "factory.hpp"
-#include "factory-dia.hpp"
 #include "../class/situacao/situacao.hpp"
 
 #include <map>
