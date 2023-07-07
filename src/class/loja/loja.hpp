@@ -24,6 +24,7 @@
 #include <utility>
 #include <string>
 #include <exception>
+#include <iomanip>
 
 
 //tratamento de exceções da encontrados na Loja
