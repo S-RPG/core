@@ -111,17 +111,10 @@ void Loja::mostrarCarrinho()
     }
 
     auto it = _carrinho.begin();
-<<<<<<< HEAD
-    double total = 0.0;
-    for (; it != _carrinho.end(); it++)
-    {
-        double valor = (it->second.preco) * (it->second.quantidade); // calcula o valor total de cada item e sua quantidade
-=======
     float total = 0.0;
     for (; it != _carrinho.end(); it++)
     {
         float valor = (it->second.preco) * (it->second.quantidade); // calcula o valor total de cada item e sua quantidade
->>>>>>> 026df986f51d5a9dd481613cd74f29ac8286de53
         std::cout << (it->first) << " - " << (it->second.nome) << " - @" << valor << std::endl;
         total += valor; // calcula o total do carrinho
     }
