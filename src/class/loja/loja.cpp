@@ -64,26 +64,11 @@ bool Loja::compra(){
 
 
 void Loja::entrega(){
-    //classe a ser pensada melhor por causa do funcionamento do programa
-    //a ideia mais sensata é fazer essa função incluir os itens diretamente no inventário, mas para isso é preciso esperar a classe ser feita
-    
-    //código antigo (remover):
-    /*std::map<unsigned,std::pair<unsigned,Item>>pedido;
-    auto it = _carrinho.begin();
-    for(;it!=_carrinho.end();it++){
-        const auto& mapIn = it->first;
-        const auto& parIn = mapIn.begin()->second;
-        unsigned qnt = it->second;
-        unsigned cod = parIn.first;
-        std::string item = parIn.second;
-        auto produto = std::make_pair(qnt,item);
-        pedido.emplace(cod, produto);
-    }*/
-
     //Esperando a classe Inventario
     //Inventario inventario;
     for(auto it = _carrinho.begin(); it != _carrinho.end(); it++){
-        //inventario.armazenar(it->second.quantidade,it->second.id);
+        //inventario.armazenar(it->second);
+        _carrinho.erase(it);
     }
 }
 
