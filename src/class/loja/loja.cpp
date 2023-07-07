@@ -80,8 +80,11 @@ void Loja::entrega(){
         pedido.emplace(cod, produto);
     }*/
 
-    //(definição atual)
-    //_inventario.putItem(_carrinho->second);          //Chamada de função do inventário (a espera da classe inventário)
+    //Esperando a classe Inventario
+    //Inventario inventario;
+    for(auto it = _carrinho.begin(); it != _carrinho.end(); it++){
+        //inventario.armazenar(it->second.quantidade,it->second.id);
+    }
 }
 
 std::map<unsigned,Item> Loja::getCarrinho() const{
