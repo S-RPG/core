@@ -1,5 +1,5 @@
-#ifndef FACTORY_SITUACAO_H
-#define FACTORY_SITUACAO_H
+#ifndef FACTORY_DECISAO_H
+#define FACTORY_DECISAO_H
 
 #include "factory.hpp"
 #include "../class/decisao/decisao.hpp"
@@ -12,7 +12,7 @@
 class FactoryDecisao : public Factory<Decisao>
 {
 public:
-  std::unique_ptr<Decisao> create(const std::vector<std::string> &instanceValues) override;
+  std::shared_ptr<Decisao> create(const std::vector<std::string> &instanceValues) override;
 
   std::map<unsigned, std::map<char, Decisao &>> Factory(std::string &filename);
   void populateDecisoes(const Decisao &decisao);
