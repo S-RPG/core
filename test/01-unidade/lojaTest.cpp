@@ -35,6 +35,12 @@ TEST_CASE("Teste de pedido com item válido") {
 
 TEST_CASE("Teste de adição de item ao carrinho") {
     Loja loja;
+    // loja.setItens()={
+    //     {1,{{"pao", TipoItem::ALIMENTO, true, 2.0, 5, 1, 10, 1},true}},
+    //     {2,{{"queijo", TipoItem::ALIMENTO, true, 6.0, 5, 1, 2, 2},true}},
+    //     {3,{{"faca", TipoItem::ARMA, false, 10.0, 0, 0, 3, 3},true}},
+    //     {4,{{"fita adesiva", TipoItem::FERRAMENTA, false, 4.0, 0, 0, 2, 4},false}}
+    // };
     loja.pedido(1, 3);
     loja.pedido(2, 2);
 

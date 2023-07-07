@@ -106,7 +106,7 @@ public:
 
     /// @brief Exibe os itens disponíveis na loja.
     void mostrarItens();
-    void pedido(unsigned cod, unsigned qnt);               //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
+    void pedido(unsigned cod, unsigned qnt);
     void removePedido(unsigned cod, unsigned qnt);
     void showLoja();
 };
