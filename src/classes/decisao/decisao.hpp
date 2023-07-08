@@ -19,7 +19,13 @@
 
 #include <string>
 
+<<<<<<< HEAD
+/**
+ * @brief Estrutura que representa uma decisão no jogo.
+ */
+=======
 /// @brief Estrutura que representa uma decisão no jogo.
+>>>>>>> 660c5745942a8cf210daf28cfcd16017dc982671
 struct Decisao
 {
 private:
@@ -29,6 +35,69 @@ private:
   std::string _texto;               ///< O texto da decisão.
 
 public:
+<<<<<<< HEAD
+  /**
+   * @brief Construtor padrão da estrutura Decisao.
+   */
+  Decisao();
+
+  /**
+   * @brief Construtor da estrutura Decisao.
+   * 
+   * @param alternativa A alternativa da decisão.
+   * @param impactoSanidade O impacto na sanidade da decisão.
+   * @param impactoVitalidade O impacto na vitalidade da decisão.
+   * @param texto O texto da decisão.
+   */
+  Decisao(char alternativa, double impactoSanidade, double impactoVitalidade, std::string texto);
+
+  /**
+   * @brief Define a alternativa da decisão.
+   * @param alternativa A alternativa da decisão.
+   */
+  void setAlternativa(char alternativa);
+
+  /**
+   * @brief Define o impacto na sanidade da decisão.
+   * @param impactoSanidade O impacto na sanidade da decisão.
+   */
+  void setImpactoSanidade(char impactoSanidade);
+
+  /**
+   * @brief Define o impacto na vitalidade da decisão.
+   * @param impactoVitalidade O impacto na vitalidade da decisão.
+   */
+  void setImpactoVitalidade(char impactoVitalidade);
+
+  /**
+   * @brief Define o texto da decisão.
+   * @param texto O texto da decisão.
+   */
+  void setTexto(std::string texto);
+
+  /**
+   * @brief Obtém a alternativa da decisão.
+   * @return A alternativa da decisão.
+   */
+  char getAlternativa();
+
+  /**
+   * @brief Obtém o impacto na sanidade da decisão.
+   * @return O impacto na sanidade da decisão.
+   */
+  double getImpactoSanidade();
+
+  /**
+   * @brief Obtém o impacto na vitalidade da decisão.
+   * @return O impacto na vitalidade da decisão.
+   */
+  double getImpactoVitalidade();
+
+  /**
+   * @brief Obtém o texto da decisão.
+   * @return O texto da decisão.
+   */
+=======
   /// @brief Construtor padrão da estrutura Decisao.
   Decisao();
 
@@ -70,6 +139,7 @@ public:
 
   /// @brief Obtém o texto da decisão.
   /// @return O texto da decisão.
+>>>>>>> 660c5745942a8cf210daf28cfcd16017dc982671
   std::string getTexto();
 };
 
