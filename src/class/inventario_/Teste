@@ -1,0 +1,21 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "../doctest.h"
+#include "../../src/class/inventario_/inventario.hpp"
+#include <iostream>
+
+
+TEST_CASE("retorno do dinheiro"){
+Inventario inventario;
+    
+    CHECK_THROWS_AS(double getDinheiro())
+}
+
+TEST_CASE("Armazena"){
+Inventario inventario;
+
+    CHECK_THROWS_AS(void armazenar(Item &item), InvalidQntException);
+}
+
+TEST_CASE(""){
+Inventario inventario;
+}
