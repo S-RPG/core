@@ -28,10 +28,15 @@
 class FactorySituacao : public Factory<Situacao>, public Situacao
 {
 public:
+<<<<<<< HEAD
     /// @brief Cria uma instância da classe Situacao com base nos valores fornecidos.
     /// @param instanceValues Os valores para criar a instância da classe Situacao.
     /// @return Um ponteiro único para a instância da classe Situacao criada.
     std::unique_ptr<Situacao> create(const std::vector<std::string> &instanceValues) override;
+=======
+  std::shared_ptr<Situacao> create(const std::vector<std::string> &instanceValues) override;
+  std::map<unsigned, std::vector<Situacao>> Factory(std::string &filename);
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
 
     /// @brief Cria um mapa de situações com base em um arquivo.
     /// @param filename O nome do arquivo contendo as situações.
@@ -42,9 +47,16 @@ public:
     /// @param situacao A instância de Situacao a ser usada para preencher o vetor de situações por dia.
     void populateDia(const Situacao &situacao);
 
+  friend class FactoryDia;
+
 private:
+<<<<<<< HEAD
     std::vector<Situacao> situacoes_dia;                         ///< Vetor de situações por dia.
     std::map<unsigned, std::vector<Situacao>> situacoes_dias;    ///< Mapa de todas as situações por dia.
+=======
+  std::vector<Situacao> situacoes_dia;
+  static std::map<unsigned, std::vector<Situacao>> situacoes_dias;
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
 };
 
 #endif

@@ -26,7 +26,11 @@ template <typename T>
 class Factory
 {
 public:
+<<<<<<< HEAD
     virtual std::unique_ptr<T> create(const std::vector<std::string> &instanceValues) = 0;
+=======
+  virtual std::shared_ptr<T> create(const std::vector<std::string> &instanceValues) = 0;
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
 
     /// @brief Extrai linhas de um determinado arquivo e as retorna como um vetor de strings.
     ///
