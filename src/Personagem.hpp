@@ -16,8 +16,8 @@
 #ifndef PERSONAGEM_H
 #define PERSONAGEM_H
 
-#include "item.hpp"
-#include "inventario.hpp"
+#include "../item/item.hpp"
+#include "../inventario/inventario.hpp"
 
 #include <vector>
 #include <string>
@@ -50,10 +50,6 @@ public:
 
     /// @brief Exibe o status do personagem.
     void exibirStatus() const;
-
-    /// @brief Verifica o status do jogo.
-    /// @return True se o personagem ainda pode continuar jogando, False caso contrário.
-    bool statusDoJogo();
 };
 
 #endif
