@@ -1,0 +1,41 @@
+id,alternativa,texto,impactoSanidade,impactoVitalidade
+1,a ,Decisao A,0.2,-1
+,b,Decisao B,-0.3,-0.1
+,c,Decisao C,-0.5,0.4
+,d,Decisao D,0.5,-0.1
+2,a ,Decisao A,0.3,0
+,b,Decisao B,-0.7,-0.2
+,c,Decisao C,-0.9,0.5
+,d,Decisao D,0.6,-0.2
+3,a ,Decisao A,0.4,1
+,b,Decisao B,-0.11,-0.3
+,c,Decisao C,0.3,0
+,d,Decisao D,-0.7,-0.2
+4,a ,Decisao A,-0.9,0.5
+,b,Decisao B,0.1,-0.2
+,c,Decisao C,0.1,1
+,d,Decisao D,-0.11,-0.3
+5,a ,Decisao A,-0.13,0.6
+,b,Decisao B,0.2,-0.3
+,c,Decisao C,0.0,2
+,d,Decisao D,-0.12,-0.4
+6,a ,Decisao A,0.4,1
+,b,Decisao B,-0.11,-0.3
+,c,Decisao C,-0.13,0.6
+,d,Decisao D,0.3,-0.3
+7,a ,Decisao A,0.5,2
+,b,Decisao B,-0.15,-0.4
+,c,Decisao C,-0.17,0.7
+,d,Decisao D,0.2,-0.4
+8,a ,Decisao A,0.4,3
+,b,Decisao B,-0.13,-0.5
+,c,Decisao C,0.5,2
+,d,Decisao D,-0.15,-0.4
+9,a ,Decisao A,-0.17,0.7
+,b,Decisao B,0.7,-0.4
+,c,Decisao C,0.9,3
+,d,Decisao D,-0.19,-0.5
+10,a ,Decisao A,-0.21,0.8
+,b,Decisao B,0.6,-0.5
+,c,Decisao C,0.8,4
+,d,Decisao D,-0.14,-0.6
