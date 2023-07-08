@@ -1,23 +1,18 @@
 CXX := g++
 CXXFLAGS := -std=c++17
 
-INCLUDE := include
 SRC := src
 BIN := bin
 EXEC := main
 
 ${BIN}/${EXEC}:
-	@echo "🏛️ ️ Building ..."
 	@mkdir -p ${BIN}/
-	${CXX} ${CXXFLAGS} -I ${INCLUDE}/ ${SRC}/main.cpp ${SRC}/database/csv.cpp ${SRC}/dao/book.cpp -o ${BIN}/${EXEC}
+	${CXX} ${CXXFLAGS} -I ${SRC}/main.cpp ${SRC}/decisao/decisao.hpp ${SRC}/item/item.hpp ${SRC}/loja/loja.cpp ${SRC}/situacao/situacao.cpp -o ${BIN}/${EXEC}
 
 run: ${BIN}/${EXEC}
-	@echo "🚀 Executing ..."
 	@${BIN}/main
 
 clean:
 	@echo "🧹 Cleaning ..."
 	@rm -rf ${BIN}/
 
-
-	RASCUNHORASCUNHORASCUNHO
