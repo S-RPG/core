@@ -2,7 +2,7 @@ CXX := g++
 CXXFLAGS := -std=c++17
 
 SRC := src
-BIN := bin
+BIN := run
 EXEC := main
 
 ${BIN}/${EXEC}:
