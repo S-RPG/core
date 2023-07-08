@@ -16,7 +16,7 @@
 #define LOJA_H
 
 #include "../item/item.hpp"
-#include "../menu/menu.hpp"
+//#include "../menu/menu.hpp"
 // #include "inventario.hpp"
 #include <iostream>
 #include <vector>
