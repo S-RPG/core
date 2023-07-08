@@ -12,14 +12,16 @@
 class FactorySituacao : public Factory<Situacao>, public Situacao
 {
 public:
-  std::unique_ptr<Situacao> create(const std::vector<std::string> &instanceValues) override;
+  std::shared_ptr<Situacao> create(const std::vector<std::string> &instanceValues) override;
   std::map<unsigned, std::vector<Situacao>> Factory(std::string &filename);
 
   void populateDia(const Situacao &situacao);
 
+  friend class FactoryDia;
+
 private:
   std::vector<Situacao> situacoes_dia;
-  std::map<unsigned, std::vector<Situacao>> situacoes_dias;
+  static std::map<unsigned, std::vector<Situacao>> situacoes_dias;
 };
 
 #endif
