@@ -13,6 +13,5 @@ run: ${BIN}/${EXEC}
 	@${BIN}/main
 
 clean:
-	@echo "🧹 Cleaning ..."
 	@rm -rf ${BIN}/
 
