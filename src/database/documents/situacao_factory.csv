@@ -1,0 +1,16 @@
+id;titulo;contexto;decisoesId;dia;situacaoConectadaId
+1;O indivíduo misterioso;Um indivíduo coberto por uma capa lhe pede ajuda para se abrigar em sua casa, em troca, lhe ajudaria no futuro;;1;
+2;A busca por um bico;Após entrar na comunidade, você busca uma forma de garantir sua estabilidade financeira. Você descobriu uma vaga em um bar da localidade. O gerente gostou de você e te ofereceu a vaga. Vai aceitá-la?;;2;
+3;Uma vizinha desesperada;No amanhecer do dia, uma senhora bate a sua porta pedindo ajuda para consertar a maçaneta da porta de sua casa após uma tentativa de roubo na noite anterior. Você a ajudaria, garantindo sua segurança?;;3;
+4;Mensagem de seus pais;Seus pais mandaram mensagens perguntando como você está nesta nova comunidade controlada pelo governo. Você ainda não deu retorno após sua chegada, irá respondê-los?;;4;
+5; O estranho do beco;"Ao ir na loja do governo, você se depara com uma alta nos preços por causa da instabilidade econômica do país. Um indivíduo fora da loja o chama para um beco, onde venderia no ""precinho"", você irá segui-lo?";;5;
+6;Conta de luz;Você recebeu a conta de luz do mês e percebe que a maioria dos gastos não está vindo por você. ;;6;
+7;Convite para jantar;Um dos vizinhos te convidou para jantar com sua família como forma de garantir sua amizade. Você irá ao jantar?;;7;
+8;A volta do indivíduo misterioso;O indivíduo com sua capa retorna a sua casa perguntando se você aceitaria provar uma de suas receitas. Você aceitaria provar esta comida que exala um cheiro de meia suja? ;;8;
+9;O gato;Você avista um gato caido no chão, percebe sua condição de desnutrição. Você levaria o gato para cuidar dele até sua recuperação?;;9;
+10;A vizinha fofoqueira;Uma de suas vizinhas diz tê-lo visto furtando uma casa na noite anterior, acusando de ser o mesmo que quebrou a porta da outra senhora. Qual sua reação?;;10;
+11;Agentes do governo;Agentes do governo batem a sua porta buscando alguma relação sua com os rebeldes. Deixa entrá-los para revista?;;11;
+12;Aparição dos rebeldes;Após a vinda dos agentes o mesmo indivíduo de capa retorna a sua casa, contando que faz parte do grupo dos rebeldes e que gostaria de propor um acordo de ajuda mútua. Você aceitaria? Isso não impede de te pedirem ajuda futuramente;;12;
+13;conta de água;Você recebeu a conta de água do mês, como sempre, com valores altos. O que irá fazer?;;13;
+14;O assalto;Durante o amanhecer, você vai a loja do governo e é colocado em situação assalto durante sua volta. O que irá fazer?;;14;
+15;Pedir dinheiro;Após o assalto, seus pais ligam pedindo dinheiro, pois a situação deles está muito complicada. O que você faz?;;15;

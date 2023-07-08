@@ -1,0 +1,162 @@
+\chapter{WAR-\/\+GD}
+\hypertarget{md_README}{}\label{md_README}\index{WAR-\/GD@{WAR-\/GD}}
+\label{md_README_autotoc_md0}%
+\Hypertarget{md_README_autotoc_md0}%
+ \hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Apresentação}{Apresentação}}\label{md_README_autotoc_md1}
+Este projeto simula um jogo de estratégia e sobrevivência em que você assume o papel de um homem solitário e contrário ao regime governamental, em meio a uma guerra civil provocada por uma intriga entre o Governo ditatorial e um grupo de recolucionários ao qual você pertence. Estamos no ano de 2054 e o cenário é caótico no país. Para conter a crise instaurada por grande parte do país, o governo decide lançar uma arma biológica em uma região central, atingindo boa parte do território nacional. Com isso, você é forçado a buscar abrigo em um lugar desconhecido para não ser preso e deve aprender a conviver no abrigo com outros sobreviventes e companheiros de luta.
+
+O objetivo principal do jogo é coletar suprimentos e tomar decisões para garantir a sobrevivência do personagem durante o maior número de dias possível, em meio ao caos provocado pelo ataque do governo. Em suma, o jogo consiste em tomar decisões rápidas em situações de sobrevivência, onde o jogador tem que gerenciar recursos, lidar com eventos aleatórios e sobreviver.
+
+O jogo se divide em dois modos principais\+: o modo de coleta de suprimentos e o modo de sobrevivência. No modo de coleta de suprimentos, o jogador deve explorar os ambientes em busca de itens úteis, como comida, água, arma e remédios e retornar ao abrigo, consegue realizar trabalhos para adiquirir dinheiro e comprar outros itens em lojas clandestinas. Durante esse tempo, o jogador também precisa tomar decisões sobre quais itens são mais importantes manter consigo.
+
+No modo de sobrevivência, o jogador assume importância dentro do abrigo e precisa administrar os recursos escassos, como suprimentos médicos, alimentos, infraestrutura e comunicação, precisa tomar decisões difíceis e lidar com eventos aleatórios. Soma-\/se a isto a necessidade de manter sua sanidade e vitalidade em niveis adequados, pois estes serão os principais atributos para lhe garantir a possibilidade de seguir adiante. O jogo apresenta um sistema em que o jogador precisa planejar suas ações de forma estratégica, garantindo suprimentos suficientes, mantendo a saúde física e mental e tomando decisões éticas em situações desafiadoras.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Visão geral da solução (foco na estrutura e desenvolvimento)}{Visão geral da solução (foco na estrutura e desenvolvimento)}}\label{md_README_autotoc_md2}
+O programa é dividido em diferentes arquivos e estruturas para gerenciar diferentes aspectos do jogo. Abaixo está uma visão geral dos principais {\itshape headers} implementados no programa\+:
+
+{\bfseries{Arquivo \"{}item.\+hpp\"{}}}
+
+Este arquivo contém a definição da estrutura \"{}\+Item\"{}, que representa um item no jogo. Cada item possui um nome, tipo, se é consumível, preço, valores de vitalidade e sanidade, quantidade disponível e um ID único.
+
+{\bfseries{Arquivo \"{}loja.\+hpp\"{}}}
+
+Neste arquivo, está a classe \"{}\+Loja\"{}, responsável pela gestão das compras e vendas de itens. A classe possui funcionalidades para adicionar itens ao carrinho, removê-\/los, visualizar o carrinho e efetuar a compra.
+
+{\bfseries{Arquivo \"{}situacao.\+hpp\"{}}}
+
+A classe \"{}\+Situacao\"{}, definida neste arquivo, é responsável por gerenciar as diferentes situações do jogo. Cada situação possui um contexto, um conjunto de decisões e um título. A classe permite definir e obter o contexto, as decisões e o título da situação.
+
+{\bfseries{Arquivo \"{}decisao.\+hpp\"{}}}
+
+A estrutura \"{}\+Decisao\"{} representa uma decisão no jogo. Cada decisão possui uma alternativa, impacto na sanidade, impacto na vitalidade e um texto.
+
+{\bfseries{Arquivo \"{}inventario.\+hpp\"{}}}
+
+A classe \"{}\+Inventario\"{} possui funções para obter a quantidade de dinheiro disponível, exibir os itens presentes no inventário, armazenar itens, remover itens e consumir itens, afetando os atributos do personagem.
+
+{\bfseries{Arquivo \"{}personagem.\+hpp\"{}}}
+
+A classe \"{}\+Personagem\"{} é definida para representar um personagem do jogo. Ela possui membros privados que representam o nome, nível de sanidade, nível de vitalidade, quantidade de dinheiro e nível de fome do personagem.\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Regras de desenvolvimento}{Regras de desenvolvimento}}\label{md_README_autotoc_md3}
+Para auxiliar no desenvolvimento do projeto foi elaborado o protocolo reproduzido a seguir. Fez-\/se importante que os desenvolvedores o seguissem com o objetivo de proteger o código principal de códigos não revisados e facilitar manutenções futuras.
+
+
+\begin{DoxyEnumerate}
+\item \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}\+Não realizar \"{}push\"{} direto para a {\itshape branch} principal ({\ttfamily main}) do projeto.\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+\begin{DoxyItemize}
+\item {\itshape Sempre criar uma branch nova a cada push, afim de ter o código revisado e aprovado por pelo menos 2 outros desenvolvedores. Dessa forma, protegemos o código principal de códigos falhos, typos e etc...}
+\item {\itshape Apesar de uma tentativa de subir um código direto para o {\ttfamily main} retornar um erro, devido as regras de permissões estipuladas para essa branch, é importante sempre estar atento em qual branch você está realizando alterações.}
+\end{DoxyItemize}
+\item {\bfseries{Nome da branch com prefixo descritivo da operação.}}
+\begin{DoxyItemize}
+\item {\itshape Basicamente vamos ter 2 situações para a submissão de novos códigos no projeto\+:}
+\begin{DoxyItemize}
+\item \mbox{[}{\ttfamily feat}\mbox{]} Incrementar;
+\item \mbox{[}{\ttfamily fix}\mbox{]} Alterar;
+\end{DoxyItemize}
+\item {\itshape Utilizar então o prefixo relativo ao papel a ser realizado pelo PR (pull request) seguido por {\ttfamily /} e o no nome da branch, ex.\+: {\ttfamily feat/nome-\/da-\/branch}} ou {\ttfamily fix/nome-\/da-\/branch}.
+\end{DoxyItemize}
+\item {\bfseries{Commits descritivos e pontuais.}}
+\begin{DoxyItemize}
+\item {\itshape Evitar \"{}commitar\"{} a cada grande quantidade de código, ou seja, realizar um commit a cada lote de código que pertença a um mesmo contexto.}
+\item {\itshape Ser descritivo no commit, assim como o nome da branch em um mesmo PR (pull request) podemos ter horas em que vamos alterar/remover um código já presente (fix) ou incluir nova lógica/função no código (feat), dessa forma utilizar o prefixo relativo (fix ou feat) seguido de {\ttfamily \+:} e a descrição daquele commit. Ex.\+: {\ttfamily git commit -\/m \"{}feat\+: inclui função get\+Odd() na classe Math\"{}} ou {\ttfamily git commit -\/m \"{}fix\+: altera nome da função get\+Odd() -\/$>$ get\+Unique()\"{}}.}
+\item {\itshape Essa boa prática facilita a manutenção futura do código, em que se outro desenvolvedor precisar dar manutenção em seu código futuramente ele irá conseguir se guiar pelos commits, evitando assim uma sobrecarga de comentários no código.}
+\item {\itshape Existe a possibilidade de utilizar {\ttfamily wip} (work in progress) em um commit, porém é sempre bom evitar, esse tipo de commit é interessante quando se precisa, por algum motivo, parar o desenvolvimento naquela branch e salvar o progresso feito até ali.}
+\end{DoxyItemize}
+\item {\bfseries{Estar atento as notificações do github para revisões de códigos.}}
+\begin{DoxyItemize}
+\item {\itshape Para que o projeto não fique parado, é importante sempre estar atento a requisições de revisão de código, dessa forma quanto mais rápido um PR (pull request) é revisado, mais rápido o código principal é incrementado e mais rápido se dá o desenvolvimento do projeto.}\`{}
+\end{DoxyItemize}
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Comandos úteis}{Comandos úteis}}\label{md_README_autotoc_md4}
+Segue alguns comandos úteis que serão frequentemente utilizados ao longo de todo o desenvolvimento do projeto.
+
+
+\begin{DoxyItemize}
+\item Atualizar a branch local com o código da branch no github\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ pull\ origin\ <nome/da-\/branch>}
+
+\end{DoxyCode}
+
+\item Atualizar a branch local com o código da branch {\ttfamily main} no github\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ pull\ origin\ main}
+
+\end{DoxyCode}
+
+\item Criar uma branch nova local\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ checkout\ -\/b\ <nome/da-\/branch>}
+
+\end{DoxyCode}
+
+\item Alterar a branch local\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ checkout\ <nome/da-\/branch>}
+
+\end{DoxyCode}
+
+\item Deletar uma branch local\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ branch\ -\/D\ <nome/da-\/branch>}
+
+\end{DoxyCode}
+
+\item Adicionar arquivos para commit\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ add\ <path/do/arquivo>\ <path/do/arquivo>}
+
+\end{DoxyCode}
+
+\item Adicionar todos os arquivos modificados para commit\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ add\ .}
+
+\end{DoxyCode}
+
+\item Commitar modificações\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ commit\ -\/m\ "{}<feat/fix>:\ <descrição>"{}}
+
+\end{DoxyCode}
+
+\item Shorthand, adicionar e commitar modificações\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ add\ .\ \&\&\ git\ commit\ -\/m\ "{}<feat/fix>:\ <descrição>"{}}
+
+\end{DoxyCode}
+
+\item Subir modificações para o github\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ git\ push\ origin\ <nome/da-\/branch>}
+\DoxyCodeLine{\ }
+\DoxyCodeLine{-\/\ Shorthand,\ sempre\ dar\ push\ para\ branch\ atual:}
+
+\end{DoxyCode}
+ bash git config --global --add --bool push.\+auto\+Setup\+Remote true \`{}\`{}\`{}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md5}{}\doxysection{\texorpdfstring{Funcionamento}{Funcionamento}}\label{md_README_autotoc_md5}
+O programa permite que o jogador interaja com o jogo, tomando decisões em diferentes situações e gerenciando os recursos disponíveis. O jogador pode escolher diferentes alternativas em situações aleatórias e lidar com as consequências das decisões. A jogabilidade é marcada por um ambiente tenso e imprevisível, onde cada decisão pode ter consequências significativas para a sobrevivência do personagem. O jogo apresenta finais incertos, dependendo das escolhas feitas pelo jogador ao longo da partida.\hypertarget{md_README_autotoc_md6}{}\doxysection{\texorpdfstring{Principais dificuldades encontradas}{Principais dificuldades encontradas}}\label{md_README_autotoc_md6}
+Durante o desenvolvimento do programa, algumas das principais dificuldades encontradas foram\+:
+
+
+\begin{DoxyItemize}
+\item Gerenciar as interações entre as diferentes estruturas e classes do programa, garantindo a consistência e o correto funcionamento do jogo.
+\item Implementar a lógica para o processamento das decisões do jogador e as consequências das mesmas.
+\item Lidar com eventos aleatórios e suas influências no jogo.
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md7}{}\doxysection{\texorpdfstring{Conclusão}{Conclusão}}\label{md_README_autotoc_md7}
+WAR-\/\+GD é um jogo desafiador que instiga os jogadores a tomarem decisões rápidas em situações de sobrevivência. A estratégia e o planejamento são fundamentais, pois cada decisão afeta o curso da história do personagem e o seu bem-\/estar. O jogador precisa avaliar o impacto de suas escolhas a curto e longo prazo, considerando fatores como a dificuldade para obtenção de recursos, precariedade na infraestrutura médica e a incerteza quanto a duração do caos instaurado. Ademais, com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora, tanto para os jogadores quanto para os desenvolvedores.
+
+Para mais informações sobre o funcionamento detalhado do programa, consulte a documentação completa disponível no diretório \"{}core\"{}.\hypertarget{md_README_autotoc_md8}{}\doxysubsection{\texorpdfstring{Autores}{Autores}}\label{md_README_autotoc_md8}
+
+\begin{DoxyItemize}
+\item Alan Mota Calegari
+\item Davi de Carvalho Clark
+\item Gustavo Santiago de Magalhães
+\item Ricardo Augusto Costa Brito Moraes
+\item Washington Aparecido de Jesus Morais 
+\end{DoxyItemize}

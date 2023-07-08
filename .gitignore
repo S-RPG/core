@@ -1,8 +1,1 @@
-*
-!**/*.cpp
-!**/*.hpp
-!**/*.h
-!MAKEFILE
-!**/*.md
-!**/*.pdf
-!**/*.js
+.vscode
