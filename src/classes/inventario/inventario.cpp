@@ -175,7 +175,7 @@
 
                 for(auto it = _inventario.begin(); it != _inventario.end(); it++) {
                     
-                    if(it->second.id == ID) {
+                    if(it->first == ID) {
 
                        std::cout << "Escreva a quantidade a remover:"    
                        
