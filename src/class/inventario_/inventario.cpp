@@ -118,23 +118,23 @@
                        
                 std::cin >> QNT;
                     
-                if(QNT < it->second.quantidade && QNT != 0) {
+                if(QNT < _inventario[it].quantidade && QNT != 0) {
 
-                    it->second.quantidade = it->second.quantidade - QNT;
+                    it->second.quantidade = _inventario[it].quantidade - QNT;
 
-                    personagem.getVitalidade()+=it->second.vitalidade*QNT;
+                    personagem.getVitalidade()+=_inventario[it].vitalidade*QNT;
                                 
-                    personagem.getSanidade()+=it->second.sanidade*QNT;
+                    personagem.getSanidade()+=_inventario[it].sanidade*QNT;
 
                     
                 } else if(QNT == 0) {throw InvalidQntException("Quantidade nula"); }
 
                     
-                else if (QNT == it->second.quantidade) {
+                else if (QNT == _inventario[i].quantidade) {
                         
                     _inventario.erase(ID); //deleta o map do item com ID que foi passado
                                 
-                    personagem.getVitalidade()+=it->second.vitalidade*QNT;
+                    personagem.getVitalidade()+=it->_inventario.vitalidade*QNT;
                          
                     personagem.getSanidade()+=it->second.sanidade*QNT;
                     

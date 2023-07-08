@@ -20,7 +20,7 @@
 #define INVENTARIO_H
 
 #include "../item/item.hpp"
-//#include "../personagem/personagem.hpp"
+#include "../personagem/personagem.hpp"
 #include <iostream>
 #include <utility>
 #include <vector>
