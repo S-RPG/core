@@ -1,4 +1,4 @@
-# NOME DO PROJETO
+# WAR-GD
 
 ## Apresentação
 
