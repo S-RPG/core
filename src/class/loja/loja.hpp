@@ -83,12 +83,9 @@ public:
 class Loja
 {
 private:
-  float _dinheiro; // vai receber o valor do inventário
-  // std::unordered_map<std::map<unsigned,std::pair<float,std::string>>,unsigned>_carrinho; //(remover) //O vetor de pedido vai salvar o nome do pedido e seu preço
-  std::map<unsigned, Item> _carrinho; // map com o código do produto e o item
-  // Inventario _inventario;         //Esperando a classe Inventário
-  // std::map<std::map</*Item*/unsigned,std::pair<float,std::string>>,std::string>_itens;    //(remover)           //Cada item da lista vai ter um número referente a ele (unsigned),
-  // um preço (float) e um nome (string)
+  float _dinheiro; 
+  std::map<unsigned, Item> _carrinho; 
+  Inventario _inventario;
   std::map<unsigned, std::pair<Item, bool>> _itens; // map com o código do produto e um par do item e sua disponibilidade
 
 public:
@@ -96,7 +93,7 @@ public:
   /// @return True se a compra foi realizada com sucesso, False caso contrário.
   bool compra();
 
-  // void definirDinheiro();         //Esperando a classe Inventário
+   void definirDinheiro();         //Esperando a classe Inventário
 
   /// @brief Realiza a entrega dos itens comprados.
   void entrega();

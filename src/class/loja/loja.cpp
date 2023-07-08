@@ -37,9 +37,9 @@ const char *InvalidMoneyException::what() const noexcept
 }
 
 // Função responsável a atribuir a quantidade de dinheiro disponível (Aguardando a classe Inventario)
-//  void Loja::definirDinheiro(){
-//      _dinheiro = _inventario.obterDinheiro();
-//  }
+ void Loja::definirDinheiro(){
+     _dinheiro = _inventario.obterDinheiro();
+ }
 
 bool Loja::compra()
 {
@@ -73,9 +73,9 @@ bool Loja::compra()
 
 void Loja::entrega(){
     //Esperando a classe Inventario
-    //Inventario inventario;
+    Inventario inventario;
     for(auto it = _carrinho.begin(); it != _carrinho.end(); it++){
-        //inventario.armazenar(it->second);
+        inventario.armazenar(it->second);
         _carrinho.erase(it);
     }
 }
@@ -150,7 +150,6 @@ void Loja::mostrarItens()
     // const auto& mapIn = _itens.begin()->first;      //separa a primeira parte do map de itens, já que é outro map
     const auto &par = it->second; // separa o pair do map
 
-void Loja::mostrarItens(){
     std::size_t nomeTextLenMax = 0;
 
     for (auto it=_itens.begin(); it!=_itens.end(); it++){

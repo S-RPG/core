@@ -68,14 +68,14 @@ TEST_CASE("Teste de remoção de item do carrinho")
     CHECK(carrinho.at(2).quantidade == 2);
 }
 
-// TEST_CASE("Teste de entrega adiciona itens ao inventário") {
-//     Loja loja;
-//     loja.pedido(1, 3);
-//     loja.pedido(2, 2);
-//     loja.entrega();
+TEST_CASE("Teste de entrega adiciona itens ao inventário") {
+    Loja loja;
+    loja.pedido(1, 3);
+    loja.pedido(2, 2);
+    loja.entrega();
 
-//     const auto& inventario = loja.getItens();
-//     CHECK(inventario.size() == 2);
-//     CHECK(inventario[1].quantidade == 3);
-//     CHECK(inventario[2].quantidade == 2);
-// }
+    const auto& inventario = loja.getItens();
+    CHECK(inventario.size() == 2);
+    CHECK(inventario[1].quantidade == 3);
+    CHECK(inventario[2].quantidade == 2);
+}
