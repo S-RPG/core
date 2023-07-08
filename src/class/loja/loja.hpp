@@ -16,19 +16,39 @@
 #define LOJA_H
 
 #include "../item/item.hpp"
-//#include "inventario.hpp"
+// #include "../menu/menu.hpp"
+//  #include "inventario.hpp"
 #include <iostream>
 #include <vector>
 #include <map>
+#include <list>
 #include <unordered_map>
 #include <utility>
 #include <string>
 #include <exception>
+#include <iomanip>
 
+class Loja
+{
+private:
+  float _dinheiro; // vai receber o valor do inventário
+  // std::unordered_map<std::map<unsigned,std::pair<float,std::string>>,unsigned>_carrinho; //(remover) //O vetor de pedido vai salvar o nome do pedido e seu preço
+  std::map<unsigned, Item> _carrinho; // map com o código do produto e o item
+  // Inventario _inventario;         //Esperando a classe Inventário
+  // std::map<std::map</*Item*/unsigned,std::pair<float,std::string>>,std::string>_itens;    //(remover)           //Cada item da lista vai ter um número referente a ele (unsigned),
+  // um preço (float) e um nome (string)
+  std::map<unsigned, std::pair<Item, bool>> _itens; // map com o código do produto e um par do item e sua disponibilidade
 
+<<<<<<< HEAD
 /// @brief Classe para tratamento de exceção para opção inválida.
+=======
+<<<<<<< HEAD
+/// @brief Classe de exceção para opção inválida.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidOptionException : public std::exception {
+=======
 public:
+<<<<<<< HEAD
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
   ///
@@ -40,57 +60,146 @@ public:
 };
 
 /// @brief Classe para tratamento de exceção para código inválido.
+=======
+  /// @brief Realiza a compra dos itens no carrinho.
+  /// @return True se a compra foi realizada com sucesso, False caso contrário.
+  bool compra();
+
+  // void definirDinheiro();         //Esperando a classe Inventário
+
+  /// @brief Realiza a entrega dos itens comprados.
+  void entrega();
+  std::map<unsigned, Item> getCarrinho() const;
+  std::map<unsigned, std::pair<Item, bool>> getItens() const;
+  void mostrarCarrinho();
+
+  /// @brief Exibe os itens disponíveis na loja.
+  void mostrarItens();
+  void pedido(unsigned cod, unsigned qnt); // nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
+  void removePedido(unsigned cod, unsigned qnt);
+  void showLoja();
+};
+
+#endif
+
+// tratamento de exceções da encontrados na Loja
+class InvalidOptionException : public std::exception
+{
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
+public:
+
+  /// @brief Retorna uma mensagem de erro descrevendo a exceção.
+  const char *what() const noexcept override;
+};
+
+<<<<<<< HEAD
+/// @brief Classe de exceção para código inválido.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidCodException : public std::exception {
 public:
 
   /// @brief Construtor da classe InvalidCodException.
   /// @param message Mensagem de erro da exceção.
+<<<<<<< HEAD
+=======
+=======
+/// @brief Classe de exceção para código inválido
+class InvalidCodException : public std::exception
+{
+public:
+  /// @brief Construtor da classe InvalidCodException
+  /// @param message Mensagem de erro da exceção
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
   InvalidCodException(const std::string &message);
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
   const char *what() const noexcept override;
-  
+
 private:
   std::string _message; ///< Mensagem de erro da exceção.
 };
 
+<<<<<<< HEAD
 /// @brief Classe para tratamento de exceção para quantidade inválida.
+=======
+<<<<<<< HEAD
+/// @brief Classe de exceção para quantidade inválida.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidQntException : public std::exception {
 public:
 
   /// @brief Construtor da classe InvalidQntException.
   /// @param message Mensagem de erro da exceção.
+<<<<<<< HEAD
+=======
+=======
+/// @brief Classe de exceção para quantidade inválida
+class InvalidQntException : public std::exception
+{
+public:
+  /// @brief Construtor da classe InvalidQntException
+  /// @param message Mensagem de erro da exceção
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
   InvalidQntException(const std::string &message);
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
   const char *what() const noexcept override;
-  
+
 private:
   std::string _message; ///< Mensagem de erro da exceção.
 };
 
+<<<<<<< HEAD
 /// @brief Classe para tratamento de exceção para carrinho inválido.
+=======
+<<<<<<< HEAD
+/// @brief Classe de exceção para carrinho inválido.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidCarException : public std::exception {
 public:
 
   /// @brief Construtor da classe InvalidCarException.
   /// @param message Mensagem de erro da exceção.
+<<<<<<< HEAD
+=======
+=======
+/// @brief Classe de exceção para carrinho inválido
+class InvalidCarException : public std::exception
+{
+public:
+  /// @brief Construtor da classe InvalidCarException
+  /// @param message Mensagem de erro da exceção
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
   InvalidCarException(const std::string &message);
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
   const char *what() const noexcept override;
-  
+
 private:
   std::string _message; ///< Mensagem de erro da exceção.
 };
 
+<<<<<<< HEAD
 /// @brief Classe para tratamento de exceção para valor monetário inválido.
+=======
+<<<<<<< HEAD
+/// @brief Classe de exceção para valor monetário inválido.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidMoneyException : public std::exception {
+=======
+/// @brief Classe de exceção para valor monetário inválido
+class InvalidMoneyException : public std::exception
+{
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
 public:
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
   const char *what() const noexcept override;
 };
+<<<<<<< HEAD
 
 /// @brief Classe que representa uma loja.
 class Loja{
@@ -138,7 +247,11 @@ public:
     ///
     /// @param cod Código do item a ser pedido.
     /// @param qnt Quantidade do item a ser pedido.
+<<<<<<< HEAD
     void pedido(unsigned cod, unsigned qnt);        
+=======
+    void pedido(unsigned cod, unsigned qnt);        //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 
     /// @brief Remove um pedido do carrinho.
     ///
@@ -151,3 +264,5 @@ public:
 };
 
 #endif
+=======
+>>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764

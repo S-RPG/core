@@ -16,7 +16,7 @@
  * @param instanceValues - Um ponteiro para um vetor de strings contendo os valores de instância.
  * @return Um ponteiro para um objeto de Decisão criado.
  */
-std::unique_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &instanceValues)
+std::shared_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &instanceValues)
 {
   auto it = instanceValues.begin();
   unsigned id = std::stoul(*it++);
@@ -24,13 +24,13 @@ std::unique_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &
   std::string s = *it++;
   char alternativa = s.at(0);
   std::string texto = *it++;
-  double impactoSanidade = std::stod(*it++);
-  double impactoVitalidade = std::stod(*it++);
+  float impactoSanidade = std::stof(*it++);
+  float impactoVitalidade = std::stof(*it++);
 
   std::cout << "Decisao " << id << " - " << alternativa << ") " << texto << " criada com sucesso!"
             << std::endl;
 
-  return std::make_unique<Decisao>(id, situacaoId, alternativa, texto, impactoSanidade, impactoVitalidade);
+  return std::make_shared<Decisao>(id, situacaoId, alternativa, texto, impactoSanidade, impactoVitalidade);
 }
 
 /**
@@ -41,7 +41,7 @@ std::unique_ptr<Decisao> FactoryDecisao::create(const std::vector<std::string> &
  */
 void FactoryDecisao::populateDecisoes(const Decisao &decisao)
 {
-  decisoes_dia[decisao.alternativa] = decisao;
+  this->decisoes_dia[decisao.alternativa] = decisao;
 }
 
 /**
@@ -58,7 +58,7 @@ void FactoryDecisao::populateDecisoes(const Decisao &decisao)
  * @param filename O nome do arquivo para ser lido
  * @return Um map de decisoes
  */
-std::map<unsigned, std::map<char, Decisao &>> FactoryDecisao::Factory(std::string &filename)
+std::map<unsigned, std::map<char, Decisao>> FactoryDecisao::Factory(std::string &filename)
 {
   std::ifstream file(filename);
 
@@ -82,14 +82,14 @@ std::map<unsigned, std::map<char, Decisao &>> FactoryDecisao::Factory(std::strin
     if (decisao->id == situacaoAtual)
     {
       this->populateDecisoes(*decisao);
-      decisoes.insert_or_assign(situacaoAtual, decisoes_dia);
+      this->decisoes.insert_or_assign(situacaoAtual, this->decisoes_dia);
       std::cout << "[!] Decisao atribuida a situacao " << decisao->situacaoId << " com sucesso!" << std::endl;
     }
 
     situacaoAtual = decisao->id;
-    decisoes_dia.clear();
+    this->decisoes_dia.clear();
     this->populateDecisoes(*decisao);
-    decisoes.insert_or_assign(situacaoAtual, decisoes_dia);
+    this->decisoes.insert_or_assign(situacaoAtual, this->decisoes_dia);
     std::cout << "[+] Decisao criada para a situacao " << decisao->situacaoId << " com sucesso!" << std::endl;
   }
 
