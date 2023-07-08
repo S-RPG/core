@@ -1,6 +1,6 @@
 /// @file loja.h
 /// @brief Definição da estrutura Loja
-/// Este arquivo contém a definição da estrutura Loja, responsável pelo gerenciamento do loja do jogo.
+/// Este arquivo contém a definição da estrutura Loja, responsável pelo gerenciamento da loja do jogo.
 ///
 /// @version 1.0
 /// @date 07/07/2023
@@ -40,10 +40,27 @@ private:
   std::map<unsigned, std::pair<Item, bool>> _itens; // map com o código do produto e um par do item e sua disponibilidade
 
 <<<<<<< HEAD
+/// @brief Classe para tratamento de exceção para opção inválida.
+=======
+<<<<<<< HEAD
 /// @brief Classe de exceção para opção inválida.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidOptionException : public std::exception {
 =======
 public:
+<<<<<<< HEAD
+
+  /// @brief Retorna uma mensagem de erro descrevendo a exceção.
+  ///
+  /// Essa função é responsável por retornar uma mensagem de erro que descreve a exceção ocorrida.
+  /// A mensagem fornecida pelo método é uma representação em forma de string do motivo específico da exceção.
+  ///
+  /// @return Uma constante de caracteres (const char *) contendo a mensagem de erro da exceção.
+  const char *what() const noexcept override;
+};
+
+/// @brief Classe para tratamento de exceção para código inválido.
+=======
   /// @brief Realiza a compra dos itens no carrinho.
   /// @return True se a compra foi realizada com sucesso, False caso contrário.
   bool compra();
@@ -77,11 +94,14 @@ public:
 
 <<<<<<< HEAD
 /// @brief Classe de exceção para código inválido.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidCodException : public std::exception {
 public:
 
   /// @brief Construtor da classe InvalidCodException.
   /// @param message Mensagem de erro da exceção.
+<<<<<<< HEAD
+=======
 =======
 /// @brief Classe de exceção para código inválido
 class InvalidCodException : public std::exception
@@ -90,6 +110,7 @@ public:
   /// @brief Construtor da classe InvalidCodException
   /// @param message Mensagem de erro da exceção
 >>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
   InvalidCodException(const std::string &message);
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
@@ -100,12 +121,18 @@ private:
 };
 
 <<<<<<< HEAD
+/// @brief Classe para tratamento de exceção para quantidade inválida.
+=======
+<<<<<<< HEAD
 /// @brief Classe de exceção para quantidade inválida.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidQntException : public std::exception {
 public:
 
   /// @brief Construtor da classe InvalidQntException.
   /// @param message Mensagem de erro da exceção.
+<<<<<<< HEAD
+=======
 =======
 /// @brief Classe de exceção para quantidade inválida
 class InvalidQntException : public std::exception
@@ -114,6 +141,7 @@ public:
   /// @brief Construtor da classe InvalidQntException
   /// @param message Mensagem de erro da exceção
 >>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
   InvalidQntException(const std::string &message);
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
@@ -124,12 +152,18 @@ private:
 };
 
 <<<<<<< HEAD
+/// @brief Classe para tratamento de exceção para carrinho inválido.
+=======
+<<<<<<< HEAD
 /// @brief Classe de exceção para carrinho inválido.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidCarException : public std::exception {
 public:
 
   /// @brief Construtor da classe InvalidCarException.
   /// @param message Mensagem de erro da exceção.
+<<<<<<< HEAD
+=======
 =======
 /// @brief Classe de exceção para carrinho inválido
 class InvalidCarException : public std::exception
@@ -138,6 +172,7 @@ public:
   /// @brief Construtor da classe InvalidCarException
   /// @param message Mensagem de erro da exceção
 >>>>>>> eea5279892b944e5fd32b9ad4b93ceb73b93b764
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
   InvalidCarException(const std::string &message);
 
   /// @brief Retorna uma mensagem de erro descrevendo a exceção.
@@ -148,7 +183,11 @@ private:
 };
 
 <<<<<<< HEAD
+/// @brief Classe para tratamento de exceção para valor monetário inválido.
+=======
+<<<<<<< HEAD
 /// @brief Classe de exceção para valor monetário inválido.
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 class InvalidMoneyException : public std::exception {
 =======
 /// @brief Classe de exceção para valor monetário inválido
@@ -208,7 +247,11 @@ public:
     ///
     /// @param cod Código do item a ser pedido.
     /// @param qnt Quantidade do item a ser pedido.
+<<<<<<< HEAD
+    void pedido(unsigned cod, unsigned qnt);        
+=======
     void pedido(unsigned cod, unsigned qnt);        //nenhuma dessas funções está bem definida ainda, os tipos e os parametros estão sendo pensados
+>>>>>>> 833a75c18182ff12fc2269013c45ae37a3812634
 
     /// @brief Remove um pedido do carrinho.
     ///
