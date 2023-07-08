@@ -16,15 +16,17 @@
 #define LOJA_H
 
 #include "../item/item.hpp"
-#include "../menu/menu.hpp"
-// #include "inventario.hpp"
+// #include "../menu/menu.hpp"
+//  #include "inventario.hpp"
 #include <iostream>
 #include <vector>
 #include <map>
+#include <list>
 #include <unordered_map>
 #include <utility>
 #include <string>
 #include <exception>
+#include <iomanip>
 
 class Loja
 {

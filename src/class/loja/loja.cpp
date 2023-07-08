@@ -37,9 +37,9 @@ const char *InvalidMoneyException::what() const noexcept
 }
 
 // Função responsável a atribuir a quantidade de dinheiro disponível (Aguardando a classe Inventario)
-//  void Loja::definirDinheiro(){
-//      _dinheiro = _inventario.obterDinheiro();
-//  }
+ void Loja::definirDinheiro(){
+     _dinheiro = _inventario.obterDinheiro();
+ }
 
 bool Loja::compra()
 {
@@ -70,26 +70,14 @@ bool Loja::compra()
     return true;
 }
 
-void Loja::entrega()
-{
-    // classe a ser pensada melhor por causa do funcionamento do programa
-    // a ideia mais sensata é fazer essa função incluir os itens diretamente no inventário, mas para isso é preciso esperar a classe ser feita
 
-    // código antigo (remover):
-    /*std::map<unsigned,std::pair<unsigned,Item>>pedido;
-    auto it = _carrinho.begin();
-    for(;it!=_carrinho.end();it++){
-        const auto& mapIn = it->first;
-        const auto& parIn = mapIn.begin()->second;
-        unsigned qnt = it->second;
-        unsigned cod = parIn.first;
-        std::string item = parIn.second;
-        auto produto = std::make_pair(qnt,item);
-        pedido.emplace(cod, produto);
-    }*/
-
-    //(definição atual)
-    //_inventario.putItem(_carrinho->second);          //Chamada de função do inventário (a espera da classe inventário)
+void Loja::entrega(){
+    //Esperando a classe Inventario
+    Inventario inventario;
+    for(auto it = _carrinho.begin(); it != _carrinho.end(); it++){
+        inventario.armazenar(it->second);
+        _carrinho.erase(it);
+    }
 }
 
 std::map<unsigned, Item> Loja::getCarrinho() const
@@ -110,24 +98,50 @@ void Loja::mostrarCarrinho()
         return;
     }
 
-    auto it = _carrinho.begin();
-    float total = 0.0;
-    for (; it != _carrinho.end(); it++)
-    {
-        float valor = (it->second.preco) * (it->second.quantidade); // calcula o valor total de cada item e sua quantidade
-        std::cout << (it->first) << " - " << (it->second.nome) << " - @" << valor << std::endl;
-        total += valor; // calcula o total do carrinho
+    std::size_t nomeTextLenMax = 0;
+
+    for (auto it=_carrinho.begin(); it!=_carrinho.end(); it++){
+        std::size_t nomeTextLen = it->second.nome.size();
+        if (nomeTextLenMax < nomeTextLen){
+            nomeTextLenMax = nomeTextLen;
+        }
     }
 
-    // auto it = _carrinho.begin();
-    // float total = 0.0;
-    // for( ; it!=_carrinho.end(); it++){
-    //     const auto& mapIn = it->first;
-    //     float valor = (mapIn.begin()->second.first)*(it->second);
-    //     std::cout<<(mapIn.begin()->second.second)<<" - "<<(it->second)<<" - @"<<valor<<std::endl; //retorna o nome do item e a quantidade
-    //     total += valor;
-    // }
-    std::cout << "Total: @" << total << std::endl;
+    std::string cabeca = "Item";
+    std::size_t cabecaTextLen = cabeca.size()/3;
+    std::size_t tab = nomeTextLenMax + cabecaTextLen;
+    
+    std::string linhaHoriz = "";
+
+    std::size_t totalSize = 5 + 11 + tab + 8 + 11 + 7;
+    linhaHoriz.append(totalSize, '-');
+
+    std::cout << linhaHoriz << std::endl;
+    std::cout << std::left << std::setw(5) << "ID"
+          << " | " << std::setw(tab) << cabeca
+          << " | " << std::setw(8) << "Preço"
+          << " | " << std::setw(11) << "Quantidade" 
+          << " | " << std::setw(7) << "Total"<< std::endl;
+    std::cout << linhaHoriz << std::endl;
+
+    double total = 0.0;
+    for(auto it = _carrinho.begin(); it!=_carrinho.end(); it++){
+        double valor = (it->second.preco)*(it->second.quantidade);                          //calcula o valor total de cada item e sua quantidade
+        const auto& id = it->first;
+        const auto& item = it->second;
+ 
+        std::cout << std::left << std::setw(5) << id
+                  << " | " << std::setw(tab) << item.nome
+                  << " | @" << std::setw(6) << std::fixed << std::setprecision(2) << item.preco
+                  << " | " << std::setw(11) << item.quantidade 
+                  << " | " << std::setw(7) << valor << std::endl;
+
+               
+        total += valor;                                                                     //calcula o total do carrinho
+    }
+    std::cout << linhaHoriz << std::endl;
+    
+    std::cout<<"Total do carrinho: @"<<total<<std::endl;
 }
 
 void Loja::mostrarItens()
@@ -136,15 +150,47 @@ void Loja::mostrarItens()
     // const auto& mapIn = _itens.begin()->first;      //separa a primeira parte do map de itens, já que é outro map
     const auto &par = it->second; // separa o pair do map
 
-    for (; it != _itens.end(); it++)
-    {
-        if (par.second == true)
-        { // se o item está disponível, ele vai aparecer na lista
-            std::cout << (it->first) << " - " << (par.first.nome)
-                      << " - R$ " << (par.first.preco) << "  "
-                      << "(Disponíveis: )" << (par.first.quantidade) << std::endl;
+    std::size_t nomeTextLenMax = 0;
+
+    for (auto it=_itens.begin(); it!=_itens.end(); it++){
+        std::size_t nomeTextLen = it->second.first.nome.size();
+        if (nomeTextLenMax < nomeTextLen){
+            nomeTextLenMax = nomeTextLen;
         }
     }
+
+    std::string cabeca = "Item";
+    std::size_t cabecaTextLen = cabeca.size()/3;
+    std::size_t tab = nomeTextLenMax + cabecaTextLen;
+    
+    std::string linhaHoriz = "";
+
+    std::size_t totalSize = 5 + 6 + tab + 10 + 11;
+    linhaHoriz.append(totalSize, '-');
+
+    std::cout << linhaHoriz << std::endl;
+    std::cout << std::left << std::setw(5) << "ID"
+          << " | " << std::setw(tab) << cabeca
+          << " | " << std::setw(8) << "Preço"
+          << " | " << std::setw(11) << "Quantidade" << std::endl;
+    std::cout << linhaHoriz << std::endl;
+
+    for (auto it=_itens.begin(); it!=_itens.end(); it++) {
+        const auto& id = it->first;
+        const auto& item = it->second.first;
+        const auto& disponivel = it->second.second;
+
+        if (disponivel) {
+            
+            std::cout << std::left << std::setw(5) << id
+                      << " | " << std::setw(tab) << item.nome
+                      << " | @" << std::setw(6) << std::fixed << std::setprecision(2) << item.preco
+                      << " | " << std::setw(11) << item.quantidade << std::endl;
+
+        }
+    }
+
+    std::cout << linhaHoriz << std::endl;
 }
 
 void Loja::pedido(unsigned cod, unsigned qnt)
@@ -161,22 +207,9 @@ void Loja::pedido(unsigned cod, unsigned qnt)
                 _carrinho[cod].quantidade += qnt;
                 _itens[cod].first.quantidade -= qnt;
                 return;
-            }
-            else if ((Iit->first == cod) && (parIn.second == true) && (parIn.first.quantidade >= qnt))
-            { // item é válido e a quantidade é suficiente
-                //(remover)
-                // Item produto;                                       //variável auxiliar
-                // definições dos tópicos do produto
-                // produto.nome = parIn.first.nome;
-                // produto.tipo = parIn.first.tipo;
-                // produto.consumivel = parIn.first.consumivel;
-                // produto.preco = parIn.first.preco;
-                // produto.vitalidade = parIn.first.vitalidade;
-                // produto.sanidade = parIn.first.sanidade;
-                // produto.quantidade = qnt;
-                // produto.id = parIn.first.id;
 
-                Item produto = parIn.first; // como o item é novo, é definir as propriedades do item a ser adicionado
+            } else if((Iit->first == cod)&&(parIn.second==true)&&(parIn.first.quantidade>=qnt)){    //item é válido e a quantidade é suficiente
+                Item produto = parIn.first;                         //como o item é novo, é definir as propriedades do item a ser adicionado
                 produto.quantidade = qnt;
 
                 _itens[cod].first.quantidade -= qnt; // reduz do estoque a quantidade adicionada no carrinho
@@ -196,22 +229,6 @@ void Loja::pedido(unsigned cod, unsigned qnt)
                 return;
             }
         }
-
-        // const auto& mapIn = it->first;
-        // const auto& parIn = it->second;
-        // auto innerIt = mapIn.find(cod);
-
-        // if (innerIt != mapIn.end()) {
-        //     if ((innerIt->first == cod)&&(situaItem == "DISPONÍVEL")) {
-        //         const auto& par = innerIt->second;
-        //         _carrinho.emplace(innerIt, qnt);
-        //         std::cout << qnt << " " << par.second << " adicionados com sucesso!" << std::endl;
-        //         return; // Saia da função após a inserção no carrinho bem-sucedida
-        //     } else if ((innerIt->first == cod)&&(situaItem == "INDISPONÍVEL")){
-        //         throw InvalidCodException("Código de item indisponível");
-        //         return; // Saia da função, pois o item está indisponível
-        //     }
-        // }
     }
 
     throw InvalidCodException("Código inválido/não encontrado");
