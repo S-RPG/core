@@ -2,11 +2,13 @@
 
 ## Apresentação
 
-Este projeto simula um jogo de estratégia e sobrevivência em que o jogador assume o papel de [....] durante uma iminente ameaça de [.....], provocada por [...]. Estamos no ano de [...] e o cenário é [...].O objetivo principal do jogo é coletar suprimentos e tomar decisões para garantir a sobrevivência do personagem em um abrigo durante o maior número de dias possível, em meio ao caos provocado pelo ataque [...]. Em suma, o jogo consiste em tomar decisões rápidas em situações de sobrevivência, onde o jogador tem que gerenciar recursos, lidar com eventos aleatórios e sobreviver.
+Este projeto simula um jogo de estratégia e sobrevivência em que você assume o papel de um homem solitário e contrário ao regime governamental, em meio a uma guerra civil provocada por uma intriga entre o Governo ditatorial e um grupo de recolucionários ao qual você pertence. Estamos no ano de 2054 e o cenário é caótico no país. Para conter a crise instaurada por grande parte do país, o governo decide lançar uma arma biológica em uma região central, atingindo boa parte do território nacional. Com isso, você é forçado a buscar abrigo em um lugar desconhecido para não ser preso e deve aprender a conviver no abrigo com outros sobreviventes e companheiros de luta.
 
-O jogo se divide em dois modos principais: o modo de coleta de suprimentos e o modo de sobrevivência. No modo de coleta de suprimentos, o jogador tem [tempo???] para explorar sua casa, pegar itens úteis, como comida, água, arma e remédios, e buscar um abrigo mais próximo, uma vez que sua residência encontra-se numa situação de risco [ou algo do tipo]. Durante esse tempo, o jogador também precisa tomar decisões sobre quais itens são mais importantes e [...].
+O objetivo principal do jogo é coletar suprimentos e tomar decisões para garantir a sobrevivência do personagem durante o maior número de dias possível, em meio ao caos provocado pelo ataque do governo. Em suma, o jogo consiste em tomar decisões rápidas em situações de sobrevivência, onde o jogador tem que gerenciar recursos, lidar com eventos aleatórios e sobreviver.
 
-No modo de sobrevivência, o jogador assume [o controle da família, do grupo de sobreviventes, outro] dentro do abrigo e precisa administrar os recursos escassos, como suprimentos médicos, alimentos, infraestrutura e comunicação, precisa tomar decisões difíceis e lidar com eventos aleatórios. Soma-se a isto a necessidade de manter sua sanidade e vitalidade em niveis adequados, pois estes serão os principais atributos para lhe garantir a possibilidade de seguir adiante. O jogo apresenta um sistema [de tempo???] em que o jogador precisa planejar suas ações de forma estratégica, garantindo suprimentos suficientes, mantendo a saúde física e mental e tomando decisões éticas em situações desafiadoras.
+O jogo se divide em dois modos principais: o modo de coleta de suprimentos e o modo de sobrevivência. No modo de coleta de suprimentos, o jogador deve explorar os ambientes em busca de itens úteis, como comida, água, arma e remédios e retornar ao abrigo, consegue realizar trabalhos para adiquirir dinheiro e comprar outros itens em lojas clandestinas. Durante esse tempo, o jogador também precisa tomar decisões sobre quais itens são mais importantes manter consigo.
+
+No modo de sobrevivência, o jogador assume importância dentro do abrigo e precisa administrar os recursos escassos, como suprimentos médicos, alimentos, infraestrutura e comunicação, precisa tomar decisões difíceis e lidar com eventos aleatórios. Soma-se a isto a necessidade de manter sua sanidade e vitalidade em niveis adequados, pois estes serão os principais atributos para lhe garantir a possibilidade de seguir adiante. O jogo apresenta um sistema em que o jogador precisa planejar suas ações de forma estratégica, garantindo suprimentos suficientes, mantendo a saúde física e mental e tomando decisões éticas em situações desafiadoras.
 
 ## Visão geral da solução (foco na estrutura e desenvolvimento)
 
@@ -14,25 +16,27 @@ O programa é dividido em diferentes arquivos e estruturas para gerenciar difere
 
 **Arquivo "item.hpp"**
 
-Este arquivo contém a definição da estrutura Item, que representa um item no jogo. Cada item possui um nome, tipo, se é consumível, preço, valores de vitalidade e sanidade, quantidade disponível e um ID único.
+Este arquivo contém a definição da estrutura "Item", que representa um item no jogo. Cada item possui um nome, tipo, se é consumível, preço, valores de vitalidade e sanidade, quantidade disponível e um ID único.
 
 **Arquivo "loja.hpp"**
 
-Neste arquivo, está a classe Loja, responsável pela gestão das compras e vendas de itens. A classe possui funcionalidades para adicionar itens ao carrinho, removê-los, visualizar o carrinho e efetuar a compra.
+Neste arquivo, está a classe "Loja", responsável pela gestão das compras e vendas de itens. A classe possui funcionalidades para adicionar itens ao carrinho, removê-los, visualizar o carrinho e efetuar a compra.
 
 **Arquivo "situacao.hpp"**
 
-A classe Situacao, definida neste arquivo, é responsável por gerenciar as diferentes situações do jogo. Cada situação possui um contexto, um conjunto de decisões e um título. A classe permite definir e obter o contexto, as decisões e o título da situação.
+A classe "Situacao", definida neste arquivo, é responsável por gerenciar as diferentes situações do jogo. Cada situação possui um contexto, um conjunto de decisões e um título. A classe permite definir e obter o contexto, as decisões e o título da situação.
 
 **Arquivo "decisao.hpp"**
 
-A estrutura Decisao representa uma decisão no jogo. Cada decisão possui uma alternativa, impacto na sanidade, impacto na vitalidade e um texto.
+A estrutura "Decisao" representa uma decisão no jogo. Cada decisão possui uma alternativa, impacto na sanidade, impacto na vitalidade e um texto.
 
+**Arquivo "inventario.hpp"**
 
+A classe "Inventario" possui funções para obter a quantidade de dinheiro disponível, exibir os itens presentes no inventário, armazenar itens, remover itens e consumir itens, afetando os atributos do personagem.
 
-**[incluir demais arquivos]**
+**Arquivo "personagem.hpp"**
 
-
+A classe "Personagem" é definida para representar um personagem do jogo. Ela possui membros privados que representam o nome, nível de sanidade, nível de vitalidade, quantidade de dinheiro e nível de fome do personagem.
 
 ## Regras de desenvolvimento
 
@@ -132,7 +136,7 @@ Durante o desenvolvimento do programa, algumas das principais dificuldades encon
 
 # Conclusão
 
-[NOME DO PROJETO] é um jogo desafiador que instiga os jogadores a tomarem decisões rápidas em situações de sobrevivência. A estratégia e o planejamento são fundamentais, pois cada decisão afeta o curso da história do personagem e o seu bem-estar. O jogador precisa avaliar o impacto de suas escolhas a curto e longo prazo, considerando fatores como a dificuldade para obtenção de recursos, precariedade na infraestrutura médica e a incerteza quanto a duração do caos instaurado. Ademais, com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora, tanto para os jogadores quanto para os desenvolvedores. 
+WAR-GD é um jogo desafiador que instiga os jogadores a tomarem decisões rápidas em situações de sobrevivência. A estratégia e o planejamento são fundamentais, pois cada decisão afeta o curso da história do personagem e o seu bem-estar. O jogador precisa avaliar o impacto de suas escolhas a curto e longo prazo, considerando fatores como a dificuldade para obtenção de recursos, precariedade na infraestrutura médica e a incerteza quanto a duração do caos instaurado. Ademais, com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora, tanto para os jogadores quanto para os desenvolvedores. 
 
 Para mais informações sobre o funcionamento detalhado do programa, consulte a documentação completa disponível no diretório "core".
 
