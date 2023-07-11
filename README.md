@@ -14,6 +14,9 @@ O tempo que o personagem deve se manter no abrigo só depende da dissipação do
 
 ## Como jogar?
 
+Primeiro é necessário fazer o download da pasta 'src' e extraí-la em uma outra pasta de mesmo nome. Depois abra o terminal de seu computador e se certifique de estar na pasta criada. Após esse processo você deve digitar o comando `make`, para ser criado o executável do jogo, para finalmente poder jogar deve ser digitado o comando `run`.
+
+Caso seja de desejo do usuário realizar testes no programa (classe loja) o comando deve ser `test`.
 
 
 ## Visão geral da solução (foco na estrutura e desenvolvimento)
