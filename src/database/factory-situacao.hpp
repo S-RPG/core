@@ -14,14 +14,14 @@ class FactorySituacao : public IFactory<const std::string &>
 public:
   void create(const std::string &filename) override;
 
-  void populate();
-
-  static std::map<std::size_t, std::vector<Situacao *>> situacoes;
+  static std::map<unsigned, std::vector<Situacao>> situacoes;
 
   // friend class FactoryDecisao;
 
   // private:
   // std::map<std::size_t, std::map<char, Decisao *>> _decisoes = FactoryDecisao::decisoes;
+
+  void operator=(Situacao &situacao);
 };
 
 #endif

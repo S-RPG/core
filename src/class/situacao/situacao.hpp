@@ -5,15 +5,18 @@
 
 #include <string>
 #include <map>
+#include <vector>
 
 class Situacao
 {
 public:
-  Situacao(unsigned id, std::string titulo, std::string contexto, std::map<char, Decisao *> decisoes, unsigned dia, unsigned situacaoConectadaId);
-  Situacao(unsigned id, std::string titulo, std::string contexto, std::map<char, Decisao *> decisoes, unsigned dia);
-  std::string getTitulo(std::size_t &charMax);
-  std::string getDecisoes(std::size_t &charMax);
-  std::string getContexto(std::size_t &charMax);
+  Situacao();
+
+  Situacao(unsigned id, std::string titulo, std::string contexto, std::vector<std::pair<char, Decisao>> decisoes, unsigned dia, unsigned situacaoConectadaId);
+  Situacao(unsigned id, std::string titulo, std::string contexto, std::vector<std::pair<char, Decisao>> decisoes, unsigned dia);
+  std::string getTitulo(std::size_t charMax);
+  std::string getDecisoes(std::size_t charMax);
+  std::string getContexto(std::size_t charMax);
 
   unsigned _dia;
   unsigned _id;
@@ -21,7 +24,9 @@ public:
   std::string _titulo;
   std::string _contexto;
 
-  std::map<char, Decisao *> _decisoes;
+  std::vector<std::pair<char, Decisao>> _decisoes;
+
+  bool operator==(const Situacao &situacao);
 };
 
 #endif

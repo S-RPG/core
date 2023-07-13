@@ -5,13 +5,20 @@
 #include <algorithm>
 #include <math.h>
 
-Situacao::Situacao(unsigned id, std::string titulo, std::string contexto, std::map<char, Decisao *> decisoes, unsigned dia, unsigned situacaoConectadaId)
+bool Situacao::operator==(const Situacao &situacao)
+{
+  return this->_id == situacao._id;
+}
+
+Situacao::Situacao(){};
+
+Situacao::Situacao(unsigned id, std::string titulo, std::string contexto, std::vector<std::pair<char, Decisao>> decisoes, unsigned dia, unsigned situacaoConectadaId)
     : _contexto(contexto), _titulo(titulo), _decisoes(decisoes), _dia(dia), _id(id), _situacaoConectadaId(situacaoConectadaId){};
 
-Situacao::Situacao(unsigned id, std::string titulo, std::string contexto, std::map<char, Decisao *> decisoes, unsigned dia)
+Situacao::Situacao(unsigned id, std::string titulo, std::string contexto, std::vector<std::pair<char, Decisao>> decisoes, unsigned dia)
     : _contexto(contexto), _titulo(titulo), _decisoes(decisoes), _dia(dia), _id(id){};
 
-std::string Situacao::getTitulo(std::size_t &charMax)
+std::string Situacao::getTitulo(std::size_t charMax)
 {
   unsigned titleLen = _titulo.length();
 
@@ -32,7 +39,7 @@ std::string Situacao::getTitulo(std::size_t &charMax)
   return title;
 }
 
-std::string Situacao::getContexto(std::size_t &charMax)
+std::string Situacao::getContexto(std::size_t charMax)
 {
   float contextLen = _contexto.length() - 1.0;
   unsigned contextLines = ceil(contextLen / charMax);
@@ -80,14 +87,14 @@ std::string Situacao::getContexto(std::size_t &charMax)
  *
  * @return Uma representacao de string das decisoes.
  */
-std::string Situacao::getDecisoes(std::size_t &charMax)
+std::string Situacao::getDecisoes(std::size_t charMax)
 {
   std::string decisoesStr;
   std::size_t decisaoTextLenMax = 0;
 
-  for (const auto &[ch, dec] : this->_decisoes)
+  for (const auto &decisao : this->_decisoes)
   {
-    std::size_t decisaoTextLen = dec->texto.size();
+    std::size_t decisaoTextLen = decisao.second.texto.size();
     if (decisaoTextLenMax < decisaoTextLen)
     {
       decisaoTextLenMax = decisaoTextLen;
@@ -96,10 +103,14 @@ std::string Situacao::getDecisoes(std::size_t &charMax)
 
   std::size_t tab = decisaoTextLenMax;
 
-  for (const auto &[ch, dec] : this->_decisoes)
+  for (const auto &decisao : this->_decisoes)
   {
+    char ch = decisao.first;
+    std::string decisaoText = decisao.second.texto;
+
     std::string decisaoAlternativa(1, ch);
-    std::size_t decisaoTextLen = dec->texto.size();
+    std::size_t decisaoTextLen = decisaoText.size();
+
     if (decisaoAlternativa == "a")
     {
       decisoesStr.append(" ");
@@ -112,11 +123,10 @@ std::string Situacao::getDecisoes(std::size_t &charMax)
     decisoesStr.append(") ");
 
     // decisoesStr.append(tab - decisaoTextLen / 2, ' ');
-    decisoesStr.append(dec->texto);
+    decisoesStr.append(decisaoText);
     decisoesStr.append(tab - decisaoTextLen / 2, ' ');
     decisoesStr.append(" ");
   }
-
   decisoesStr.append("\n");
   decisoesStr.append(charMax + 2, '_');
 
