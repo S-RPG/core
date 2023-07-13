@@ -2,13 +2,22 @@
 
 ## Apresentação
 
-Este projeto simula um jogo de estratégia e sobrevivência em que você assume o papel de um homem solitário e contrário ao regime governamental, em meio a uma guerra civil provocada por uma intriga entre o Governo ditatorial e um grupo de recolucionários ao qual você pertence. Estamos no ano de 2054 e o cenário é caótico no país. Para conter a crise instaurada por grande parte do país, o governo decide lançar uma arma biológica em uma região central, atingindo boa parte do território nacional. Com isso, você é forçado a buscar abrigo em um lugar desconhecido para não ser preso e deve aprender a conviver no abrigo com outros sobreviventes e companheiros de luta.
+Este projeto simula um jogo de estratégia e sobrevivência em que você assume o papel de um homem solitário e contrário ao regime governamental, em meio a uma guerra civil provocada por uma intriga entre o Governo ditatorial e um grupo de recolucionários ao qual você pertence. Estamos no ano de 2054 e o cenário é caótico no país. Para conter a crise instaurada por grande parte do país, o governo decide lançar uma arma biológica em uma região central, atingindo boa parte do território nacional. Com isso, você é forçado a buscar abrigo sozinho em um lugar desconhecido para não ser preso e poder resistir ao ataque químico.
 
-O objetivo principal do jogo é coletar suprimentos e tomar decisões para garantir a sobrevivência do personagem durante o maior número de dias possível, em meio ao caos provocado pelo ataque do governo. Em suma, o jogo consiste em tomar decisões rápidas em situações de sobrevivência, onde o jogador tem que gerenciar recursos, lidar com eventos aleatórios e sobreviver.
+O objetivo principal do jogo é manter em bom estado a vitalidade e a sanidade do personagem, gerindo suprimentos e tomando decisões que você julgue como melhores, para garantir a sobrevivência do personagem durante o maior número de dias possível, em meio ao caos provocado pelo ataque do governo.
 
-O jogo se divide em dois modos principais: o modo de coleta de suprimentos e o modo de sobrevivência. No modo de coleta de suprimentos, o jogador deve explorar os ambientes em busca de itens úteis, como comida, água, arma e remédios e retornar ao abrigo, consegue realizar trabalhos para adiquirir dinheiro e comprar outros itens em lojas clandestinas. Durante esse tempo, o jogador também precisa tomar decisões sobre quais itens são mais importantes manter consigo.
+Dentro do jogo o personagem tem acesso ao seu inventário, onde encontra seus itens e pode usá-los para recuperar seus status: se alimentando para controlar sua vitalidade, e um pouco da sanidade, ou se entreter com alguns itens e jogos para manter sua mente sã. A forma de conseguir esses itens é pela loja da revolução, que abre uma vez por semana.
 
-No modo de sobrevivência, o jogador assume importância dentro do abrigo e precisa administrar os recursos escassos, como suprimentos médicos, alimentos, infraestrutura e comunicação, precisa tomar decisões difíceis e lidar com eventos aleatórios. Soma-se a isto a necessidade de manter sua sanidade e vitalidade em niveis adequados, pois estes serão os principais atributos para lhe garantir a possibilidade de seguir adiante. O jogo apresenta um sistema em que o jogador precisa planejar suas ações de forma estratégica, garantindo suprimentos suficientes, mantendo a saúde física e mental e tomando decisões éticas em situações desafiadoras.
+Conforme passam os dias, coisas acontecem ao seu redor e decisões precisam ser tomadas. As consequências das situações geradas por suas decisões podem impactar nos seus status, no sue inventário, ou em ambos. Por isso é necessário pensar duas vezes antes de fazer algo. Entre essas situações podem ser encontradas oportunidades de conseguir dinheiro para gastar na loja e se manter vivo.
+
+O tempo que o personagem deve se manter no abrigo só depende da dissipação do efeito da bomba e da tomada de controle da situação realizado pela revolução e  por países aliados.
+
+## Como jogar?
+
+Primeiro é necessário fazer o download da pasta 'src' e extraí-la em uma outra pasta de mesmo nome. Depois abra o terminal de seu computador e se certifique de estar na pasta criada. Após esse processo você deve digitar o comando `make`, para ser criado o executável do jogo, para finalmente poder jogar deve ser digitado o comando `run`.
+
+Caso seja de desejo do usuário realizar testes no programa (classe loja) o comando deve ser `test`.
+
 
 ## Visão geral da solução (foco na estrutura e desenvolvimento)
 
