@@ -14,7 +14,7 @@ class FactoryDecisao : public IFactory<const std::string &>
 public:
   void create(const std::string &filename) override;
 
-  static std::map<std::size_t, std::map<char, Decisao *>> decisoes;
+  static std::map<unsigned, std::vector<std::pair<char, Decisao>>> decisoes;
 
   friend class FactorySituacao;
 };

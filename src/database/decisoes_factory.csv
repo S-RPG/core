@@ -1,0 +1,38 @@
+1;1;a;desistir de viver;-100;-100
+2;1;b;tentar sobreviver;0;0
+3;3;a;ignorar;-5;5
+4;3;b;ajudar, porém com o risco de contaminaçãoou de armadilha ;-15;-10
+5;6;a;ignorar;-20;-2
+6;6;b;dar abrigo;5;1
+7;10;a;continuar;0;0
+8;11;a;aceitar;5;5
+9;11;b;recusá-la;-5;-5
+10;12;a;ajudá-la;15;10
+11;12;b;dar uma desculpa;-10;-5
+12;13;a;Irá respondê-los;10;5
+13;13;b;Ignorar mensagem;-15;-10
+14;13;c;Deixar para responder outro dia;2;-7
+15;14;a;Segui-lo;-10;-35
+16;14;b;Ficar na loja do governo;20;-10
+17;15;a;não pagar a conta e aceitar as consequências;-10;-10
+18;15;b;pagar com suas economias;5;10
+19;16;a;Irá jantar com eles;30;30
+20;16;b;Recusa o jantar educadamente;-5;-10
+21;15;c;Dá uma desculpa qualquer;-5;-10
+22;17;a;Sim;50;-50
+23;17;b;Não;0;0
+24;18;a;Leva o gato para casa ;10;10
+25;18;b;Ignora o gato e o deixa para morrer;-15;0
+26;19;a;Ignorar ;-15;-15
+27;19;b;afirmar tal história;-10;-10
+28;19;c;assaltar a casa dela durante a noite;20;20
+29;22;a;recusa a entrada dos agentes;-7;7
+30;22;b;permite a entrada;7;-7
+31;23;a;aceita;20;-20
+32;23;b;recusa ;-20;20
+33;25;a;pagar com suas economias;-10;20
+34;25;b;não pagar e esperar as consequências;-20;-20
+35;28;a;dar os pertences;-30;-30
+36;28;b;tentar reagir;-90;-90
+37;29;a;desliga na cara deles;-15;-15
+38;29;b;manda um pouco de sua reserva;15;-15

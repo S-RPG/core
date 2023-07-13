@@ -1,0 +1,19 @@
+1;O início do fim;Após tais acontecimentos relativos a arma biológica, você se abriga em seu banker enquanto ouve o mundo desmoronar do lado de fora. O que prefere fazer? ;1
+3;pedido de socorro;Você ouve pedidos de socorro fora de seu banker, o que você decide fazer?;3
+6;O indivíduo misterioso;Um indivíduo coberto por uma capa lhe pede ajuda para se abrigar em sua casa, em troca, lhe ajudaria no futuro;6
+10;Fim do isolamento;Após dez dias de isolamento, o governo declarou que o ar já não estava contaminado o suficiente para causar um impacto instantâneo aos indivíduos sem devidas proteções. Agora, você é translocado para uma nova comunidade, para uma zona descontaminada.;10
+11;A busca por um bico;Após entrar na comunidade, você busca uma forma de garantir sua estabilidade financeira. Você descobriu uma vaga em um bar da localidade. O gerente gostou de você e te ofereceu a vaga. Vai aceitá-la?;11
+12;Uma vizinha desesperada;No amanhecer do dia, uma senhora bate a sua porta pedindo ajuda para consertar a maçaneta da porta de sua casa após uma tentativa de roubo na noite anterior. Você a ajudaria, garantindo sua segurança?;12
+13;Mensagem de seus pais;Seus pais mandaram mensagens perguntando como você está nesta nova comunidade controlada pelo governo. Você ainda não deu retorno após sua chegada, irá respondê-los?;12
+14; O estranho do beco;"Ao ir na loja do governo, você se depara com uma alta nos preços por causa da instabilidade econômica do país. Um indivíduo fora da loja o chama para um beco, onde venderia no ""precinho"", você irá segui-lo?";13
+15;Conta de luz;Você recebeu a conta de luz do mês e percebe que a maioria dos gastos não está vindo por você. ;13
+16;Convite para jantar;Um dos vizinhos te convidou para comer com sua família como forma de garantir sua amizade. Você irá?;14
+17;A volta do indivíduo misterioso;O indivíduo com sua capa retorna a sua casa perguntando se você aceitaria provar uma de suas receitas. Você aceitaria provar esta comida que exala um cheiro de meia suja? ;15
+18;O gato;Você avista um gato caido no chão, percebe sua condição de desnutrição. Você levaria o gato para cuidar dele até sua recuperação?;16
+19;A vizinha fofoqueira;Uma de suas vizinhas diz tê-lo visto furtando uma casa na noite anterior, acusando de ser o mesmo que quebrou a porta da outra senhora. Qual sua reação?;17
+22;Agentes do governo;Agentes do governo batem a sua porta buscando alguma relação sua com os rebeldes. Deixa entrá-los para revista?;20
+23;Aparição dos rebeldes;Após a vinda dos agentes o mesmo indivíduo de capa retorna a sua casa, contando que faz parte do grupo dos rebeldes e que gostaria de propor um acordo de ajuda mútua. Você aceitaria? Isso não impede de te pedirem ajuda futuramente;21
+25;conta de água;Você recebeu a conta de água do mês, como sempre, com valores altos. O que irá fazer?;23
+28;O assalto;Durante o amanhecer, você vai a loja do governo e é colocado em situação assalto durante sua volta. O que irá fazer?;26
+29;Pedir dinheiro;Após o assalto, seus pais ligam pedindo dinheiro, pois a situação deles está muito complicada. O que você faz?;27
+32;O fim;O governor restaurou junto com aliados a situação do país. Você sobreviveu;30
