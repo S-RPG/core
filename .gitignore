@@ -1,7 +1,7 @@
 *
 !src/**/*.hpp
 !src/**/*.cpp
-!**/*.cpp
+!*/*.cpp
 !**/*.h
 !makefile
 !**/*.md
