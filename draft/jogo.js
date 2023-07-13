@@ -1,130 +1,130 @@
-const readline = require("readline");
-let resp = "";
+// const readline = require("readline");
+// let resp = "";
 
-var leitor = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-});
+// var leitor = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout,
+// });
 
-const decisao_1 = {
-  alternativa: "a",
-  texto: "Sim!",
-  impactoSanidade: 0.1,
-  impactoVitalidade: -0.2,
-};
+// const decisao_1 = {
+//   alternativa: "a",
+//   texto: "Sim!",
+//   impactoSanidade: 0.1,
+//   impactoVitalidade: -0.2,
+// };
 
-const decisao_2 = {
-  alternativa: "b",
-  texto: "Não",
-  impactoSanidade: 0.1,
-  impactoVitalidade: -0.2,
-};
+// const decisao_2 = {
+//   alternativa: "b",
+//   texto: "Não",
+//   impactoSanidade: 0.1,
+//   impactoVitalidade: -0.2,
+// };
 
-const decisoes_1 = new Map();
-decisoes_1.set("a", decisao_1);
-decisoes_1.set("b", decisao_2);
+// const decisoes_1 = new Map();
+// decisoes_1.set("a", decisao_1);
+// decisoes_1.set("b", decisao_2);
 
-const decisoes = new Map();
-decisoes.set(1, decisoes_1);
+// const decisoes = new Map();
+// decisoes.set(1, decisoes_1);
 
-const decisoesMap = new Map();
-decisoesMap.set(1, decisoes_1);
-decisoesMap.set(2, decisoes_1);
-decisoesMap.set(3, decisoes_1);
+// const decisoesMap = new Map();
+// decisoesMap.set(1, decisoes_1);
+// decisoesMap.set(2, decisoes_1);
+// decisoesMap.set(3, decisoes_1);
 
-const situacao_1 = {
-  id: 1,
-  titulo: "Ola, um novo dia começou",
-  contexto: "Bla bla bla bla bla\n",
-  decisoesId: 1,
-  dia: 1,
-};
+// const situacao_1 = {
+//   id: 1,
+//   titulo: "Ola, um novo dia começou",
+//   contexto: "Bla bla bla bla bla\n",
+//   decisoesId: 1,
+//   dia: 1,
+// };
 
-const situacao_2 = {
-  id: 2,
-  titulo: "Situação 2, omg!",
-  contexto: "Bla bla bla bla bla...",
-  decisoesId: 2,
-  dia: 2,
-};
-const situacao_3 = {
-  id: 3,
-  titulo: "Situação 3, ufa!",
-  contexto: "Bla bla bla bla bla...",
-  decisoesId: 3,
-  dia: 2,
-};
+// const situacao_2 = {
+//   id: 2,
+//   titulo: "Situação 2, omg!",
+//   contexto: "Bla bla bla bla bla...",
+//   decisoesId: 2,
+//   dia: 2,
+// };
+// const situacao_3 = {
+//   id: 3,
+//   titulo: "Situação 3, ufa!",
+//   contexto: "Bla bla bla bla bla...",
+//   decisoesId: 3,
+//   dia: 2,
+// };
 
-const situacoes_dia_1 = [situacao_1];
-const situacoes_dia_2 = [situacao_2, situacao_3];
+// const situacoes_dia_1 = [situacao_1];
+// const situacoes_dia_2 = [situacao_2, situacao_3];
 
-const situacoes_dias = [situacoes_dia_1, situacoes_dia_2];
+// const situacoes_dias = [situacoes_dia_1, situacoes_dia_2];
 
-let vida = true;
-while (vida) {
-  for (const situacoes_dia of situacoes_dias) {
-    let proximoDia = false;
-    let situacoesCompletadas = false;
+// let vida = true;
+// while (vida) {
+//   for (const situacoes_dia of situacoes_dias) {
+//     let proximoDia = false;
+//     let situacoesCompletadas = false;
 
-    while (!proximoDia) {
-      if (!situacoesCompletadas) {
-        for (const situacao of situacoes_dia) {
-          console.log(
-            `[Dia: ${situacao.dia}]\n🚩 ${situacao.titulo} 🚩\n${situacao.contexto}\n`
-          ); // std::cout
-          const decisoesDisponiveis = decisoes.get(situacao.id);
-          for (const [alternativa, decisao] of decisoesDisponiveis) {
-            console.log(`${alternativa}) ${decisao.texto}`);
-          }
+//     while (!proximoDia) {
+//       if (!situacoesCompletadas) {
+//         for (const situacao of situacoes_dia) {
+//           console.log(
+//             `[Dia: ${situacao.dia}]\n🚩 ${situacao.titulo} 🚩\n${situacao.contexto}\n`
+//           ); // std::cout
+//           const decisoesDisponiveis = decisoes.get(situacao.id);
+//           for (const [alternativa, decisao] of decisoesDisponiveis) {
+//             console.log(`${alternativa}) ${decisao.texto}`);
+//           }
 
-          leitor.question("R.: ", (answer) => {
-            resp = answer;
+//           leitor.question("R.: ", (answer) => {
+//             resp = answer;
 
-            leitor.close();
-          });
-          const alternativaSelecionada = decisoesDisponiveis.get(resp);
-          console.log("Alteracao na vitalidade do personagem... ");
-          console.log("Alteracao na vitalidade do personagem... ");
-        }
-      }
-      situacoesCompletadas = true;
-      console.log("Exibindo status do personagem...");
-      console.log("Exibindo outras informações importantes...\n\n");
-      leitor.question(
-        "(L) Loja - (I) - Inventário - (S) Status - (0) Próximo dia\nR.:",
-        (answer) => {
-          resp = answer;
+//             leitor.close();
+//           });
+//           const alternativaSelecionada = decisoesDisponiveis.get(resp);
+//           console.log("Alteracao na vitalidade do personagem... ");
+//           console.log("Alteracao na vitalidade do personagem... ");
+//         }
+//       }
+//       situacoesCompletadas = true;
+//       console.log("Exibindo status do personagem...");
+//       console.log("Exibindo outras informações importantes...\n\n");
+//       leitor.question(
+//         "(L) Loja - (I) - Inventário - (S) Status - (0) Próximo dia\nR.:",
+//         (answer) => {
+//           resp = answer;
 
-          leitor.close();
-        }
-      );
+//           leitor.close();
+//         }
+//       );
 
-      switch (resp) {
-        case "L":
-          console.log("Exibindo loja...");
-          // lojaFn();
-          break;
+//       switch (resp) {
+//         case "L":
+//           console.log("Exibindo loja...");
+//           // lojaFn();
+//           break;
 
-        case "I":
-          console.log("Exibindo Inventário...");
-          // inventarioFn();
-          break;
+//         case "I":
+//           console.log("Exibindo Inventário...");
+//           // inventarioFn();
+//           break;
 
-        case "S":
-          console.log("Exibindo status do personagem...");
-          // personagemFn();
-          break;
+//         case "S":
+//           console.log("Exibindo status do personagem...");
+//           // personagemFn();
+//           break;
 
-        case "0":
-          console.log("Proximo dia...");
-          proximoDia = true;
-          break;
-      }
-    }
-  }
-  vida = false;
-}
-console.log("vc morreu doidao");
+//         case "0":
+//           console.log("Proximo dia...");
+//           proximoDia = true;
+//           break;
+//       }
+//     }
+//   }
+//   vida = false;
+// }
+// console.log("vc morreu doidao");
 const campoTipo = "       TIPO       ";
 const campoVitalidade = " VITALIDADE ";
 const campoSanidade = " SANIDADE ";
