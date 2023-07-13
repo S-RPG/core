@@ -11,7 +11,11 @@
 #include <algorithm>
 #include <iterator>
 
-std::map<std::size_t, std::vector<Situacao *>> FactorySituacao::situacoes;
+std::map<unsigned, std::vector<Situacao>> FactorySituacao::situacoes;
+
+void FactorySituacao::operator=(Situacao &situacao)
+{
+}
 
 void FactorySituacao::create(const std::string &filename)
 {
@@ -33,7 +37,7 @@ void FactorySituacao::create(const std::string &filename)
     std::string titulo;
     std::string contexto;
     unsigned dia;
-    std::map<char, Decisao *> decisoes;
+    std::vector<std::pair<char, Decisao>> decisoes;
     // unsigned situacaoConectadaId;
 
     if (std::getline(ss, field, ';'))
@@ -76,10 +80,33 @@ void FactorySituacao::create(const std::string &filename)
       continue;
     }
 
-    decisoes = FactoryDecisao::decisoes[dia];
+    auto decisoes_it = FactoryDecisao::decisoes.find(id);
+    if (!decisoes_it->second.empty())
+    {
+      decisoes = decisoes_it->second;
+    }
 
-    Situacao *situacao = new Situacao(id, titulo, contexto, decisoes, dia);
+    Situacao situacao;
 
-    this->situacoes[dia].push_back(situacao);
+    situacao._id = id;
+    situacao._titulo = titulo;
+    situacao._contexto = contexto;
+    situacao._decisoes = decisoes;
+    situacao._dia = dia;
+
+    auto situacao_dia = this->situacoes.find(dia);
+
+    if (!situacao_dia->second.empty())
+    {
+      std::vector<Situacao> _situacao = situacao_dia->second;
+      _situacao.emplace_back(situacao);
+      this->situacoes.emplace(dia, _situacao);
+    }
+    else
+    {
+      std::vector<Situacao> _situacao;
+      _situacao.assign(1, situacao);
+      this->situacoes.insert_or_assign(dia, _situacao);
+    }
   }
 }

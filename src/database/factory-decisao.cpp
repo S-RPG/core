@@ -9,12 +9,13 @@
 #include <sstream>
 #include <algorithm>
 #include <iterator>
+#include <utility>
+#include <initializer_list>
 
-std::map<std::size_t, std::map<char, Decisao *>> FactoryDecisao::decisoes;
+std::map<unsigned, std::vector<std::pair<char, Decisao>>> FactoryDecisao::decisoes;
 
 void FactoryDecisao::create(const std::string &filename)
 {
-
   std::ifstream file(filename);
 
   if (!file)
@@ -35,71 +36,74 @@ void FactoryDecisao::create(const std::string &filename)
     unsigned id;
     unsigned situacaoId;
 
-    if (std::getline(ss, field, ';'))
-    {
-      id = std::stoul(field, nullptr, 10);
-    }
-    else
+    if (!std::getline(ss, field, ';'))
     {
       std::cerr << "Invalid id field" << std::endl;
       continue;
     }
+    id = std::stoul(field, nullptr, 10);
 
-    if (std::getline(ss, field, ';'))
-    {
-      situacaoId = std::stoul(field, nullptr, 10);
-    }
-    else
+    if (!std::getline(ss, field, ';'))
     {
       std::cerr << "Invalid situacaoId field" << std::endl;
       continue;
     }
+    situacaoId = std::stoul(field, nullptr, 10);
 
-    if (std::getline(ss, field, ';'))
-    {
-      alternativa = field[0];
-    }
-    else
+    if (!std::getline(ss, field, ';'))
     {
       std::cerr << "Invalid alternativa field" << std::endl;
       continue;
     }
+    alternativa = field[0];
 
-    if (std::getline(ss, field, ';'))
-    {
-      texto = field;
-    }
-    else
+    if (!std::getline(ss, field, ';'))
     {
       std::cerr << "Invalid texto field" << std::endl;
       continue;
     }
+    texto = field;
 
-    if (std::getline(ss, field, ';'))
-    {
-      auto _field = field == "-" ? "0.0" : field;
-
-      impactoSanidade = std::stof(_field, nullptr);
-    }
-    else
+    if (!std::getline(ss, field, ';'))
     {
       std::cerr << "Invalid impactoSanidade field" << std::endl;
       continue;
     }
+    auto _field = field == "-" ? "0.0" : field;
+    impactoSanidade = std::stof(_field, nullptr);
 
-    if (std::getline(ss, field, ';'))
-    {
-      auto _field = field == "-" ? "0.0" : field;
-      impactoVitalidade = std::stof(_field, nullptr);
-    }
-    else
+    if (!std::getline(ss, field, ';'))
     {
       std::cerr << "Invalid impactoVitalidade field" << std::endl;
       continue;
     }
+    _field = field == "-" ? "0.0" : field;
+    impactoVitalidade = std::stof(_field, nullptr);
 
-    Decisao *decisao = new Decisao(id, situacaoId, alternativa, texto, impactoSanidade, impactoVitalidade);
+    Decisao decisao;
+    decisao.id = id;
+    decisao.situacaoId = situacaoId;
+    decisao.alternativa = alternativa;
+    decisao.texto = texto;
+    decisao.impactoSanidade = impactoSanidade;
+    decisao.impactoVitalidade = impactoVitalidade;
 
-    this->decisoes[situacaoId][alternativa] = decisao;
+    auto decisoes_it = this->decisoes.find(situacaoId);
+
+    std::pair<char, Decisao> _decisao{alternativa, decisao};
+
+    if (!decisoes_it->second.empty())
+    {
+      std::vector<std::pair<char, Decisao>> decisao_situacao = decisoes_it->second;
+      decisao_situacao.emplace_back(_decisao);
+      this->decisoes[situacaoId] = decisao_situacao;
+    }
+    else
+    {
+      std::vector<std::pair<char, Decisao>> decisao_situacao;
+      decisao_situacao.assign(1, _decisao);
+      this->decisoes.insert_or_assign(situacaoId, decisao_situacao);
+      this->decisoes.emplace(situacaoId, decisao_situacao);
+    }
   }
 }

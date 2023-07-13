@@ -1,8 +1,12 @@
 *
-!**/*.cpp
 !**/*.hpp
+!**/*.cpp
 !**/*.h
-!MAKEFILE
+!makefile
 !**/*.md
-!**/*.pdf
 !**/*.js
+!**/*.pdf
+!**/*.pdf
+!**/*.drawio
+!**/*.png
+!build
