@@ -1,13 +1,2 @@
-*
-!src/**/*.hpp
-!src/**/*.cpp
-!**/*.cpp
-!**/*.h
-!makefile
-!**/*.md
-!**/*.js
-!**/*.pdf
-!**/*.pdf
-!**/*.drawio
-!**/*.png
-!build
+.vscode
+build
