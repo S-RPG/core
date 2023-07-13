@@ -1,5 +1,13 @@
 # WAR-GD
 
+## Build:
+
+Abra o terminal na pasta do projeto e rode:
+
+```bash
+
+```
+
 ## Apresentação
 
 Este projeto simula um jogo de estratégia e sobrevivência em que você assume o papel de um homem solitário e contrário ao regime governamental, em meio a uma guerra civil provocada por uma intriga entre o Governo ditatorial e um grupo de recolucionários ao qual você pertence. Estamos no ano de 2054 e o cenário é caótico no país. Para conter a crise instaurada por grande parte do país, o governo decide lançar uma arma biológica em uma região central, atingindo boa parte do território nacional. Com isso, você é forçado a buscar abrigo em um lugar desconhecido para não ser preso e deve aprender a conviver no abrigo com outros sobreviventes e companheiros de luta.
@@ -114,9 +122,12 @@ Segue alguns comandos úteis que serão frequentemente utilizados ao longo de to
   git add . && git commit -m "<feat/fix>: <descrição>"
   ```
 - Subir modificações para o github:
+
   ```bash
   git push origin <nome/da-branch>
- 
+
+  ```
+
 - Shorthand, sempre dar push para branch atual:
   ```bash
   git config --global --add --bool push.autoSetupRemote true
@@ -130,20 +141,20 @@ O programa permite que o jogador interaja com o jogo, tomando decisões em difer
 
 Durante o desenvolvimento do programa, algumas das principais dificuldades encontradas foram:
 
-  - Gerenciar as interações entre as diferentes estruturas e classes do programa, garantindo a consistência e o correto funcionamento do jogo.
-  - Implementar a lógica para o processamento das decisões do jogador e as consequências das mesmas.
-  - Lidar com eventos aleatórios e suas influências no jogo.
+- Gerenciar as interações entre as diferentes estruturas e classes do programa, garantindo a consistência e o correto funcionamento do jogo.
+- Implementar a lógica para o processamento das decisões do jogador e as consequências das mesmas.
+- Lidar com eventos aleatórios e suas influências no jogo.
 
 # Conclusão
 
-WAR-GD é um jogo desafiador que instiga os jogadores a tomarem decisões rápidas em situações de sobrevivência. A estratégia e o planejamento são fundamentais, pois cada decisão afeta o curso da história do personagem e o seu bem-estar. O jogador precisa avaliar o impacto de suas escolhas a curto e longo prazo, considerando fatores como a dificuldade para obtenção de recursos, precariedade na infraestrutura médica e a incerteza quanto a duração do caos instaurado. Ademais, com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora, tanto para os jogadores quanto para os desenvolvedores. 
+WAR-GD é um jogo desafiador que instiga os jogadores a tomarem decisões rápidas em situações de sobrevivência. A estratégia e o planejamento são fundamentais, pois cada decisão afeta o curso da história do personagem e o seu bem-estar. O jogador precisa avaliar o impacto de suas escolhas a curto e longo prazo, considerando fatores como a dificuldade para obtenção de recursos, precariedade na infraestrutura médica e a incerteza quanto a duração do caos instaurado. Ademais, com a implementação das estruturas e classes adequadas, o programa oferece uma experiência imersiva e desafiadora, tanto para os jogadores quanto para os desenvolvedores.
 
 Para mais informações sobre o funcionamento detalhado do programa, consulte a documentação completa disponível no diretório "core".
 
 ## Autores
 
-  - Alan Mota Calegari
-  - Davi de Carvalho Clark
-  - Gustavo Santiago de Magalhães
-  - Ricardo Augusto Costa Brito Moraes
-  - Washington Aparecido de Jesus Morais
+- Alan Mota Calegari
+- Davi de Carvalho Clark
+- Gustavo Santiago de Magalhães
+- Ricardo Augusto Costa Brito Moraes
+- Washington Aparecido de Jesus Morais
