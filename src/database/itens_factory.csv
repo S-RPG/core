@@ -1,0 +1,22 @@
+1;água;alimento;0.50;0.2;0.4;TRUE;beber,remover
+2;cerveja;alimento;2.50;-0.5;0.0;VERDADEIRO;beber,remover
+3;wisky;alimento;4.00;-0.8;0.0;VERDADEIRO;beber,remover
+4;café;alimento;1.50;0.1;0.3;VERDADEIRO;beber,remover
+5;pão;alimento;0.50;0.2;0.1;TRUE;comer,remover
+6;barra de proteína;alimento;1.50;0.3;0.1;TRUE;comer,remover
+7;frutas;alimento;2.00;0.35;0.3;VERDADEIRO;comer,remover
+8;cereal;alimento;3.50;0.45;0.05;VERDADEIRO;comer,remover
+9;sanduiche;alimento;4.50;0.1;0.35;VERDADEIRO;comer,remover
+10;filme;entreterimento;4.00;0.0;0.3;FALSO;assistir,remover
+11;livro;entreterimento;3.00;0.0;0.4;FALSE;ler,remover
+12;bola de tênis;entreterimento;2.00;0.0;0.2;FALSE;jogar,remover
+13;baralho;entreterimento;3.00;0.0;0.2;FALSE;jogar,remover
+14;jogo vídeo game;entreterimento;5.00;0.0;0.5;FALSE;jogar,remover
+15;cigarro;entreterimento;0.50;-0.05;0.1;TRUE;fumar,remover
+16;pá;ferramenta;5.00;-;-;FALSO;usar,remover
+17;martelo;ferramenta;5.00;-;-;FALSO;usar,remover
+18;tesoura;ferramenta;5.00;-;-;FALSO;usar,remover
+19;papel higiênico;higiene;3.50;-;-;FALSO;usar,remover
+20;med kit;primeiros socorros;6.50;0.5;0.5;VERDADEIRO;curar
+21;faca;arma;7.50;-;-;FALSE;usar,remover
+22;revólver;arma;15.00;-;-;FALSO;usar,remover
