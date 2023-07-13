@@ -16,6 +16,7 @@ g++ -c src/main.cpp -o build/bin/main.o
 
 echo "Construindo executavel ⚙️"
 g++ build/bin/situacao.o build/bin/loja.o build/bin/inventario.o build/bin/factory-item.o build/bin/factory-decisao.o build/bin/factory-situacao.o build/bin/factory-loja.o build/bin/data.o build/bin/main.o -o war-dg
+sleep 2
 
 echo "Concluido 🎉"
 echo "Execute o comando: ./war-dg para iniciar o jogo 🎮"
